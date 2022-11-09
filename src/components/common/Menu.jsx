@@ -5,15 +5,27 @@ const Menu = () => {
         <header>
             <Navbar bg="light" variant="light" expand="lg">
                 <Container>
-                    <Navbar.Brand as={Link}>Comiteando</Navbar.Brand>
+                    <Navbar.Brand as={Link} end to="/">
+                        Comiteando
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <NavLink className={"nav-item nav-link"}>Inicio</NavLink>
-                            <NavLink className={"nav-item nav-link"}>Haz tu Pedido</NavLink>
-                            <NavLink className={"nav-item nav-link"}>Aministrador</NavLink>
-                            <NavLink className={"nav-item nav-link"}>Registro</NavLink>
-                            <NavLink className={"nav-item nav-link"}>Login/out</NavLink>
+                            <NavLink end to="/" className={"nav-item nav-link"}>
+                                Inicio
+                            </NavLink>
+                            <NavLink end to="/haz" className={"nav-item nav-link"}>
+                                Haz tu Pedido
+                            </NavLink>
+                            <NavLink end to="/administrar" className={"nav-item nav-link"}>
+                                Aministrador
+                            </NavLink>
+                            <NavLink end to="/administrar/usuario/registro" className={"nav-item nav-link"}>
+                                Registro
+                            </NavLink>
+                            <NavLink end to="/usuario/login" className={"nav-item nav-link"}>
+                                Login/out
+                            </NavLink>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

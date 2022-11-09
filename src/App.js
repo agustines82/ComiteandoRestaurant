@@ -11,6 +11,7 @@ import HazTuPedido from "./components/views/HazTuPedido";
 import Error404 from "./components/views/Error404";
 import Login from "./components/views/Login";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
+import Registro from "./components/views/Registro";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route exact path="/haz" element={<HazTuPedido />} />
                 <Route exact path="/administrar/detalle/:id" element={<DetalleMenu />} />
                 <Route exact path="/usuario/login" element={<Login />} />
+                <Route exact path="/usuario/registro" element={<Registro />} />
                 <Route
                     path="/administrar/*"
                     element={

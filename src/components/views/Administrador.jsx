@@ -11,7 +11,7 @@ const Administrador = () => {
                 <h1 className="display-3 mt-3 fontTitulos">Pedidos Solicitados</h1>
             </article>
             <hr />
-            <Table responsive striped bordered hover size="sm" className="shadow">
+            <Table responsive striped hover size="sm" className="shadow">
                 <thead>
                     <tr>
                         <th>Cod</th>
@@ -33,10 +33,10 @@ const Administrador = () => {
                 </Link>
             </article>
             <hr />
-            <Table responsive striped bordered hover size="sm" className="shadow">
+            <Table responsive striped hover size="sm" className="shadow">
                 <thead>
                     <tr>
-                        <th>Cod</th>
+                        <th className="codTable">Cod</th>
                         <th>Nombre</th>
                         <th>Estado</th>
                         <th>Precio</th>
@@ -57,7 +57,7 @@ const Administrador = () => {
             <Table responsive striped bordered hover size="sm" className="shadow">
                 <thead>
                     <tr>
-                        <th>Cod</th>
+                        <th className="codTable">Cod</th>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Password</th>

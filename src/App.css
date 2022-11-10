@@ -36,6 +36,11 @@
     color: #f04523;
 }
 
+/*PAGINA ADMINISTRADOR*/
+.thLargo {
+    max-width: 50px;
+}
+
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {

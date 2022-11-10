@@ -5,7 +5,7 @@ const Footer = () => {
         <Container>
             <Row className="text-center my-5">
                 <Col>
-                    <img src={logoFooter} />
+                    <img src={logoFooter} alt="logo footer" />
                 </Col>
             </Row>
             <Row className="my-5">

@@ -8,7 +8,7 @@ const Menu = () => {
             <Navbar className="backgroundGeneral" expand="lg">
                 <Container className="mt-1">
                     <Navbar.Brand as={Link} end to="/">
-                        <img src={comitiandoLogo} />
+                        <img src={comitiandoLogo} alt="logo menu" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

@@ -31,8 +31,15 @@ const Menu = () => {
                             <NavLink end to="/administrar/usuario/registro" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
                                 Registro
                             </NavLink>
-                            <NavLink end to="/usuario/login" className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25"}>
-                                Login/out
+                            <NavLink
+                                end
+                                to="/usuario/login"
+                                className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
+                            >
+                                Login/out<i class="bi bi-box-arrow-in-right"></i>
+                            </NavLink>
+                            <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
+                                <i class="bi bi-shop-window"></i>
                             </NavLink>
                         </Nav>
                     </Navbar.Collapse>

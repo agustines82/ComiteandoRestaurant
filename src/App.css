@@ -1,6 +1,12 @@
 #root {
     font-family: "IBM Plex Mono", monospace;
     background-color: #e9e6df;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.mainSection {
+    flex-grow: 1;
 }
 .fontTitulos {
     font-family: "Bebas Neue", cursive;

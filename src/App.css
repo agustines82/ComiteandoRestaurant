@@ -1,9 +1,17 @@
 #root {
     font-family: "IBM Plex Mono", monospace;
-}
-.backgroundGeneral {
     background-color: #e9e6df;
+}
+.fontTitulos {
+    font-family: "Bebas Neue", cursive;
 }
 .backgroundBotones {
     background-color: #f04523;
+}
+.hazTuPedidoMenu {
+    transform: rotate(352deg);
+}
+/* no me estarian saliendo este hover y la inquinacion del boton de haz tu pedido */
+.hoverMenu1:hover {
+    color: #f04523;
 }

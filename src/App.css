@@ -1,3 +1,9 @@
 #root {
     font-family: "IBM Plex Mono", monospace;
 }
+.backgroundGeneral {
+    background-color: #e9e6df;
+}
+.backgroundBotones {
+    background-color: #f04523;
+}

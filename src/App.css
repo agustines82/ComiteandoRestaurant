@@ -1,6 +1,12 @@
 #root {
     font-family: "IBM Plex Mono", monospace;
     background-color: #e9e6df;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.mainSection {
+    flex-grow: 1;
 }
 .fontTitulos {
     font-family: "Bebas Neue", cursive;
@@ -30,12 +36,24 @@
     color: #f04523;
 }
 
+/*PAGINA ADMINISTRADOR*/
+.thLargo {
+    max-width: 50px;
+}
+.thLargo2 {
+    max-width: 680px;
+}
+
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {
     /*menu navbar*/
     .hazTuPedidoMenu {
         transform: rotate(0deg);
+    }
+    /*pagina administrador (itemPedido)*/
+    .thLargo2 {
+        max-width: 250px;
     }
 }
 /** MD */

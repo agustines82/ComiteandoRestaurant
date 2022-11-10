@@ -8,7 +8,7 @@ const Menu = () => {
             <Navbar className="backgroundGeneral" expand="lg">
                 <Container className="mt-1">
                     <Navbar.Brand as={Link} end to="/">
-                        <img src={comitiandoLogo} />
+                        <img src={comitiandoLogo} alt="logo menu" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -39,7 +39,7 @@ const Menu = () => {
                                 Login/out<i class="bi bi-box-arrow-in-right"></i>
                             </NavLink>
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
-                                <i class="bi bi-shop-window"></i>
+                                <i className="bi bi-shop-window"></i>
                             </NavLink>
                         </Nav>
                     </Navbar.Collapse>

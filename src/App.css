@@ -1,0 +1,47 @@
+#root {
+    font-family: "IBM Plex Mono", monospace;
+    background-color: #e9e6df;
+}
+.fontTitulos {
+    font-family: "Bebas Neue", cursive;
+}
+.backgroundBotones {
+    background-color: #f04523;
+}
+
+/*MENU NAVBAR*/
+.linksMenu {
+    padding-inline: 10px;
+    color: black;
+    text-decoration: none;
+}
+.hazTuPedidoMenu {
+    transform: rotate(352deg);
+}
+.hoverHazTuPedidoMenu:hover {
+    color: #e9e6df;
+    transition: 300ms;
+}
+.hoverLoginOutMenu:hover {
+    position: relative;
+    top: -5px;
+}
+.hoverLinksMenu:hover {
+    color: #f04523;
+}
+
+/* MEDIA QUERIES */
+/** SM **/
+@media all and (max-width: 767px) {
+    /*menu navbar*/
+    .hazTuPedidoMenu {
+        transform: rotate(0deg);
+    }
+}
+/** MD */
+@media all and (min-width: 768px) and (max-width: 991px) {
+    /*menu navbar*/
+    .hazTuPedidoMenu {
+        transform: rotate(0deg);
+    }
+}

@@ -1,12 +1,14 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import comitiandoLogo from "../../assets/img/comitiandoLogo.jpg";
+
 const Menu = () => {
     return (
         <header>
             <Navbar bg="light" variant="light" expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} end to="/">
-                        Comiteando
+                        <img src={comitiandoLogo} />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

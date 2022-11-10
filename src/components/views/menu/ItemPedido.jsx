@@ -7,7 +7,9 @@ const ItemPedido = () => {
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>10/11/2022</th>
-                <th>producto 1, producto 2, producto 3, producto 4, producto 5, producto 6, producto 7, producto 8, producto 9,etc</th>
+                <th className="text-truncate thLargo2">
+                    producto 1, producto 2, producto 3, producto 4, producto 5, producto 6, producto 7, producto 8, producto 9,etc
+                </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
                     <Link className="btn btn-outline-light me-1">

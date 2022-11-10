@@ -40,6 +40,9 @@
 .thLargo {
     max-width: 50px;
 }
+.thLargo2 {
+    max-width: 680px;
+}
 
 /* MEDIA QUERIES */
 /** SM **/
@@ -47,6 +50,10 @@
     /*menu navbar*/
     .hazTuPedidoMenu {
         transform: rotate(0deg);
+    }
+    /*pagina administrador (itemPedido)*/
+    .thLargo2 {
+        max-width: 250px;
     }
 }
 /** MD */

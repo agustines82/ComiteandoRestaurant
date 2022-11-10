@@ -39,7 +39,7 @@ const Menu = () => {
                                 Login/out<i class="bi bi-box-arrow-in-right"></i>
                             </NavLink>
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
-                                <i class="bi bi-shop-window"></i>
+                                <i className="bi bi-shop-window"></i>
                             </NavLink>
                         </Nav>
                     </Navbar.Collapse>

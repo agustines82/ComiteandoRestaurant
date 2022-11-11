@@ -43,6 +43,18 @@
 .thLargo2 {
     max-width: 680px;
 }
+/*PAGINA MI PEDIDO*/
+.CardMiPedido{
+width: 40%;
+
+
+}
+.PosicionMipedido{
+   display: flex;
+    justify-content: end;
+    margin: 30px;
+}
+
 
 /* MEDIA QUERIES */
 /** SM **/

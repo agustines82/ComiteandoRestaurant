@@ -19,7 +19,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -43,7 +43,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -67,7 +67,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -91,7 +91,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -115,7 +115,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -139,7 +139,7 @@ const ItemMenu = () => {
                     https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
                 </th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">

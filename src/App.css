@@ -44,6 +44,11 @@
     max-width: 680px;
 }
 
+/*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
+.fs-small {
+    font-size: small;
+}
+
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {

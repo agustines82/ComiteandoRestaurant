@@ -1,13 +1,17 @@
 import { Form, Container, Breadcrumb } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 const EditarMenu = () => {
     return (
         <>
             <Container className="mainSection mb-5">
-                <Breadcrumb>
-                    <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/administrar">Admininistrar</Breadcrumb.Item>
-                    <Breadcrumb.Item active>Editar</Breadcrumb.Item>
+                <Breadcrumb className="fs-small">
+                    <Link className="linksMenu hoverLinksMenu" to="/">
+                        Inicio /
+                    </Link>
+                    <Link className="linksMenu hoverLinksMenu" to="/administrar">
+                        Admininistrar /
+                    </Link>
+                    <Breadcrumb.Item active>Editar Producto</Breadcrumb.Item>
                 </Breadcrumb>
                 <section className="container mt-5">
                     <h3 className="display-3 mt-3 fontTitulos">Editar Producto del Menu</h3>
@@ -16,27 +20,27 @@ const EditarMenu = () => {
                 <section className="container my-3">
                     <Form className="container">
                         <Form.Group className="mb-3" controlId="formNombreProducto">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Nombre producto*</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Nombre producto*</Form.Label>
                             <Form.Control required type="text" placeholder="Ej:Sushi" />
-                            <Form.Text className="text-danger">el nombre del producto es requerido</Form.Text>
+                            <Form.Text className="text-danger ms-3">el nombre del producto es requerido</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEstado">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Estado</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Estado</Form.Label>
                             <Form.Check type="switch" id="custom-switch" label="ND / D" />
-                            <Form.Text className="text-danger">No Disponible / Disponible</Form.Text>
+                            <Form.Text className="text-danger ms-3">No Disponible / Disponible</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPrecio">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Precio*</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Precio*</Form.Label>
                             <Form.Control required type="number" placeholder="Ej:50" />
-                            <Form.Text className="text-danger">el precio es obligatorio </Form.Text>
+                            <Form.Text className="text-danger ms-3">el precio es obligatorio </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formDetalle">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Detalle del producto*</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Detalle del producto*</Form.Label>
                             <Form.Control as="textarea" required type="text" placeholder="Ej:Sushi" />
-                            <Form.Text className="text-danger">el detalle del producto es requerido</Form.Text>
+                            <Form.Text className="text-danger ms-3">el detalle del producto es requerido</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formCategoria">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Categoria*</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Categoria*</Form.Label>
                             <Form.Select aria-label="Default select">
                                 <option value="">Seleccione una opción...</option>
                                 <option value="BENTOS">BENTOS</option>
@@ -54,12 +58,12 @@ const EditarMenu = () => {
                                 <option value="CERVEZA Y SAKE">CERVEZA Y SAKE</option>
                                 <option value="REFRESCOS">REFRESCOS</option>
                             </Form.Select>
-                            <Form.Text className="text-danger">Debe elegir una categoría</Form.Text>
+                            <Form.Text className="text-danger ms-3">Debe elegir una categoría</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formImagen">
-                            <Form.Label className="fontTitulos fs-5 ms-2">Imagen URL*</Form.Label>
+                            <Form.Label className="fontTitulos fs-5">Imagen URL*</Form.Label>
                             <Form.Control required type="text" placeholder="Ej:'https://....'" />
-                            <Form.Text className="text-danger">Debe ingresar una url valida</Form.Text>
+                            <Form.Text className="text-danger ms-3">Debe ingresar una url valida</Form.Text>
                         </Form.Group>
                         <div className="text-center">
                             <button className="backgroundBotones rounded border-0 fontTitulos fs-4" type="submit">

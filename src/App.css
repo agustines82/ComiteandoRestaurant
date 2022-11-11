@@ -63,3 +63,10 @@
         transform: rotate(0deg);
     }
 }
+
+/** Login **/
+.login{
+    background-color: #f04523;
+    font-family: "IBM Plex Mono", monospace;
+    width: 30rem;
+}

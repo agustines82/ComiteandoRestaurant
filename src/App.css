@@ -46,14 +46,17 @@
 /*PAGINA MI PEDIDO*/
 .CardMiPedido{
 width: 40%;
-
-
 }
 .PosicionMipedido{
-   display: flex;
-    justify-content: end;
-    margin: 30px;
+    display: flex;
+     justify-content: end;
+     margin: 30px;
+     
+ }
+.ItemsPedido{
+    border: #f04523 10px;
 }
+
 
 
 /* MEDIA QUERIES */

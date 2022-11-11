@@ -51,10 +51,11 @@ width: 40%;
     display: flex;
      justify-content: end;
      margin: 30px;
-     
  }
-.ItemsPedido{
+.itemspedido{
     border: #f04523 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 

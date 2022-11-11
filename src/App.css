@@ -63,3 +63,7 @@
         transform: rotate(0deg);
     }
 }
+/** Registrarse */
+.letra{
+    font-family: "IBM Plex Mono", monospace;
+}

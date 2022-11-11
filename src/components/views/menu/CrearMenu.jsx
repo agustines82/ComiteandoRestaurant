@@ -1,8 +1,13 @@
-import { Form, Container } from "react-bootstrap";
+import { Form, Container, Breadcrumb } from "react-bootstrap";
 const CrearMenu = () => {
     return (
         <>
             <Container className="mainSection mb-5">
+                <Breadcrumb>
+                    <Breadcrumb.Item href="/">Inicio</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/administrar">Admininistrar</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Agregar</Breadcrumb.Item>
+                </Breadcrumb>
                 <section className="container mt-5">
                     <h3 className="display-3 mt-3 fontTitulos">Nuevo Producto del Menu</h3>
                     <hr />

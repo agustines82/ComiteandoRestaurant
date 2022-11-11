@@ -44,6 +44,12 @@
     max-width: 680px;
 }
 
+/*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
+.breadcrumb:hover {
+    color: #f04523;
+    text-decoration: none;
+}
+
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {

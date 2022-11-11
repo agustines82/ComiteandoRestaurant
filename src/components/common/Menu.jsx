@@ -1,5 +1,5 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import comitiandoLogo from "../../assets/img/comitiandoLogo.jpg";
 
 const Menu = () => {
@@ -36,7 +36,7 @@ const Menu = () => {
                                 to="/usuario/login"
                                 className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
                             >
-                                Login/out<i class="bi bi-box-arrow-in-right"></i>
+                                Login/out<i className="bi bi-box-arrow-in-right"></i>
                             </NavLink>
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>

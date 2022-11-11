@@ -13,7 +13,7 @@ const Registro = () => {
         Launch demo modal
       </Button>
 
-      <Modal className='backgroundBotones' show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className='text-center fontTitulos'>Registrarse</Modal.Title>
         </Modal.Header>
@@ -46,12 +46,12 @@ const Registro = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer className='justify-content-center'>
-          <Button variant="secondary" onClick={handleClose}>
+          <button className='boton' onClick={handleClose}>
             Cerrar
-          </Button>
-          <Button variant="dark" onClick={handleClose}>
+          </button>
+          <button className='boton' onClick={handleClose}>
             Registrarse
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

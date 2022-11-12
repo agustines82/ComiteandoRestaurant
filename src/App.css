@@ -52,12 +52,62 @@ width: 40%;
      justify-content: end;
      margin: 30px;
  }
-.itemspedido{
-    border: #f04523 10px;
-    display: flex;
-    justify-content: space-around;
+ .botonconf{
+    width: 250px;
+    text-align: center;  
+    color:#e9e6df;
+    background-color: #f04523;
+    border-radius: 8px;
+    border: 1px #f04523;
+    cursor: pointer;
+    display: inline-block;
+    
 }
 
+.botonconf:hover {
+    color: #f04523;
+    background: #e9e6df;
+  }
+  .botonconf:before,
+  .botonconf:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #f04523;
+    transition:400ms ease all;
+  }
+  .botonconf:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }  
+  .botonconf:hover:before,
+  .botonconf:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  .botonpedido{
+    width: 50px;
+    padding: 2px;
+    text-align: end;
+    color:#e9e6df;
+    background-color: #f04523;
+    border-radius: 5px;
+    cursor: pointer;
+}  
+.botonpedido2{
+    width: 25px;
+    padding: 2px;
+    text-align: center;
+    color:#e9e6df;
+    background-color: #f04523;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
 
 /* MEDIA QUERIES */

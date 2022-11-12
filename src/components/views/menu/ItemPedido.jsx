@@ -12,7 +12,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -29,7 +29,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -46,7 +46,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -63,7 +63,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -80,7 +80,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">
@@ -97,7 +97,7 @@ const ItemPedido = () => {
                 </th>
                 <th>pendiente / realizado</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
+                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/pedido/:id">
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light">

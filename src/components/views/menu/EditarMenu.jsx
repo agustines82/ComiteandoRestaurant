@@ -67,7 +67,7 @@ const EditarMenu = () => {
                         </Form.Group>
                         <div className="text-center">
                             <button className="backgroundBotones rounded border-0 fontTitulos fs-4" type="submit">
-                                Editar
+                                Guardar
                             </button>
                         </div>
                     </Form>

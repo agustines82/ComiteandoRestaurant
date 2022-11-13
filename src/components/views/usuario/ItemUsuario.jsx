@@ -1,5 +1,5 @@
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+
 const ItemUsuario = () => {
     return (
         <>
@@ -8,7 +8,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">
@@ -21,7 +26,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">
@@ -34,7 +44,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">
@@ -47,7 +62,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">
@@ -60,7 +80,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">
@@ -73,7 +98,12 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th>Activo / Suspendido</th>
+                <th className="width-1">
+                    <Form.Select aria-label="Default select">
+                        <option value="activo">Activo</option>
+                        <option value="suspendido">Suspendido</option>
+                    </Form.Select>
+                </th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
                     <Button variant="outline-light">

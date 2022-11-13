@@ -12,6 +12,7 @@ import Error404 from "./components/views/Error404";
 import Login from "./components/views/Login";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
 import Registro from "./components/views/Registro";
+import PedidoConfirmado from "./components/views/PedidoConfirmado";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 {/* dominio + path */}
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/haz" element={<HazTuPedido />} />
+                <Route exact path="pedidoconf" element={<PedidoConfirmado />} />
                 <Route exact path="/administrar/detalle/:id" element={<DetalleMenu />} />
                 <Route exact path="/usuario/login" element={<Login />} />
                 <Route exact path="/usuario/registro" element={<Registro />} />

@@ -108,7 +108,32 @@ width: 40%;
     border-radius: 8px;
     cursor: pointer;
 }
+.formulariopedido{
+    width: 50%;
+    margin: 30px;
+    border: 2px black;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    
+}
 
+.box2{
+    width: 50%;
+    margin: 30px;
+    border: 2px black;
+    background: white;
+    border-radius: 10px;
+}
+
+.acordionpedido{
+    background-color: #f04523;
+}
+
+.custom-dropdown{
+    margin: 50px;
+    
+}
 
 /* MEDIA QUERIES */
 /** SM **/

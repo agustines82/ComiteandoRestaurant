@@ -9,7 +9,7 @@ const EditarMenu = () => {
     } = useForm();
 
     const editarProducto = (data) => {
-        console.log("desde la funcion editar");
+        console.log("desde la funcion editar producto del menu");
         console.log(data);
     };
 

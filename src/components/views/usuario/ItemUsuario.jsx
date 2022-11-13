@@ -11,9 +11,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>
@@ -27,9 +24,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>
@@ -43,9 +37,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>
@@ -59,9 +50,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>
@@ -75,9 +63,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>
@@ -91,9 +76,6 @@ const ItemUsuario = () => {
                 <th>Activo / Suspendido</th>
                 <th>Admin / Cliente</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/usuario/:id">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
                     <Button variant="outline-light">
                         <i className="bi bi-x-lg text-danger"></i>
                     </Button>

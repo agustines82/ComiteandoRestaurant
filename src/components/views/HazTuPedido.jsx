@@ -17,9 +17,7 @@ const HazTuPedido = () => {
         <Card.Text className="m-3">Total:</Card.Text>
 
           <div className="d-flex justify-content-center">
-          <button className="my-3 p-3 botonconf">
-            Confirmar pedido
-          </button>
+          <button className="my-3 p-3 botonconf"   >Confirmar pedido</button>
           </div>
       </Card>
       </div>

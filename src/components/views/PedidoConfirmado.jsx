@@ -2,8 +2,8 @@ import { Form, Card, ListGroup, Accordion, Table } from "react-bootstrap";
 
 const PedidoConfirmado = () => {
   return (
-    <main>
-      <section className="box1">
+    <section className="container">
+      <aside>
         <Form className="formulariopedido">
           <h3 className="text-center">Datos del envio</h3>
           <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
@@ -25,7 +25,8 @@ const PedidoConfirmado = () => {
             placeholder="Escribe tu indicacion aqui"
           />
         </Form>
-
+      </aside>
+      <aside>
         <span class="custom-dropdown">
           <select>
             <option>METODOS DE PAGO</option>
@@ -35,6 +36,8 @@ const PedidoConfirmado = () => {
             <option>Transferencia</option>
           </select>
         </span>
+      </aside>
+      <aside>
         <Accordion className="box2">
           <Accordion.Item eventKey="0">
             <Accordion.Header>Detalle del pedido</Accordion.Header>
@@ -68,8 +71,32 @@ const PedidoConfirmado = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-      </section>
-    </main>
+      </aside>
+      <aside className="">
+        <Card className="PosicionMipedido2">
+          <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
+          <hr />
+          <ListGroup variant="flush">
+            <ListGroup.Item className="d-flex my-2 justify-content-between">
+              {" "}
+              <span className="botonpedido">
+                <i class="bi bi-plus-circle-fill"></i>
+              </span>{" "}
+              <span className="botonpedido2">
+                {" "}
+                <i class="bi bi-trash3-fill "></i>
+              </span>
+            </ListGroup.Item>
+          </ListGroup>
+          <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>
+          <Card.Text className="m-3">Total:</Card.Text>
+
+          <div className="d-flex justify-content-center">
+            <button className="my-3 p-3 botonconf">Comprar</button>
+          </div>
+        </Card>
+      </aside>
+    </section>
   );
 };
 

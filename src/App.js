@@ -1,4 +1,3 @@
-import "./app.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +11,7 @@ import Error404 from "./components/views/Error404";
 import Login from "./components/views/Login";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
 import Registro from "./components/views/Registro";
+import "./app.css";
 
 function App() {
     return (
@@ -32,7 +32,7 @@ function App() {
                             <RutasAdmin></RutasAdmin>
                         </RutasProtegidas>
                     }
-                ></Route>
+                />
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

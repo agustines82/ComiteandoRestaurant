@@ -1,4 +1,4 @@
-import { Card, CardGroup } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 const Nosotros = () => {
   return (
     <main className="container">

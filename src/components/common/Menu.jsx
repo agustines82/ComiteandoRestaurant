@@ -28,9 +28,6 @@ const Menu = () => {
                             <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
                                 Administrador
                             </NavLink>
-                            <NavLink end to="/acercadenos" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
-                                Nosotros
-                            </NavLink>
                             <NavLink end to="/administrar/usuario/registro" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
                                 Registro
                             </NavLink>

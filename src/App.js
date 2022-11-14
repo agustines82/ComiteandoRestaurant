@@ -9,7 +9,7 @@ import Inicio from "./components/views/Inicio";
 import HazTuPedido from "./components/views/HazTuPedido";
 import Error404 from "./components/views/Error404";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
-import "./App.css";
+import "./app.css";
 
 function App() {
     return (

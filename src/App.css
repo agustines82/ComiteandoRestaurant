@@ -44,6 +44,10 @@
     max-width: 680px;
 }
 
+/*TABLE DE USUARIOS*/
+.width-1 {
+    width: 160px;
+}
 /*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
 .fs-small {
     font-size: small;

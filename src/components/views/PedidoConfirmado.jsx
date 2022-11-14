@@ -3,7 +3,7 @@ import { Form, Card, ListGroup, Accordion, Table } from "react-bootstrap";
 const PedidoConfirmado = () => {
   return (
     <section className="container">
-      <aside>
+      <aside className="my-3">
         <Form className="formulariopedido">
           <h3 className="text-center">Datos del envio</h3>
           <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
@@ -26,7 +26,7 @@ const PedidoConfirmado = () => {
           />
         </Form>
       </aside>
-      <aside>
+      <aside className="my-3">
         <span class="custom-dropdown">
           <select>
             <option>METODOS DE PAGO</option>
@@ -37,7 +37,7 @@ const PedidoConfirmado = () => {
           </select>
         </span>
       </aside>
-      <aside>
+      <aside className="my-3">
         <Accordion className="box2">
           <Accordion.Item eventKey="0">
             <Accordion.Header>Detalle del pedido</Accordion.Header>
@@ -72,8 +72,8 @@ const PedidoConfirmado = () => {
           </Accordion.Item>
         </Accordion>
       </aside>
-      <aside className="">
-        <Card className="PosicionMipedido2">
+      <aside className="my-3">
+        <Card className="w-100">
           <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
           <hr />
           <ListGroup variant="flush">

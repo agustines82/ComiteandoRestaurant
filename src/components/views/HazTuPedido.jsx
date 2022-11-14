@@ -1,13 +1,13 @@
-import { Card, ListGroup} from "react-bootstrap";
+import { Card, Col, ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const HazTuPedido = () => {
   return (
-    <>
+    <Col md={4}>
       <div>
         <h1>Haz tu pedido</h1>
       </div>
-      <div className="PosicionMipedido">
-      <Card className="CardMiPedido">
+      <Card>
         <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
         <hr />
         <ListGroup variant="flush">
@@ -17,11 +17,10 @@ const HazTuPedido = () => {
         <Card.Text className="m-3">Total:</Card.Text>
 
           <div className="d-flex justify-content-center">
-          <button className="my-3 p-3 botonconf"   >Confirmar pedido</button>
+          <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">Confirmar pedido</Link>
           </div>
       </Card>
-      </div>
-    </>
+    </Col>
   );
 };
 

@@ -44,14 +44,6 @@
   max-width: 680px;
 }
 /*PAGINA MI PEDIDO*/
-.CardMiPedido {
-  width: 40%;
-}
-.PosicionMipedido {
-  display: flex;
-  justify-content: end;
-  margin: 30px;
-}
 .botonconf {
   width: 250px;
   text-align: center;
@@ -110,20 +102,15 @@
 /*   PAGINA PEDIDO CONFIRMADO   */
 .formulariopedido {
   width: 100%;
-  margin: 10px;
   border: 2px black;
   background: white;
   padding: 20px 30px;
   border-radius: 10px;
 }
-.PosicionMipedido2{
-margin: 10px;
-width: 100%;
-}
+
 
 .box2 {
   width: 100%;
-  margin: 10px;
   border: 2px black;
   background: white;
   border-radius: 10px;

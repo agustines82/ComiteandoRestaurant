@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RutasProtegidas from "./components/routes/RutasProtegidas";
 import RutasAdmin from "./components/routes/RutasAdmin";
@@ -10,7 +11,7 @@ import HazTuPedido from "./components/views/HazTuPedido";
 import Error404 from "./components/views/Error404";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
 import Nosotros from "./components/views/Nosotros";
-import "./app.css";
+import PedidoConfirmado from "./components/views/PedidoConfirmado";
 
 function App() {
     return (
@@ -21,7 +22,12 @@ function App() {
                 {/* dominio + path */}
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/haz" element={<HazTuPedido />} />
-                <Route exact path="/administrar/detalle/:id" element={<DetalleMenu />} />
+                <Route exact path="pedidoconf" element={<PedidoConfirmado />} />
+                <Route
+                    exact
+                    path="/administrar/detalle/:id"
+                    element={<DetalleMenu />}
+                />
                 <Route exact path="/acercadenos" element={<Nosotros />} />
                 <Route
                     path="/administrar/*"

@@ -1,39 +1,39 @@
 #root {
-    font-family: "IBM Plex Mono", monospace;
-    background-color: #e9e6df;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "IBM Plex Mono", monospace;
+  background-color: #e9e6df;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .mainSection {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 .fontTitulos {
-    font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue", cursive;
 }
 .backgroundBotones {
-    background-color: #f04523;
+  background-color: #f04523;
 }
 
 /*MENU NAVBAR*/
 .linksMenu {
-    padding-inline: 10px;
-    color: black;
-    text-decoration: none;
+  padding-inline: 10px;
+  color: black;
+  text-decoration: none;
 }
 .hazTuPedidoMenu {
-    transform: rotate(352deg);
+  transform: rotate(352deg);
 }
 .hoverHazTuPedidoMenu:hover {
-    color: #e9e6df;
-    transition: 300ms;
+  color: #e9e6df;
+  transition: 300ms;
 }
 .hoverLoginOutMenu:hover {
-    position: relative;
-    top: -5px;
+  position: relative;
+  top: -5px;
 }
 .hoverLinksMenu:hover {
-    color: #f04523;
+  color: #f04523;
 }
 
 /* PAGINA ACERCA DE NOSOTROS*/
@@ -47,10 +47,90 @@
 
 /*PAGINA ADMINISTRADOR*/
 .thLargo {
-    max-width: 50px;
+  max-width: 50px;
 }
 .thLargo2 {
-    max-width: 680px;
+  max-width: 680px;
+}
+/*PAGINA MI PEDIDO*/
+.botonconf {
+  width: 250px;
+  text-align: center;
+  color: #e9e6df;
+  background-color: #f04523;
+  border-radius: 8px;
+  border: 1px #f04523;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.botonconf:hover {
+  color: #f04523;
+  background: #e9e6df;
+}
+.botonconf:before,
+.botonconf:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #f04523;
+  transition: 400ms ease all;
+}
+.botonconf:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.botonconf:hover:before,
+.botonconf:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+.botonpedido {
+  width: 50px;
+  padding: 2px;
+  text-align: end;
+  color: #e9e6df;
+  background-color: #f04523;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.botonpedido2 {
+  width: 25px;
+  padding: 2px;
+  text-align: center;
+  color: #e9e6df;
+  background-color: #f04523;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/*   PAGINA PEDIDO CONFIRMADO   */
+.formulariopedido {
+  width: 100%;
+  border: 2px black;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+
+.box2 {
+  width: 100%;
+  border: 2px black;
+  background: white;
+  border-radius: 10px;
+}
+
+.acordionpedido {
+  background-color: #f04523;
+}
+
+.custom-dropdown {
+  margin: 10px;
 }
 
 /*TABLE DE USUARIOS*/
@@ -65,21 +145,23 @@
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {
-    /*menu navbar*/
-    .hazTuPedidoMenu {
-        transform: rotate(0deg);
-    }
-    /*pagina administrador (itemPedido)*/
-    .thLargo2 {
-        max-width: 250px;
-    }
+  /*menu navbar*/
+  .hazTuPedidoMenu {
+    transform: rotate(0deg);
+  }
+  /*pagina administrador (itemPedido)*/
+  .thLargo2 {
+    max-width: 250px;
+  }
 }
+
+
 /** MD */
 @media all and (min-width: 768px) and (max-width: 991px) {
-    /*menu navbar*/
-    .hazTuPedidoMenu {
-        transform: rotate(0deg);
-    }
+  /*menu navbar*/
+  .hazTuPedidoMenu {
+    transform: rotate(0deg);
+  }
 }
 /** Registrarse */
 .letra{

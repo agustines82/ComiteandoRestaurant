@@ -3,8 +3,26 @@ import { Link } from "react-router-dom";
 import ItemPedido from "./menu/ItemPedido";
 import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
+import { useEffect, useState } from "react";
+import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
 
 const Administrador = () => {
+    const [pedidos, setPedidos] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
+
+    useEffect(() => {
+        consultarApiPedidos().then((respuestaListaPedidos) => {
+            setPedidos(respuestaListaPedidos);
+        });
+        consultarApiProductos().then((respuestaListaProductos) => {
+            setProductos(respuestaListaProductos);
+        });
+        consultarApiUsuarios().then((respuestaListaUsuarios) => {
+            setUsuarios(respuestaListaUsuarios);
+        });
+    }, []);
+
     return (
         <Container className="mainSection">
             <article className="d-flex justify-content-between align-items-center mt-5 ">

@@ -9,7 +9,8 @@ import Inicio from "./components/views/Inicio";
 import HazTuPedido from "./components/views/HazTuPedido";
 import Error404 from "./components/views/Error404";
 import DetalleMenu from "./components/views/menu/DetalleMenu";
-import "./App.css";
+import Nosotros from "./components/views/Nosotros";
+import "./app.css";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/haz" element={<HazTuPedido />} />
                 <Route exact path="/administrar/detalle/:id" element={<DetalleMenu />} />
+                <Route exact path="/acercadenos" element={<Nosotros />} />
                 <Route
                     path="/administrar/*"
                     element={

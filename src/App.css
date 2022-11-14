@@ -36,6 +36,15 @@
     color: #f04523;
 }
 
+/* PAGINA ACERCA DE NOSOTROS*/
+
+.AcercadeNos{
+    width: 100px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 /*PAGINA ADMINISTRADOR*/
 .thLargo {
     max-width: 50px;

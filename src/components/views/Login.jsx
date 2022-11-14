@@ -1,6 +1,7 @@
 import '../../login.css'
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button,Col } from 'react-bootstrap';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 const Login = () => {
 	
 	const deslizar = ()=>{
@@ -21,22 +22,64 @@ const Login = () => {
 		deslizar();
 	},[])
   return (
-    <>
-<div className='container' id="container">
+
+<div className='contenedorlogin' id="container">        
 	<div className="form-container sign-up-container">
-	<Form className='d-flex justify-content-center align-items-center '>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
+	<Form>
+    <h1 className='fw-bold text-center'>Crear Cuenta</h1>
+      <div className='d-flex'>
+				<Link to={'*'} className="social mx-3"><i className="bi bi-facebook text-dark"></i></Link>
+				<Link to={'*'} className="social mx-3"><i className="bi bi-google text-dark"></i></Link>
+				<Link to={'*'} className="social mx-3"><i className="bi bi-linkedin text-dark"></i></Link>
+			</div>
+			<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Eliseo"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                autoFocus
+                />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="*********"
+                autoFocus
+                />
+            </Form.Group>
+			<Button className='boton' type="submit">
+                  Registrarse
+                </Button>
+          </Form>
+	</div>
+	<div className="form-container sign-in-container">
+	<Form>
+			<h1 className='fs-bold'>Ingresar</h1>
+			<div className='d-flex'>
+				<Link to={'*'} href="#" className="social mx-3"><i className="bi bi-facebook text-dark"></i></Link>
+				<Link to={'*'} href="#" className="social mx-3"><i className="bi bi-google text-dark"></i></Link>
+				<Link to={'*'} href="#" className="social mx-3"><i className="bi bi-linkedin text-dark"></i></Link>
+			</div>
+			<Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className='col-sm-12' >Email</Form.Label>
                 <Form.Control type="email" placeholder="hola1@mail.com" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label >Password</Form.Label>
-                <i id='icon' class="mx-2 bi bi-eye-fill"></i>
+                <Form.Label >Contraseña<i id='icon' class="mx-2 bi bi-eye-fill"></i></Form.Label> 
                 <Form.Control id="pass"
                   type="password"
                   placeholder="Ingrese su contraseña"
-                />
+                  />
               </Form.Group>
               <div className="text-center">
                 <Button className='boton' type="submit">
@@ -49,37 +92,24 @@ const Login = () => {
               </div>
             </Form>
 	</div>
-	<div className="form-container sign-in-container">
-		<form action="#">
-			<h1 className='fs-bold'>Sign in</h1>
-			<div className="social-container">
-				<a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-				<a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-				<a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
-		</form>
-	</div>
+                
 	<div className="overlay-container">
 		<div className="overlay">
 			<div className="overlay-panel overlay-left">
-				<h1 className='fs-bold'>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button className="ghost" id="signIn" onClick={deslizar}>Sign In</button>
+				<h1 className='fw-bold'>Bienvenido a Comitiando</h1>
+				<p>Ingresa tus datos para registrarte</p>
+        <p>Ya tenes cuenta?</p>
+				<Button className="ghost" id="signIn" onClick={deslizar}>Loguearse</Button>
 			</div>
 			<div className="overlay-panel overlay-right">
-				<h1 className='fs-bold'>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button className="ghost" id="signUp" onClick={deslizar}>Sign Up</button>
+				<h1 className='fw-bold'>Bienvenido a comitiando</h1>
+				<p>Ingresa tus datos para ingresar</p>
+        <p>No tenes cuenta aun?</p>
+				<Button className="ghost" id="signUp" onClick={deslizar}>Registrarse</Button>
 			</div>
 		</div>
 	</div>
 </div>
-    </>
   )
 }
 

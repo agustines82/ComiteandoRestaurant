@@ -8,108 +8,61 @@ const ItemUsuario = () => {
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                    {/* con checked podes modificar el estado del switch entre on y off */}
+                </th>
             </tr>
             <tr>
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                </th>
             </tr>
             <tr>
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                </th>
             </tr>
             <tr>
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                </th>
             </tr>
             <tr>
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                </th>
             </tr>
             <tr>
                 <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
                 <th>Agustin Sampayo</th>
                 <th>agustinsampayo@mail.com</th>
                 <th>*******</th>
-                <th className="width-1">
-                    <Form.Select aria-label="Default select">
-                        <option value="activo">Activo</option>
-                        <option value="suspendido">Suspendido</option>
-                    </Form.Select>
-                </th>
                 <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                </th>
             </tr>
         </>
     );

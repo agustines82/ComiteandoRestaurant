@@ -56,7 +56,7 @@ const CrearMenu = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEstado">
                             <Form.Label className="fontTitulos fs-5">Estado</Form.Label>
-                            <Form.Check type="switch" id="custom-switch" label="ND / D" />
+                            <Form.Check defaultChecked type="switch" id="custom-switch" label="ND / D" />
                             <Form.Text className="text-danger ms-3">No Disponible / Disponible</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPrecio">

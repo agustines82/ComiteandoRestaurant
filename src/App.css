@@ -53,6 +53,15 @@
     max-width: 680px;
 }
 
+/*TABLE DE USUARIOS*/
+.width-1 {
+    width: 160px;
+}
+/*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
+.fs-small {
+    font-size: small;
+}
+
 /* MEDIA QUERIES */
 /** SM **/
 @media all and (max-width: 767px) {
@@ -71,4 +80,18 @@
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
+}
+/** Registrarse */
+.letra{
+    font-family: "IBM Plex Mono", monospace;
+}
+/** Botones */
+
+.boton{
+background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
 }

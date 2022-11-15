@@ -7,7 +7,7 @@ const CardMenu = () => {
                 <Card.Img
                     variant="top"
                     src="https://tofuu.getjusto.com/orioneat-local/resized2/3pKrZM7zWnFSsEdg4-1200-1200.webp"
-                />
+                    />
                 <Card.Title className="fw-bold text-center my-3">
                     Crunchy Salmon
                 </Card.Title>

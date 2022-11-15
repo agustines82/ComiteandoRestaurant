@@ -41,7 +41,9 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemPedido />
+                    {pedidos.map((pedido) => (
+                        <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />
+                    ))}
                 </tbody>
             </Table>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
@@ -65,7 +67,9 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemMenu />
+                    {productos.map((producto) => (
+                        <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                    ))}
                 </tbody>
             </Table>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
@@ -84,7 +88,9 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemUsuario />
+                    {usuarios.map((usuario) => (
+                        <ItemUsuario key={usuario._id} usuario={usuario} setUsuarios={setUsuarios} />
+                    ))}
                 </tbody>
             </Table>
         </Container>

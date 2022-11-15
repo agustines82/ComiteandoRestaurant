@@ -8,9 +8,9 @@ const CrearMenu = () => {
         formState: { errors },
     } = useForm();
 
-    const crearProductoMenu = (dataError) => {
+    const crearProductoMenu = (data) => {
         console.log("desde crear producto del menu");
-        console.log(dataError);
+        console.log(data);
         //una vez todo validado enviamos la peticion a la API
         //reseteo el formulario
         //redirecciono al usuario a la pagina de administracion
@@ -56,8 +56,7 @@ const CrearMenu = () => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEstado">
                             <Form.Label className="fontTitulos fs-5">Estado</Form.Label>
-                            <Form.Check defaultChecked type="switch" id="custom-switch" label="ND / D" />
-                            <Form.Text className="text-danger ms-3">No Disponible / Disponible</Form.Text>
+                            <Form.Check defaultChecked type="switch" id="custom-switch" label="ND / D" {...register("estado", {})} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPrecio">
                             <Form.Label className="fontTitulos fs-5">Precio*</Form.Label>

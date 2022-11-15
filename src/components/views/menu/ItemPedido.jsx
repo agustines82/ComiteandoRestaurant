@@ -10,7 +10,7 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                 <th>{fecha}</th>
                 <th className="text-truncate thLargo2">
                     {productos.map((producto) => (
-                        <li key={producto._id}>{producto.nombre}</li>
+                        <li key={producto.nombre}>{producto.nombre}</li>
                     ))}
                 </th>
                 <th>

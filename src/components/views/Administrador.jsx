@@ -3,8 +3,26 @@ import { Link } from "react-router-dom";
 import ItemPedido from "./menu/ItemPedido";
 import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
+import { useEffect, useState } from "react";
+import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
 
 const Administrador = () => {
+    const [pedidos, setPedidos] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
+
+    useEffect(() => {
+        consultarApiPedidos().then((respuestaListaPedidos) => {
+            setPedidos(respuestaListaPedidos);
+        });
+        consultarApiProductos().then((respuestaListaProductos) => {
+            setProductos(respuestaListaProductos);
+        });
+        consultarApiUsuarios().then((respuestaListaUsuarios) => {
+            setUsuarios(respuestaListaUsuarios);
+        });
+    }, []);
+
     return (
         <Container className="mainSection">
             <article className="d-flex justify-content-between align-items-center mt-5 ">
@@ -23,7 +41,9 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemPedido />
+                    {pedidos.map((pedido) => (
+                        <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />
+                    ))}
                 </tbody>
             </Table>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
@@ -47,7 +67,9 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemMenu />
+                    {productos.map((producto) => (
+                        <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                    ))}
                 </tbody>
             </Table>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
@@ -61,13 +83,14 @@ const Administrador = () => {
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Password</th>
-                        <th>Estado</th>
                         <th>Perfil</th>
-                        <th></th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <ItemUsuario />
+                    {usuarios.map((usuario) => (
+                        <ItemUsuario key={usuario._id} usuario={usuario} setUsuarios={setUsuarios} />
+                    ))}
                 </tbody>
             </Table>
         </Container>

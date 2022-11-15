@@ -1,103 +1,19 @@
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-const ItemUsuario = () => {
+import { Form } from "react-bootstrap";
+
+const ItemUsuario = ({ usuario, setUsuario }) => {
+    const { _id, nombre, email, password, perfil, estado } = { ...usuario };
     return (
         <>
             <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
-            </tr>
-            <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
-            </tr>
-            <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
-            </tr>
-            <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
-            </tr>
-            <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
-            </tr>
-            <tr>
-                <th className="text-truncate thLargo">45dsf46asf4fd8fs45f64ssd</th>
-                <th>Agustin Sampayo</th>
-                <th>agustinsampayo@mail.com</th>
-                <th>*******</th>
-                <th>Activo / Suspendido</th>
-                <th>Admin / Cliente</th>
-                <td className="text-center">
-                    <Link className="btn btn-outline-light me-1">
-                        <i className="bi bi-arrow-clockwise text-warning"></i>
-                    </Link>
-                    <Button variant="outline-light">
-                        <i className="bi bi-x-lg text-danger"></i>
-                    </Button>
-                </td>
+                <th className="text-truncate thLargo">{_id}</th>
+                <th>{nombre}</th>
+                <th>{email}</th>
+                <th>{password}</th>
+                <th>{perfil}</th>
+                <th className="width-1">
+                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
+                    {/* con checked podes modificar el estado del switch entre on y off */}
+                </th>
             </tr>
         </>
     );

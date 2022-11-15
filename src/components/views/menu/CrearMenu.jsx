@@ -8,10 +8,9 @@ const CrearMenu = () => {
         formState: { errors },
     } = useForm();
 
-    const crearProductoMenu = (data) => {
-        console.log("desde crear producto del menu");
-        console.log(data);
+    const crearProductoMenu = (dataProducto) => {
         //una vez todo validado enviamos la peticion a la API
+        
         //reseteo el formulario
         //redirecciono al usuario a la pagina de administracion
     };

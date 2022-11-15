@@ -9,7 +9,9 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                 <th>{usuario}</th>
                 <th>{fecha}</th>
                 <th className="text-truncate thLargo2">
-                    {productos}
+                    {productos.map((producto) => (
+                        <li key={producto._id}>{producto.nombre}</li>
+                    ))}
                 </th>
                 <th>
                     <Form.Check className="ms-3" type="switch" id="custom-switch" />
@@ -20,7 +22,6 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                     </Button>
                 </td>
             </tr>
-            
         </>
     );
 };

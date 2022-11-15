@@ -1,19 +1,31 @@
 import { Form, Container, Breadcrumb } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { crearProductoMenuAPI } from "../../helpers/queries";
 const CrearMenu = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm();
 
-    const crearProductoMenu = (data) => {
-        console.log("desde crear producto del menu");
-        console.log(data);
+    const navegar = useNavigate();
+
+    const crearProductoMenu = (dataProducto) => {
         //una vez todo validado enviamos la peticion a la API
+        crearProductoMenuAPI(dataProducto).then((respuesta) => {
+            if (respuesta.status === 201) {
+                Swal.fire("Producto creado", "El producto se cargo correctamente", "success");
+            } else {
+                Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
+            }
+        });
         //reseteo el formulario
+        reset();
         //redirecciono al usuario a la pagina de administracion
+        navegar("/administrar");
     };
 
     return (
@@ -29,7 +41,7 @@ const CrearMenu = () => {
                     <Breadcrumb.Item active>Agregar Producto</Breadcrumb.Item>
                 </Breadcrumb>
                 <section className="container mt-5">
-                    <h3 className="display-3 mt-3 fontTitulos">Nuevo Producto del Menu</h3>
+                    <h3 className="display-3 mt-3 fontTitulos">Alta de Productos del Menu</h3>
                     <hr />
                 </section>
                 <section className="container my-3">
@@ -40,7 +52,7 @@ const CrearMenu = () => {
                                 required
                                 type="text"
                                 placeholder="Ej:Sushi"
-                                {...register("nombreProducto", {
+                                {...register("nombre", {
                                     required: "El nombre del producto del menu es requerido",
                                     minLength: {
                                         value: 2,
@@ -85,7 +97,7 @@ const CrearMenu = () => {
                                 required
                                 type="text"
                                 placeholder="Ej:Sushi"
-                                {...register("detalleProducto", {
+                                {...register("detalle", {
                                     required: "El detalle del producto del menu es obligatorio",
                                     minLength: {
                                         value: 20,

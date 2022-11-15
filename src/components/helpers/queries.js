@@ -38,6 +38,22 @@ export const consultarApiUsuarios = async () => {
 };
 
 //PETICIONES POST:
+//post para crear el producto del menú
+export const crearProductoMenuAPI = async (producto) => {
+    try {
+        const respuesta = await fetch(urlProductos, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(producto),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 
 //PETICIONES PUT:
 

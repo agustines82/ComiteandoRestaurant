@@ -162,12 +162,6 @@
     .hazTuPedidoMenu {
       transform: rotate(0deg);
     }
-<<<<<<< HEAD
-}
-
-
-
-=======
   }
   /** Registrarse */
   .letra{
@@ -183,10 +177,13 @@
       border-radius: 5px;
       border: none;
   }
+  .boton::hover{
+    text-decoration:none;
+    background:f04622;
+  }
   .errorLottie{
     background:transparent;
     speed:'1';
     whidth: 80vh;
     height: 80vh;
   }
->>>>>>> dev

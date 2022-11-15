@@ -8,15 +8,15 @@ const Inicio = () => {
         <section>
           <div
             id="bannerComiteandoBar"
-            class="carousel slide"
+            className="carousel slide"
             data-bs-ride="true"
           >
-            <div class="carousel-indicators">
+            <div className="carousel-indicators">
               <button
                 type="button"
                 data-bs-target="#bannerComiteandoBar"
                 data-bs-slide-to="0"
-                class="active"
+                className="active"
                 aria-current="true"
                 aria-label="Slide 1"
               ></button>
@@ -33,52 +33,52 @@ const Inicio = () => {
                 aria-label="Slide 3"
               ></button>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
+            <div className="carousel-inner">
+              <div className="carousel-item active">
                 <img
                   src="https://tofuu.getjusto.com/orioneat-prod-resized/HdmKYR7kgvDnWJAFD-x-1800.webp"
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="menu sushi"
                 />
               </div>
-              <div class="carousel-item">
+              <div className="carousel-item">
                 <img
                   src="https://tofuu.getjusto.com/orioneat-prod-resized/wjnWRkQBMbEfL5xLd-x-1800.webp"
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="sushi"
                 />
               </div>
-              <div class="carousel-item">
+              <div className="carousel-item">
                 <img
                   src="https://tofuu.getjusto.com/orioneat-local/resized2/3XuSKa9qL7Y4QpKhQ-x-1800.webp"
-                  class="d-block w-100"
+                  className="d-block w-100"
                   alt="tragos"
                 />
               </div>
             </div>
             <button
-              class="carousel-control-prev"
+              className="carousel-control-prev"
               type="button"
               data-bs-target="#bannerComiteandoBar"
               data-bs-slide="prev"
             >
               <span
-                class="carousel-control-prev-icon"
+                className="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Previous</span>
+              <span className="visually-hidden">Previous</span>
             </button>
             <button
-              class="carousel-control-next"
+              className="carousel-control-next"
               type="button"
               data-bs-target="#bannerComiteandoBar"
               data-bs-slide="next"
             >
               <span
-                class="carousel-control-next-icon"
+                className="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span class="visually-hidden">Next</span>
+              <span className="visually-hidden">Next</span>
             </button>
           </div>
         </section>
@@ -115,15 +115,15 @@ const Inicio = () => {
           </Row>
         
         
-        <div class="banner1">
-        <p class="textoconocenos">CONOCENOS</p>
-        <p class="par">Te ofrecemos el mejor servicio y la mejor atencion a tu comodidad.</p>
-        <a class="bnn" href="/unete"> Haz click aquí </a>
+        <div className="banner1">
+        <p className="textoconocenos">CONOCENOS</p>
+        <p className="par">Te ofrecemos el mejor servicio y la mejor atencion a tu comodidad.</p>
+        <a className="bnn" href="/unete"> Haz click aquí </a>
         </div>
-        <div class="banner2">
-        <p class="textoevento">¿TIENES UN EVENTO?</p>
-        <p class="par">Cotiza con nosotros</p>
-        <a class="bnn" href="/catering">Cotiza aquí</a>
+        <div className="banner2">
+        <p className="textoevento">¿TIENES UN EVENTO?</p>
+        <p className="par">Cotiza con nosotros</p>
+        <a className="bnn" href="/catering">Cotiza aquí</a>
         </div>
         
       </Container>

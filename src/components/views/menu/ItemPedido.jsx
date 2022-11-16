@@ -3,14 +3,16 @@ import Swal from "sweetalert2";
 import { borrarPedidoAPI, consultarApiPedidos } from "../../helpers/queries";
 
 const ItemPedido = ({ pedido, setPedidos }) => {
+    const { _id, usuario, fecha, productos } = { ...pedido };
+
     const borrarPedido = () => {
         Swal.fire({
             title: "Estas seguro de eliminar el pedido?",
             text: "No podrás revertir esta acción!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
+            confirmButtonColor: "#000",
+            cancelButtonColor: "#f04523",
             confirmButtonText: "Eliminar",
         }).then((result) => {
             if (result.isConfirmed) {
@@ -30,7 +32,6 @@ const ItemPedido = ({ pedido, setPedidos }) => {
         });
     };
 
-    const { _id, usuario, fecha, productos } = { ...pedido };
     return (
         <>
             <tr>

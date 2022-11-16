@@ -183,3 +183,65 @@
     whidth: 80vh;
     height: 80vh;
   }
+
+/*pagina principal */
+
+  
+  
+  .banner1 {
+    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2FDWzX3MKty67Rd5cYu-cheff.png);
+    height: 300px;
+    text-align: center;
+}
+
+p.textoconocenos {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 46px;
+    padding-top: 56px;
+    color: white;
+    margin-bottom: 0px !important;
+  }
+  a.bnn {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+  
+  p.par {
+    color: white;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    font-size: 18px;
+  }
+  
+  .banner2 {
+    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2F2Nhru7fEq5SYbCx8e-mochi.png);
+    height: 300px;
+    text-align: center;
+    background-size: cover;
+  }
+  
+  p.textoevento {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial;
+    font-weight: 900;
+    text-align: center;
+    font-size: 46px;
+    padding-top: 56px;
+    color: white;
+    margin-bottom: 0px;
+  }
+  a.bnn {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+  
+  
+
+ 

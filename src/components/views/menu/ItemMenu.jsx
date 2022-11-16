@@ -37,8 +37,7 @@ const ItemMenu = ({ producto, setProductos }) => {
             <tr>
                 <th className="text-truncate thLargo">{_id}</th>
                 <th>{nombre}</th>
-                {/* si el estado es true setear en D si es false setear en ND */}
-                <th>{estado}</th>
+                <th>{estado ? "D" : "ND"}</th>
                 <th>${precio}</th>
                 <th className="text-truncate thLargo">{detalle}</th>
                 <th>{categoria}</th>

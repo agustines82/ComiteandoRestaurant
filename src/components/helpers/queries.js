@@ -58,3 +58,27 @@ export const crearProductoMenuAPI = async (producto) => {
 //PETICIONES PUT:
 
 //PETICIONES DELETE:
+//delete para eliminar producto del menu
+export const borrarProductoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(urlProductos + "/" + id, {
+            method: "DELETE",
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+//delete para borrar el pedido
+export const borrarPedidoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(urlPedidos + "/" + id, {
+            method: "DELETE",
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};

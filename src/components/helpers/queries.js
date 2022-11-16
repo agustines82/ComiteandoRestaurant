@@ -56,6 +56,22 @@ export const crearProductoMenuAPI = async (producto) => {
 };
 
 //PETICIONES PUT:
+//put para editar pedidos (pendiente/realizado)
+export const editarPedidoAPI = async (id, pedidoEditado) => {
+    try {
+        const respuesta = await fetch(urlPedidos + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(pedidoEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 
 //PETICIONES DELETE:
 //delete para eliminar producto del menu

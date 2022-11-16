@@ -43,7 +43,7 @@ const ItemMenu = ({ producto, setProductos }) => {
                 <th>{categoria}</th>
                 <th className="text-truncate thLargo">{imagen}</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
+                    <Link className="btn btn-outline-light me-1" to={`/administrar/editar/${_id}`}>
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light" onClick={borrarProducto}>

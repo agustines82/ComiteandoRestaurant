@@ -36,7 +36,20 @@ export const consultarApiUsuarios = async () => {
         return false;
     }
 };
-
+//get para obtener un producto por su id (a los efectos de cargar sus valores en el form de ediciòn)
+export const obtenerProductoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(urlProductos + "/" + id);
+        const producto = {
+            dato: await respuesta.json(),
+            status: respuesta.status,
+        };
+        return producto;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 //PETICIONES POST:
 //post para crear el producto del menú
 export const crearProductoMenuAPI = async (producto) => {
@@ -65,6 +78,22 @@ export const editarPedidoAPI = async (id, pedidoEditado) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(pedidoEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+//put para editar productos
+export const editarProductoAPI = async (id, productoEditado) => {
+    try {
+        const respuesta = await fetch(urlProductos + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(productoEditado),
         });
         return respuesta;
     } catch (error) {

@@ -1,4 +1,4 @@
-import { Table, Container } from "react-bootstrap";
+import { Table, Container, Pagination } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemPedido from "./menu/ItemPedido";
 import ItemMenu from "./menu/ItemMenu";
@@ -46,6 +46,10 @@ const Administrador = () => {
                     ))}
                 </tbody>
             </Table>
+            <Pagination size="sm" className="justify-content-end">
+                <button className="paginacion mx-1">&larr;</button>
+                <button className="paginacion mx-1">&rarr;</button>
+            </Pagination>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
                 <Link className="ms-3 p-2 backgroundBotones rounded linksMenu" to="/administrar/crear">
@@ -72,6 +76,10 @@ const Administrador = () => {
                     ))}
                 </tbody>
             </Table>
+            <Pagination size="sm" className="justify-content-end">
+                <button className="paginacion mx-1">&larr;</button>
+                <button className="paginacion mx-1">&rarr;</button>
+            </Pagination>
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>
@@ -93,6 +101,10 @@ const Administrador = () => {
                     ))}
                 </tbody>
             </Table>
+            <Pagination size="sm" className="justify-content-end">
+                <button className="paginacion mx-1">&larr;</button>
+                <button className="paginacion mx-1">&rarr;</button>
+            </Pagination>
         </Container>
     );
 };

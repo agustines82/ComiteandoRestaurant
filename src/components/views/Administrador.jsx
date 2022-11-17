@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import ItemPedido from "./menu/ItemPedido";
 import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
 import PaginationPedido from "./PaginationPedido";
 import PaginationMenu from "./PaginationMenu";
 import PaginationUsuario from "./PaginationUsuario";
+
 const Administrador = () => {
+    const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
     //Variables de estado para Lista Pedido y su paginación
     const [pedidos, setPedidos] = useState([]);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
@@ -27,6 +29,7 @@ const Administrador = () => {
     useEffect(() => {
         consultarApiPedidos().then((respuestaListaPedidos) => {
             setPedidos(respuestaListaPedidos);
+            forceUpdate();
         });
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -34,7 +37,7 @@ const Administrador = () => {
         consultarApiUsuarios().then((respuestaListaUsuarios) => {
             setUsuarios(respuestaListaUsuarios);
         });
-    }, []);
+    }, [reducerValue]);
 
     //LOGICA PAGINACION LISTA PEDIDOS PENDIENTES
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;

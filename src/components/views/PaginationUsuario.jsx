@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const PaginationPedido = ({ pedidosPorPagina, totalPedidos, paginacionTablaPedidosPendientes }) => {
+const PaginationUsuario = ({ usuariosPorPagina, totalUsuarios, paginacionTablaUsuarios }) => {
     const numerosDePagina = [];
-    for (let i = 1; i <= Math.ceil(totalPedidos / pedidosPorPagina); i++) {
+    for (let i = 1; i <= Math.ceil(totalUsuarios / usuariosPorPagina); i++) {
         numerosDePagina.push(i);
     }
     return (
@@ -10,7 +10,7 @@ const PaginationPedido = ({ pedidosPorPagina, totalPedidos, paginacionTablaPedid
             <ul className="pagination">
                 {numerosDePagina.map((numero) => (
                     <li key={numero} className="page-item">
-                        <Link to="#" className="paginacion" onClick={() => paginacionTablaPedidosPendientes(numero)}>
+                        <Link to="#" className="paginacion" onClick={() => paginacionTablaUsuarios(numero)}>
                             {numero}
                         </Link>
                     </li>
@@ -20,4 +20,4 @@ const PaginationPedido = ({ pedidosPorPagina, totalPedidos, paginacionTablaPedid
     );
 };
 
-export default PaginationPedido;
+export default PaginationUsuario;

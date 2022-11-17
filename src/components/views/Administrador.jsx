@@ -6,23 +6,25 @@ import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
 import PaginationPedido from "./PaginationPedido";
+import PaginationMenu from "./PaginationMenu";
+import PaginationUsuario from "./PaginationUsuario";
 const Administrador = () => {
-    //Variables de estado para Lista Pedido y su paginacion
+    //Variables de estado para Lista Pedido y su paginación
     const [pedidos, setPedidos] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
-    const [pedidosPorPagina] = useState(2);
+    const [pedidosPorPagina] = useState(3);
 
     //Variables de estado para Lista Productos y su paginacion
-
     const [productos, setProductos] = useState([]);
+    const [paginaActualProductos, setPaginaActualProductos] = useState(1);
+    const [productosPorPagina] = useState(5);
 
+    //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
+    const [paginaActualUsuarios, setPaginaActualUsuarios] = useState(1);
+    const [usuariosPorPagina] = useState(3);
 
     useEffect(() => {
-        //paginacion Lista Pedido
-        //fecthPedidos();
-        //original
         consultarApiPedidos().then((respuestaListaPedidos) => {
             setPedidos(respuestaListaPedidos);
         });
@@ -34,20 +36,26 @@ const Administrador = () => {
         });
     }, []);
 
-    //paginacion Lista Pedido
+    //LOGICA PAGINACION LISTA PEDIDOS PENDIENTES
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
     const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
     const pedidosActuales = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
+    //cambiar la pagina
+    const paginacionTablaPedidosPendientes = (paginaNumero) => setPaginaActualPedidos(paginaNumero);
 
-    const Pagination = ({ pedidosPorPagina, totalPedidos }) => {
-        const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(totalPedidos / pedidosPorPagina); i++) {
-            pageNumbers.push(i);
-        }
-    };
+    //LOGICA PAGINACION LISTA PRODUCTOS
+    const indexUltimoProducto = paginaActualProductos * productosPorPagina;
+    const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
+    const productosActuales = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    //cambiar la pagina
+    const paginacionTablaProductos = (paginaNumero) => setPaginaActualProductos(paginaNumero);
 
-    //change page
-    const paginacionTablaPedidosPendientes = (pageNumber) => setPaginaActualPedidos(pageNumber);
+    //LOGICA PAGINACION LISTA USUARIOS
+    const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
+    const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
+    const usuariosActuales = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
+    //cambiar la pagina
+    const paginacionTablaUsuarios = (paginaNumero) => setPaginaActualUsuarios(paginaNumero);
 
     return (
         <Container className="mainSection">
@@ -68,7 +76,7 @@ const Administrador = () => {
                 </thead>
                 <tbody>
                     {pedidosActuales.map((pedido) => (
-                        <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} loading={loading} setLoading={setLoading} />
+                        <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />
                     ))}
                 </tbody>
             </Table>
@@ -77,14 +85,7 @@ const Administrador = () => {
                 totalPedidos={pedidos.length}
                 paginacionTablaPedidosPendientes={paginacionTablaPedidosPendientes}
             />
-            {/* <Pagination size="sm" className="justify-content-end">
-                <button type="submit" className="paginacion mx-1">
-                    &larr;
-                </button>
-                <button type="submit" className="paginacion mx-1">
-                    &rarr;
-                </button>
-            </Pagination> */}
+
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
                 <Link className="ms-3 p-2 backgroundBotones rounded linksMenu" to="/administrar/crear">
@@ -106,19 +107,16 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {productos.map((producto) => (
+                    {productosActuales.map((producto) => (
                         <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
                     ))}
                 </tbody>
             </Table>
-            <Pagination size="sm" className="justify-content-end">
-                <button type="submit" className="paginacion mx-1">
-                    &larr;
-                </button>
-                <button type="submit" className="paginacion mx-1">
-                    &rarr;
-                </button>
-            </Pagination>
+            <PaginationMenu
+                productosPorPagina={productosPorPagina}
+                totalProductos={productos.length}
+                paginacionTablaProductos={paginacionTablaProductos}
+            />
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>
@@ -135,19 +133,16 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {usuarios.map((usuario) => (
+                    {usuariosActuales.map((usuario) => (
                         <ItemUsuario key={usuario._id} usuario={usuario} />
                     ))}
                 </tbody>
             </Table>
-            <Pagination size="sm" className="justify-content-end">
-                <button type="submit" className="paginacion mx-1">
-                    &larr;
-                </button>
-                <button type="submit" className="paginacion mx-1">
-                    &rarr;
-                </button>
-            </Pagination>
+            <PaginationUsuario
+                usuariosPorPagina={usuariosPorPagina}
+                totalUsuarios={usuarios.length}
+                paginacionTablaUsuarios={paginacionTablaUsuarios}
+            />
         </Container>
     );
 };

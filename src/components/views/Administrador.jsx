@@ -89,7 +89,7 @@ const Administrador = () => {
                 </thead>
                 <tbody>
                     {usuarios.map((usuario) => (
-                        <ItemUsuario key={usuario._id} usuario={usuario} setUsuarios={setUsuarios} />
+                        <ItemUsuario key={usuario._id} usuario={usuario} />
                     ))}
                 </tbody>
             </Table>

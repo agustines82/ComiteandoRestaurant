@@ -85,6 +85,23 @@ export const editarPedidoAPI = async (id, pedidoEditado) => {
         return false;
     }
 };
+//put para editar usuarios (activo/suspendido)
+export const editarUsuarioAPI = async (id, usuarioEditado) => {
+    try {
+        const respuesta = await fetch(urlUsuarios + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuarioEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+
 //put para editar productos
 export const editarProductoAPI = async (id, productoEditado) => {
     try {

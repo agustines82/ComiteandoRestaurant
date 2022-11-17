@@ -9,15 +9,15 @@ const Login = () => {
   const handleShow = () => setShow(true);
 
   const[tipo, setTipo] = useState('password');
-  const[icono, setIcono] = useState('bi bi-eye-fill');
-
-  const MostrarOcultar = ()=>{
-    if(tipo==='pasword'){
+  const[icono, setIcono] = useState('px-2 bi bi-eye-fill');
+  
+  const mostrarOcultar = ()=>{
+    if(tipo==='password'){
       setTipo('');
-      setIcono('"bi bi-eye-slash-fill"');
+      setIcono("px-2 bi bi-eye-slash-fill");
     }else{
       setTipo('password');
-      setIcono('bi bi-eye-fill')
+      setIcono('px-2 bi bi-eye-fill')
 
     }
   }
@@ -70,7 +70,7 @@ const Login = () => {
               <Form.Text className='text-danger'>{errors.email?.message}</Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="FormIngresar.ControlPasswordInput">
-              <Form.Label>Contraseña</Form.Label><i className={icono} onClick={MostrarOcultar}></i>
+              <Form.Label>Contraseña</Form.Label><i className={icono} onClick={mostrarOcultar}></i>
               <Form.Control type={tipo} placeholder="*********" autoFocus 
               {...register('password',{
                 required: 'La contraseña es obligatoria',

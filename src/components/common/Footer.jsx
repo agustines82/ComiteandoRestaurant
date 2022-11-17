@@ -13,7 +13,6 @@ const Footer = () => {
                     <aside className="text-center mt-3">
                         <h3>Ubicaciòn</h3>
                         <p>
-                            {" "}
                             Rolling Mall Local 1,
                             <br /> Avenida Peròn 1425
                             <br /> Yerba Buena, Tucumán

@@ -5,11 +5,24 @@ import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
-
+import PaginationPedido from "./PaginationPedido";
+import PaginationMenu from "./PaginationMenu";
+import PaginationUsuario from "./PaginationUsuario";
 const Administrador = () => {
+    //Variables de estado para Lista Pedido y su paginación
     const [pedidos, setPedidos] = useState([]);
+    const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
+    const [pedidosPorPagina] = useState(3);
+
+    //Variables de estado para Lista Productos y su paginacion
     const [productos, setProductos] = useState([]);
+    const [paginaActualProductos, setPaginaActualProductos] = useState(1);
+    const [productosPorPagina] = useState(5);
+
+    //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
+    const [paginaActualUsuarios, setPaginaActualUsuarios] = useState(1);
+    const [usuariosPorPagina] = useState(3);
 
     useEffect(() => {
         consultarApiPedidos().then((respuestaListaPedidos) => {
@@ -22,6 +35,27 @@ const Administrador = () => {
             setUsuarios(respuestaListaUsuarios);
         });
     }, []);
+
+    //LOGICA PAGINACION LISTA PEDIDOS PENDIENTES
+    const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
+    const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
+    const pedidosActuales = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
+    //cambiar la pagina
+    const paginacionTablaPedidosPendientes = (paginaNumero) => setPaginaActualPedidos(paginaNumero);
+
+    //LOGICA PAGINACION LISTA PRODUCTOS
+    const indexUltimoProducto = paginaActualProductos * productosPorPagina;
+    const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
+    const productosActuales = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    //cambiar la pagina
+    const paginacionTablaProductos = (paginaNumero) => setPaginaActualProductos(paginaNumero);
+
+    //LOGICA PAGINACION LISTA USUARIOS
+    const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
+    const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
+    const usuariosActuales = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
+    //cambiar la pagina
+    const paginacionTablaUsuarios = (paginaNumero) => setPaginaActualUsuarios(paginaNumero);
 
     return (
         <Container className="mainSection">
@@ -41,11 +75,17 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {pedidos.map((pedido) => (
+                    {pedidosActuales.map((pedido) => (
                         <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />
                     ))}
                 </tbody>
             </Table>
+            <PaginationPedido
+                pedidosPorPagina={pedidosPorPagina}
+                totalPedidos={pedidos.length}
+                paginacionTablaPedidosPendientes={paginacionTablaPedidosPendientes}
+            />
+
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
                 <Link className="ms-3 p-2 backgroundBotones rounded linksMenu" to="/administrar/crear">
@@ -67,11 +107,16 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {productos.map((producto) => (
+                    {productosActuales.map((producto) => (
                         <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
                     ))}
                 </tbody>
             </Table>
+            <PaginationMenu
+                productosPorPagina={productosPorPagina}
+                totalProductos={productos.length}
+                paginacionTablaProductos={paginacionTablaProductos}
+            />
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>
@@ -88,11 +133,16 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {usuarios.map((usuario) => (
+                    {usuariosActuales.map((usuario) => (
                         <ItemUsuario key={usuario._id} usuario={usuario} />
                     ))}
                 </tbody>
             </Table>
+            <PaginationUsuario
+                usuariosPorPagina={usuariosPorPagina}
+                totalUsuarios={usuarios.length}
+                paginacionTablaUsuarios={paginacionTablaUsuarios}
+            />
         </Container>
     );
 };

@@ -14,6 +14,7 @@ export const consultarApiPedidos = async () => {
         return false;
     }
 };
+
 //get para listar productos del menu
 export const consultarApiProductos = async () => {
     try {

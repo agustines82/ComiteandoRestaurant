@@ -5,21 +5,27 @@ import { borrarPedidoAPI, consultarApiPedidos, editarPedidoAPI } from "../../hel
 
 const ItemPedido = ({ pedido, setPedidos }) => {
     const { _id, usuario, fecha, productos, estado } = { ...pedido };
+    const [pedidoEditado, setPedidoEditado] = useState(pedido);
 
-    const [pedidoNuevo, setPedidoNuevo] = useState(pedido);
-    const [boleano, setBoleano] = useState(estado);
+    useEffect(() => {
+        if (!estado) {
+            setearValorPedidoRealizado();
+        }
+        if (estado) {
+            setearValorPedidoPendiente();
+        }
+    }, []);
 
-    const editarPedido = (e) => {
-        e.preventDefault();
-        setBoleano(true);
-        //e.target.value
-        console.log(e.target.value);
-        setPedidoNuevo({ ...pedidoNuevo, [e.target.name]: e.target.value });
-        console.log(pedidoNuevo);
-        // //enviamos la peticion PUT a la API
-        editarPedidoAPI(_id, pedidoNuevo).then((respuesta) => {
-            // console.log(respuesta);
-        });
+    const setearValorPedidoRealizado = () => {
+        setPedidoEditado({ ...pedidoEditado, estado: true });
+    };
+    const setearValorPedidoPendiente = () => {
+        setPedidoEditado({ ...pedidoEditado, estado: false });
+    };
+
+    const handleChangeEditarPedido = (e) => {
+        //enviamos la peticion PUT a la API
+        editarPedidoAPI(_id, pedidoEditado);
     };
 
     const borrarPedido = () => {
@@ -61,9 +67,9 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                 </th>
                 <th>
                     {pedido.estado ? (
-                        <Form.Check defaultChecked className="ms-3" type="switch" onChange={editarPedido} name="estado" value={boleano} />
+                        <Form.Check defaultChecked className="ms-3" type="switch" onChange={handleChangeEditarPedido} />
                     ) : (
-                        <Form.Check className="ms-3" type="switch" onChange={editarPedido} name="estado" value={boleano} />
+                        <Form.Check className="ms-3" type="switch" onChange={handleChangeEditarPedido} />
                     )}
                 </th>
                 <td className="text-center">

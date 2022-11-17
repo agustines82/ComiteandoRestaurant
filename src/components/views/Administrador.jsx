@@ -37,7 +37,7 @@ const Administrador = () => {
         consultarApiUsuarios().then((respuestaListaUsuarios) => {
             setUsuarios(respuestaListaUsuarios);
         });
-    }, [reducerValue]);
+    }, []);
 
     //LOGICA PAGINACION LISTA PEDIDOS PENDIENTES
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;

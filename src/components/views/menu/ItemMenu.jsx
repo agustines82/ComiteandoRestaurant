@@ -37,14 +37,13 @@ const ItemMenu = ({ producto, setProductos }) => {
             <tr>
                 <th className="text-truncate thLargo">{_id}</th>
                 <th>{nombre}</th>
-                {/* si el estado es true setear en D si es false setear en ND */}
-                <th>{estado}</th>
+                <th>{estado ? "D" : "ND"}</th>
                 <th>${precio}</th>
                 <th className="text-truncate thLargo">{detalle}</th>
                 <th>{categoria}</th>
                 <th className="text-truncate thLargo">{imagen}</th>
                 <td className="text-center">
-                    <Link className="btn btn-outline-light me-1" to="/administrar/editar/:id">
+                    <Link className="btn btn-outline-light me-1" to={`/administrar/editar/${_id}`}>
                         <i className="bi bi-arrow-clockwise text-warning"></i>
                     </Link>
                     <Button variant="outline-light" onClick={borrarProducto}>

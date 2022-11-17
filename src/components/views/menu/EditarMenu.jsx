@@ -1,16 +1,45 @@
 import { Form, Container, Breadcrumb } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { editarProductoAPI, obtenerProductoAPI } from "../../helpers/queries";
+import Swal from "sweetalert2";
 const EditarMenu = () => {
+    const { id } = useParams();
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm();
 
-    const editarProducto = (data) => {
-        console.log("desde la funcion editar producto del menu");
-        console.log(data);
+    const navegacion = useNavigate();
+
+    useEffect(() => {
+        obtenerProductoAPI(id).then((respuesta) => {
+            if (respuesta.status === 200) {
+                console.log(respuesta);
+                //cargar datos en el formulario
+                setValue("nombre", respuesta.dato.nombre);
+                setValue("estado", respuesta.dato.estado);
+                setValue("precio", respuesta.dato.precio);
+                setValue("detalle", respuesta.dato.detalle);
+                setValue("categoria", respuesta.dato.categoria);
+                setValue("imagen", respuesta.dato.imagen);
+            }
+        });
+    }, []);
+
+    const onSubmitEditar = (dataProductoEditado) => {
+        //enviamos la peticion PUT a la API
+        editarProductoAPI(id, dataProductoEditado).then((respuesta) => {
+            if (respuesta.status === 200) {
+                Swal.fire("Producto modificado", "El producto fue modificado correctamente", "success");
+                navegacion("/administrar");
+            } else {
+                Swal.fire("Ocurrió un error", "El producto no pudo modificarse", "error");
+            }
+        });
     };
 
     return (
@@ -30,14 +59,14 @@ const EditarMenu = () => {
                     <hr />
                 </section>
                 <section className="container my-3">
-                    <Form className="container" onSubmit={handleSubmit(editarProducto)}>
+                    <Form className="container" onSubmit={handleSubmit(onSubmitEditar)}>
                         <Form.Group className="mb-3" controlId="formNombreProducto">
                             <Form.Label className="fontTitulos fs-5">Nombre producto*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
                                 placeholder="Ej:Sushi"
-                                {...register("nombreProducto", {
+                                {...register("nombre", {
                                     required: "El nombre del producto del menu es requerido",
                                     minLength: {
                                         value: 2,
@@ -49,12 +78,11 @@ const EditarMenu = () => {
                                     },
                                 })}
                             />
-                            <Form.Text className="text-danger ms-3">{errors.nombreProducto?.message}</Form.Text>
+                            <Form.Text className="text-danger ms-3">{errors.nombre?.message}</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEstado">
                             <Form.Label className="fontTitulos fs-5">Estado</Form.Label>
-                            <Form.Check checked type="switch" id="custom-switch" label="ND / D" />
-                            <Form.Text className="text-danger ms-3">No Disponible / Disponible</Form.Text>
+                            <Form.Check defaultChecked type="switch" id="custom-switch" label="ND / D" {...register("estado", {})} />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPrecio">
                             <Form.Label className="fontTitulos fs-5">Precio*</Form.Label>
@@ -83,7 +111,7 @@ const EditarMenu = () => {
                                 required
                                 type="text"
                                 placeholder="Ej:Sushi"
-                                {...register("detalleProducto", {
+                                {...register("detalle", {
                                     required: "El detalle del producto del menu es obligatorio",
                                     minLength: {
                                         value: 20,
@@ -95,7 +123,7 @@ const EditarMenu = () => {
                                     },
                                 })}
                             />
-                            <Form.Text className="text-danger ms-3">{errors.detalleProducto?.message}</Form.Text>
+                            <Form.Text className="text-danger ms-3">{errors.detalle?.message}</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formCategoria">
                             <Form.Label className="fontTitulos fs-5">Categoria*</Form.Label>

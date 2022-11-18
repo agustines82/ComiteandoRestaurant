@@ -1,7 +1,13 @@
 import { Form, Card, ListGroup, Accordion, Table } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 const PedidoConfirmado = () => {
+
+  
+
+
   return (
+
     <section className="container">
       <aside className="my-3">
         <Form className="formulariopedido">

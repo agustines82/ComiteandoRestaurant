@@ -4,7 +4,6 @@ import { editarUsuarioAPI } from "../../helpers/queries";
 
 const ItemUsuario = ({ usuario }) => {
     const { _id, nombre, email, password, perfil, estado } = { ...usuario };
-
     const [usuarioEditado, setUsuarioEditado] = useState(usuario);
 
     useEffect(() => {
@@ -23,7 +22,7 @@ const ItemUsuario = ({ usuario }) => {
         setUsuarioEditado({ ...usuarioEditado, estado: false });
     };
 
-    const handleChangeEditarUsuario = (e) => {
+    const handleChangeEditarUsuario = () => {
         //enviamos la peticion PUT a la API
         editarUsuarioAPI(_id, usuarioEditado);
     };

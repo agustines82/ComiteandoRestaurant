@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
+import { crearUsuarioAPI } from '../helpers/queries'
+import Swal from 'sweetalert2'
 
-const Registro = () => {
+const Registro = ({setUsuarioLogueado}) => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -17,8 +19,30 @@ const Registro = () => {
   } = useForm();
 
   const onSubmit = (data)=>{
-    console.log(data);
-    reset();
+    console.log(data)
+    const perfilEstado = { perfil : "cliente", estado: true};
+    const dataNuevo = Object.assign(data, perfilEstado);
+    console.log(dataNuevo)
+    crearUsuarioAPI(dataNuevo).then((respuesta)=>{
+      if(respuesta.status===201){
+        Swal.fire(
+          'El usuario fue creado con exito',
+          'Los datos ingresados fueron cargados correctamente',
+          'success'
+        )
+         localStorage.setItem('usuarioLogueado', JSON.stringify(data));
+         setUsuarioLogueado(respuesta);
+         reset();
+        handleClose();
+      }else{
+        Swal.fire(
+          'El usuario no fue creado',
+          'Los datos ingresados son incorrectos',
+          'error'
+        )
+      }
+      console.log(respuesta);
+    });
   }
 
   return (
@@ -89,16 +113,16 @@ const Registro = () => {
               />
               <Form.Text className='text-danger'>{errors.password?.message}</Form.Text>
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer className="justify-content-center">
-          <Button className="boton" onClick={handleClose}>
+        <div className="d-flex justify-space-around">
+        <Button className="boton" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button className="boton" onClick={handleClose}>
+          <Button type="submit" className="boton">
             Registrarse
           </Button>
-        </Modal.Footer>
+        </div>
+          </Form>
+        </Modal.Body>
       </Modal>
     </>
   )

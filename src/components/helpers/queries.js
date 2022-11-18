@@ -1,6 +1,6 @@
 const urlPedidos = process.env.REACT_APP_API_COMITIANDOPEDIDO;
 const urlProductos = process.env.REACT_APP_API_COMITIANDOPRODUCTOS;
-const urlUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
+const URLUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
 
 //PETICIONES GET:
 //get para listar pedidos solicitados
@@ -29,7 +29,7 @@ export const consultarApiProductos = async () => {
 //get para listar los usuarios
 export const consultarApiUsuarios = async () => {
     try {
-        const respuesta = await fetch(urlUsuarios);
+        const respuesta = await fetch(URLUsuarios);
         const listaUsuarios = await respuesta.json();
         return listaUsuarios;
     } catch (error) {
@@ -68,7 +68,22 @@ export const crearProductoMenuAPI = async (producto) => {
         return false;
     }
 };
-
+//post para crear el usuario
+export const crearUsuarioAPI = async(usuario)=>{
+    try {
+        const respuesta = await fetch( URLUsuarios, {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(usuario)
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error)
+        return false;
+    }
+}
 //PETICIONES PUT:
 //put para editar pedidos (pendiente/realizado)
 export const editarPedidoAPI = async (id, pedidoEditado) => {
@@ -89,7 +104,7 @@ export const editarPedidoAPI = async (id, pedidoEditado) => {
 //put para editar usuarios (activo/suspendido)
 export const editarUsuarioAPI = async (id, usuarioEditado) => {
     try {
-        const respuesta = await fetch(urlUsuarios + "/" + id, {
+        const respuesta = await fetch(URLUsuarios + "/" + id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

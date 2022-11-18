@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import comitiandoLogo from "../../assets/img/comitiandoLogo.jpg";
@@ -5,6 +6,7 @@ import Login from "../views/Login";
 import Registro from "../views/Registro";
 
 const Menu = () => {
+    const [usuarioLogueado, setUsuarioLogueado] = useState({});
     return (
         <header>
             <Navbar className="backgroundGeneral" expand="lg">
@@ -30,7 +32,7 @@ const Menu = () => {
                             <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
                                 Administrador
                             </NavLink>
-                            <Registro/>
+                            <Registro setUsuarioLogueado={setUsuarioLogueado} />
                             <Login/>
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>

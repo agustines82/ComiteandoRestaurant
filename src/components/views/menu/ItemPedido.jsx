@@ -23,7 +23,7 @@ const ItemPedido = ({ pedido, setPedidos }) => {
         setPedidoEditado({ ...pedidoEditado, estado: false });
     };
 
-    const handleChangeEditarPedido = (e) => {
+    const handleChangeEditarPedido = () => {
         //enviamos la peticion PUT a la API
         editarPedidoAPI(_id, pedidoEditado);
     };

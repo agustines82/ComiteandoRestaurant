@@ -1,35 +1,108 @@
-import { Form, Card, ListGroup, Accordion, Table } from "react-bootstrap";
+import {
+  Form,
+  Card,
+  ListGroup,
+  Accordion,
+  Table,
+  Container,
+} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 const PedidoConfirmado = () => {
-
-  
-
-
+  //objetos para usar hookform
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log("desde mi funcion submit");
+  };
   return (
-
-    <section className="container">
+    <Container>
       <aside className="my-3">
-        <Form className="formulariopedido">
+        <Form
+          noValidate
+          className="formulariopedido"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <h3 className="text-center">Datos del envio</h3>
-          <Form.Group className="mb-3 my-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3 my-3">
             <Form.Text>
               Necesitamos tus datos para poder realizar la entrega del pedido,
               sin problemas.{" "}
             </Form.Text>
             <br />
-            <Form.Label className="my-2">Email</Form.Label>
-            <Form.Control type="email" placeholder="Escribe tu email" />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Direccion</Form.Label>
-            <Form.Control placeholder="Escribe tu dirección" />
+            <Form.Control
+              required
+              type="text"
+              placeholder="Escribe tu dirección"
+              {...register("direccionPedido", {
+                required: "La direccion es un campo obligatorio",
+                minLength: {
+                  value: 2,
+                  message: "La cantidad minima de caracteres, es de 2.",
+                },
+                maxLength: {
+                  value: 20,
+                  message: "La cantidad maxima de caracteres, es de 20. ",
+                },
+              })}
+            />
+            <Form.Text className="text-danger">
+              {errors.direccionPedido?.message}
+            </Form.Text>
           </Form.Group>
-          <Form.Text>Indicaciones:</Form.Text>
-          <Form.Control
-            as="textarea"
-            placeholder="Escribe tu indicacion aqui"
-          />
+          <Form.Group>
+            <Form.Label>Indicaciones:</Form.Label>
+            <Form.Control
+              required
+              placeholder="Escribe tu indicacion aqui"
+              {...register('indicacionesPedido', {
+                minLength:{
+                  value:5,
+                  message: 'La cantidad minima de caracteres es de 5.'
+                },
+                maxLength:{
+                  value:50,
+                  message: 'La cantidad maxima de caracteres es de 100.'
+                }
+              } )}
+            />
+            <Form.Text className="text-danger">
+              {errors.indicacionesPedido?.message}
+            </Form.Text>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Numero de contacto:</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              placeholder="Escribe tu numero aqui"
+             
+              {...register('numeroContacto', {
+                required: 'El numero de contacto es un campo obligatorio',
+              minLength:{
+                value:6,
+                message: 'La cantidad minima de caracteres, es de 6.'
+              },
+              maxLength:{
+                value:14,
+                message: 'La cantidad maxima de caracteres, es de 14.'
+              }
+              } )}
+            />
+            <Form.Text className="text-danger">
+              {errors.numeroContacto?.message}
+            </Form.Text>
+          </Form.Group>
+          <button className="my-3 p-3 btn botonguardar " type="submit">
+            Guardar
+          </button>
         </Form>
       </aside>
       <aside className="my-3">
@@ -98,11 +171,13 @@ const PedidoConfirmado = () => {
           <Card.Text className="m-3">Total:</Card.Text>
 
           <div className="d-flex justify-content-center">
-            <button className="my-3 p-3 botonconf">Comprar</button>
+            <button className="my-3 p-3 botonconf" type="submit">
+              Comprar
+            </button>
           </div>
         </Card>
       </aside>
-    </section>
+    </Container>
   );
 };
 

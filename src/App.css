@@ -63,6 +63,16 @@
     cursor: pointer;
     display: inline-block;
   }
+  .botonguardar {
+    width: 250px;
+    text-align: center;
+    color: #e9e6df;
+    background-color: #f04523;
+    border-radius: 8px;
+    border: 1px #f04523;
+    cursor: pointer;
+    display: inline-block;
+  }
   
   .botonconf:hover {
     color: #f04523;

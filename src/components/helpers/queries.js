@@ -94,7 +94,12 @@ export const loguearUsuarioAPI = async(usuario)=>{
             },
             body: JSON.stringify(usuario)
         });
-        return respuesta;
+        const datos = await respuesta.json();
+        return {
+            status: respuesta.status,
+            mensaje: datos.mensaje,
+            email: datos.email,
+        }
     } catch (error) {
         return false;
     }

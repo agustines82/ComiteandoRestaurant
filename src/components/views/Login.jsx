@@ -3,6 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { loguearUsuarioAPI } from '../helpers/queries';
+import Swal from 'sweetalert2';
 const Login = ({setUsuarioLogueado}) => {
   const [show, setShow] = useState(false);
 
@@ -32,9 +33,20 @@ const Login = ({setUsuarioLogueado}) => {
 
   const onSubmit = (data)=>{
     console.log(data);
-    loguearUsuarioAPI(data)
-    reset();
-    handleClose();
+    loguearUsuarioAPI(data).then((respuesta)=>{
+      if(respuesta){
+        localStorage.setItem("usuarioLogueado", JSON.stringify(respuesta));
+        setUsuarioLogueado(respuesta)
+        reset();
+        handleClose();
+      } else {
+        Swal.fire(
+          "El usuario no existe",
+          "error en el nombre de usuario o password",
+          "error"
+        );
+      }
+    })
   };
   return (
     <>

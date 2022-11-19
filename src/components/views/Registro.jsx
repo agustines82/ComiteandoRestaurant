@@ -30,7 +30,7 @@ const Registro = ({setUsuarioLogueado}) => {
           'Los datos ingresados fueron cargados correctamente',
           'success'
         )
-         localStorage.setItem('usuarioLogueado', JSON.stringify(data));
+        //  localStorage.setItem('usuarioLogueado', JSON.stringify(data));
          setUsuarioLogueado(respuesta);
          reset();
         handleClose();

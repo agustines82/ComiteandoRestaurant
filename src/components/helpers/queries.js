@@ -1,7 +1,7 @@
 const urlPedidos = process.env.REACT_APP_API_COMITIANDOPEDIDO;
 const urlProductos = process.env.REACT_APP_API_COMITIANDOPRODUCTOS;
 const URLUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
-
+const URLLogin = process.env.REACT_APP_API_COMITIANDOLOGIN;
 //PETICIONES GET:
 //get para listar pedidos solicitados
 export const consultarApiPedidos = async () => {
@@ -81,6 +81,21 @@ export const crearUsuarioAPI = async(usuario)=>{
         return respuesta;
     } catch (error) {
         console.log(error)
+        return false;
+    }
+}
+//post loguear un usuario
+export const loguearUsuarioAPI = async(usuario)=>{
+    try {
+        const respuesta = await fetch(URLLogin, {
+            method: 'POST',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(usuario)
+        });
+        return respuesta;
+    } catch (error) {
         return false;
     }
 }

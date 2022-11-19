@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
-const Login = () => {
+import { loguearUsuarioAPI } from '../helpers/queries';
+const Login = ({setUsuarioLogueado}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -31,8 +32,10 @@ const Login = () => {
 
   const onSubmit = (data)=>{
     console.log(data);
+    loguearUsuarioAPI(data)
     reset();
-  }
+    handleClose();
+  };
   return (
     <>
       <NavLink

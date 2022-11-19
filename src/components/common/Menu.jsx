@@ -33,7 +33,7 @@ const Menu = () => {
                                 Administrador
                             </NavLink>
                             <Registro setUsuarioLogueado={setUsuarioLogueado} />
-                            <Login/>
+                            <Login setUsuarioLogueado = {setUsuarioLogueado}/>
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>
                             </NavLink>

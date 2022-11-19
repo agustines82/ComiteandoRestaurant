@@ -79,7 +79,7 @@ const Login = ({setUsuarioLogueado}) => {
                 required: 'La contraseña es obligatoria',
                 mingLength:{
                   value:6,
-                  message:'La cantidad minima de caracteres debe ser 8',
+                  message:'La cantidad minima de caracteres debe ser 6',
                 },
                 maxLength:{
                   value:20,
@@ -89,16 +89,16 @@ const Login = ({setUsuarioLogueado}) => {
               />
               <Form.Text className='text-danger'>{errors.password?.message}</Form.Text>
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer className="justify-content-center">
+        <div className="d-flex justify-space-around">
           <Button type='submit' className="boton">
             Ingresar
           </Button>
           <Button className="boton" onClick={handleClose}>
             Cerrar
           </Button>
-        </Modal.Footer>
+        </div>
+          </Form>
+        </Modal.Body>
       </Modal>
     </>
   )

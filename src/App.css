@@ -64,6 +64,13 @@
     padding-inline: 15px;
     color: black;
 }
+.filtradoSelect {
+    background-color: #e9e6df;
+    padding-inline: 15px;
+    color: black;
+    border-radius: 10px 100px / 120px;
+    border-color: #9e9d9b;
+}
 
 /*PAGINA MI PEDIDO*/
 .botonconf {

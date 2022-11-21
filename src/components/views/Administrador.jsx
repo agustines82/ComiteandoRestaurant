@@ -5,25 +5,25 @@ import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
-import PaginationPedido from "./PaginationPedido";
-import PaginationMenu from "./PaginationMenu";
-import PaginationUsuario from "./PaginationUsuario";
 
 const Administrador = () => {
-    //Variables de estado para Lista Pedido y su paginación
+    //Variables de estado para Lista Pedido, su paginación y filtrado
     const [pedidos, setPedidos] = useState([]);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
-    const [pedidosPorPagina] = useState(3);
+    //filtrado
+    const [pedidosFiltrados, setPedidosFiltrados] = useState([]);
 
     //Variables de estado para Lista Productos y su paginacion
     const [productos, setProductos] = useState([]);
     const [paginaActualProductos, setPaginaActualProductos] = useState(1);
-    const [productosPorPagina] = useState(5);
+    //filtrado
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
     const [paginaActualUsuarios, setPaginaActualUsuarios] = useState(1);
-    const [usuariosPorPagina] = useState(3);
+    //filtrado
+    const [usuariosFiltrados, setUsuariosFiltrados] = useState([]);
 
     useEffect(() => {
         consultarApiPedidos().then((respuestaListaPedidos) => {
@@ -37,32 +37,133 @@ const Administrador = () => {
         });
     }, [paginaActualPedidos, paginaActualUsuarios]);
 
-    //LOGICA PAGINACION LISTA PEDIDOS PENDIENTES
+    //LOGICA PAGINACION Y FILTRADO LISTA PEDIDOS PENDIENTES
+    //paginado
+    const pedidosPorPagina = 2;
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
     const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
-    const pedidosActuales = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
+    const pedidosPaginados = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
+    //filtrado
+    const pedidosFiltradosPaginados = pedidosFiltrados.slice(indexPrimerPedido, indexUltimoPedido);
     //cambiar la pagina
-    const paginacionTablaPedidosPendientes = (paginaNumero) => setPaginaActualPedidos(paginaNumero);
+    const nextPagePedidos = () => {
+        if (pedidosFiltrados.length === 0 || paginaActualPedidos < pedidosFiltrados.length / pedidosPorPagina) {
+            if (paginaActualPedidos < pedidos.length / pedidosPorPagina) {
+                setPaginaActualPedidos(paginaActualPedidos + 1);
+            }
+        }
+    };
+    const previusPagePedidos = () => {
+        if (paginaActualPedidos > 1) {
+            setPaginaActualPedidos(paginaActualPedidos - 1);
+        }
+    };
+    //filtrar pedidos
+    const handleChangePedidoFiltrado = (e) => {
+        const valor = e.target.value;
+        setPaginaActualPedidos(1);
+        const filtroPedidosRealizados = pedidos.filter((pedido) => pedido.estado === true);
+        const filtroPedidosPendientes = pedidos.filter((pedido) => pedido.estado === false);
+
+        if (valor === "true") {
+            setPedidosFiltrados(filtroPedidosRealizados);
+        } else if (valor === "false") {
+            setPedidosFiltrados(filtroPedidosPendientes);
+        } else if (valor === "0") {
+            setPedidosFiltrados([]);
+        }
+    };
 
     //LOGICA PAGINACION LISTA PRODUCTOS
+    const productosPorPagina = 5;
     const indexUltimoProducto = paginaActualProductos * productosPorPagina;
     const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
-    const productosActuales = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    const productosPaginados = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    //filtrado
+    const productosFiltradosPaginados = productosFiltrados.slice(indexPrimerProducto, indexUltimoProducto);
     //cambiar la pagina
-    const paginacionTablaProductos = (paginaNumero) => setPaginaActualProductos(paginaNumero);
+    const nextPageProductos = () => {
+        if (productosFiltrados.length === 0 || paginaActualProductos < productosFiltrados.length / productosPorPagina) {
+            if (paginaActualProductos < productos.length / productosPorPagina) {
+                setPaginaActualProductos(paginaActualProductos + 1);
+            }
+        }
+    };
+    const previusPageProductos = () => {
+        if (paginaActualProductos > 1) {
+            setPaginaActualProductos(paginaActualProductos - 1);
+        }
+    };
+    //filtrar pedidos
+    const handleChangeProductoFiltrado = (e) => {
+        const valor = e.target.value;
+        setPaginaActualProductos(1);
+        const filtroProductosDisponibles = productos.filter((producto) => producto.estado === true);
+        const filtroProductosND = productos.filter((producto) => producto.estado === false);
 
-    //LOGICA PAGINACION LISTA USUARIOS
+        if (valor === "true") {
+            setProductosFiltrados(filtroProductosDisponibles);
+        } else if (valor === "false") {
+            setProductosFiltrados(filtroProductosND);
+        } else if (valor === "0") {
+            setProductosFiltrados([]);
+        }
+    };
+
+    //LOGICA PAGINACION Y FILTRADO LISTA USUARIOS
+    const usuariosPorPagina = 4;
     const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
     const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
-    const usuariosActuales = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
+    const usuariosPaginados = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
+    //filtrado
+    const usuariosFiltradosPaginados = usuariosFiltrados.slice(indexPrimerUsuario, indexUltimoUsuario);
     //cambiar la pagina
-    const paginacionTablaUsuarios = (paginaNumero) => setPaginaActualUsuarios(paginaNumero);
+    const nextPageUsuarios = () => {
+        if (usuariosFiltrados.length === 0 || paginaActualUsuarios < usuariosFiltrados.length / usuariosPorPagina) {
+            if (paginaActualUsuarios < usuarios.length / usuariosPorPagina) {
+                setPaginaActualUsuarios(paginaActualUsuarios + 1);
+            }
+        }
+    };
+    const previusPageUsuarios = () => {
+        if (paginaActualUsuarios > 1) {
+            setPaginaActualUsuarios(paginaActualUsuarios - 1);
+        }
+    };
+    //filtrar usuarios
+    const handleChangeUsuarioFiltrado = (e) => {
+        const valor = e.target.value;
+        setPaginaActualUsuarios(1);
+        const filtroUsuariosActivos = usuarios.filter((usuario) => usuario.estado === true);
+        const filtroUsuariosSuspendidos = usuarios.filter((usuario) => usuario.estado === false);
+        const filtroUsuariosAdmin = usuarios.filter((usuario) => usuario.perfil === "Administrador");
+        const filtroUsuariosClientes = usuarios.filter((usuario) => usuario.perfil === "cliente");
+
+        if (valor === "true") {
+            setUsuariosFiltrados(filtroUsuariosActivos);
+        } else if (valor === "false") {
+            setUsuariosFiltrados(filtroUsuariosSuspendidos);
+        } else if (valor === "Administrador") {
+            setUsuariosFiltrados(filtroUsuariosAdmin);
+        } else if (valor === "cliente") {
+            setUsuariosFiltrados(filtroUsuariosClientes);
+        } else if (valor === "0") {
+            setUsuariosFiltrados([]);
+        }
+    };
 
     return (
         <Container className="mainSection">
             <article className="d-flex justify-content-between align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Pedidos Solicitados</h1>
             </article>
+            <div className="d-flex justify-content-end mt-0 mb-2">
+                <select className="filtradoSelect" onChange={handleChangePedidoFiltrado}>
+                    <option value="0">Filtrar...</option>
+                    <option value="false">Pendiente</option>
+                    <option value="true">Realizado</option>
+                </select>
+            </div>
             <hr />
             <Table responsive striped hover size="sm" className="shadow">
                 <thead>
@@ -75,17 +176,22 @@ const Administrador = () => {
                         <th></th>
                     </tr>
                 </thead>
+                {/* pedidosActuales */}
                 <tbody>
-                    {pedidosActuales.map((pedido) => (
-                        <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />
-                    ))}
+                    {/* si filtrarPedido==="" poner pedidosPaginados si esta filtrado poner pedidos filtrados */}
+                    {pedidosFiltrados.length === 0
+                        ? pedidosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)
+                        : pedidosFiltradosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)}
                 </tbody>
             </Table>
-            <PaginationPedido
-                pedidosPorPagina={pedidosPorPagina}
-                totalPedidos={pedidos.length}
-                paginacionTablaPedidosPendientes={paginacionTablaPedidosPendientes}
-            />
+            <div className="d-flex justify-content-end me-2">
+                <button className="paginacion" onClick={previusPagePedidos}>
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+                <button className="paginacion" onClick={nextPagePedidos}>
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
 
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
@@ -93,6 +199,13 @@ const Administrador = () => {
                     Agregar
                 </Link>
             </article>
+            <div className="d-flex justify-content-end mt-0 mb-2">
+                <select className="filtradoSelect" onChange={handleChangeProductoFiltrado}>
+                    <option value="0">Filtrar...</option>
+                    <option value="true">Disponible</option>
+                    <option value="false">No Disponible</option>
+                </select>
+            </div>
             <hr />
             <Table responsive striped hover size="sm" className="shadow">
                 <thead>
@@ -108,19 +221,34 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {productosActuales.map((producto) => (
-                        <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
-                    ))}
+                    {productosFiltrados.length === 0
+                        ? productosPaginados.map((producto) => <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />)
+                        : productosFiltradosPaginados.map((producto) => (
+                              <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                          ))}
                 </tbody>
             </Table>
-            <PaginationMenu
-                productosPorPagina={productosPorPagina}
-                totalProductos={productos.length}
-                paginacionTablaProductos={paginacionTablaProductos}
-            />
+            <div className="d-flex justify-content-end me-2">
+                <button className="paginacion" onClick={previusPageProductos}>
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+                <button className="paginacion" onClick={nextPageProductos}>
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
+
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>
+            <div className="d-flex justify-content-end mt-0 mb-2">
+                <select className="filtradoSelect" onChange={handleChangeUsuarioFiltrado}>
+                    <option value="0">Filtrar...</option>
+                    <option value="true">Activo</option>
+                    <option value="false">Suspendido</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="cliente">Cliente</option>
+                </select>
+            </div>
             <hr />
             <Table responsive striped bordered hover size="sm" className="shadow">
                 <thead>
@@ -134,16 +262,19 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {usuariosActuales.map((usuario) => (
-                        <ItemUsuario key={usuario._id} usuario={usuario} />
-                    ))}
+                    {usuariosFiltrados.length === 0
+                        ? usuariosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)
+                        : usuariosFiltradosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)}
                 </tbody>
             </Table>
-            <PaginationUsuario
-                usuariosPorPagina={usuariosPorPagina}
-                totalUsuarios={usuarios.length}
-                paginacionTablaUsuarios={paginacionTablaUsuarios}
-            />
+            <div className="d-flex justify-content-end me-2">
+                <button className="paginacion" onClick={previusPageUsuarios}>
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+                <button className="paginacion" onClick={nextPageUsuarios}>
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
         </Container>
     );
 };

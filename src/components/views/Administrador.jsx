@@ -5,7 +5,6 @@ import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
-import PaginationMenu from "./PaginationMenu";
 
 const Administrador = () => {
     //Variables de estado para Lista Pedido, su paginación y filtrado
@@ -17,7 +16,8 @@ const Administrador = () => {
     //Variables de estado para Lista Productos y su paginacion
     const [productos, setProductos] = useState([]);
     const [paginaActualProductos, setPaginaActualProductos] = useState(1);
-    const [productosPorPagina] = useState(5);
+    //filtrado
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
 
     //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
@@ -75,11 +75,40 @@ const Administrador = () => {
     };
 
     //LOGICA PAGINACION LISTA PRODUCTOS
+    const productosPorPagina = 5;
     const indexUltimoProducto = paginaActualProductos * productosPorPagina;
     const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
-    const productosActuales = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    const productosPaginados = productos.slice(indexPrimerProducto, indexUltimoProducto);
+    //filtrado
+    const productosFiltradosPaginados = productosFiltrados.slice(indexPrimerProducto, indexUltimoProducto);
     //cambiar la pagina
-    const paginacionTablaProductos = (paginaNumero) => setPaginaActualProductos(paginaNumero);
+    const nextPageProductos = () => {
+        if (productosFiltrados.length === 0 || paginaActualProductos < productosFiltrados.length / productosPorPagina) {
+            if (paginaActualProductos < productos.length / productosPorPagina) {
+                setPaginaActualProductos(paginaActualProductos + 1);
+            }
+        }
+    };
+    const previusPageProductos = () => {
+        if (paginaActualProductos > 1) {
+            setPaginaActualProductos(paginaActualProductos - 1);
+        }
+    };
+    //filtrar pedidos
+    const handleChangeProductoFiltrado = (e) => {
+        const valor = e.target.value;
+        setPaginaActualProductos(1);
+        const filtroProductosDisponibles = productos.filter((producto) => producto.estado === true);
+        const filtroProductosND = productos.filter((producto) => producto.estado === false);
+
+        if (valor === "true") {
+            setProductosFiltrados(filtroProductosDisponibles);
+        } else if (valor === "false") {
+            setProductosFiltrados(filtroProductosND);
+        } else if (valor === "0") {
+            setProductosFiltrados([]);
+        }
+    };
 
     //LOGICA PAGINACION Y FILTRADO LISTA USUARIOS
     const usuariosPorPagina = 4;
@@ -107,14 +136,14 @@ const Administrador = () => {
         setPaginaActualUsuarios(1);
         const filtroUsuariosActivos = usuarios.filter((usuario) => usuario.estado === true);
         const filtroUsuariosSuspendidos = usuarios.filter((usuario) => usuario.estado === false);
-        const filtroUsuariosAdmin = usuarios.filter((usuario) => usuario.perfil === "administrador");
+        const filtroUsuariosAdmin = usuarios.filter((usuario) => usuario.perfil === "Administrador");
         const filtroUsuariosClientes = usuarios.filter((usuario) => usuario.perfil === "cliente");
 
         if (valor === "true") {
             setUsuariosFiltrados(filtroUsuariosActivos);
         } else if (valor === "false") {
             setUsuariosFiltrados(filtroUsuariosSuspendidos);
-        } else if (valor === "administrador") {
+        } else if (valor === "Administrador") {
             setUsuariosFiltrados(filtroUsuariosAdmin);
         } else if (valor === "cliente") {
             setUsuariosFiltrados(filtroUsuariosClientes);
@@ -170,6 +199,13 @@ const Administrador = () => {
                     Agregar
                 </Link>
             </article>
+            <div className="d-flex justify-content-end mt-0 mb-2">
+                <select className="filtradoSelect" onChange={handleChangeProductoFiltrado}>
+                    <option value="0">Filtrar...</option>
+                    <option value="true">Disponible</option>
+                    <option value="false">No Disponible</option>
+                </select>
+            </div>
             <hr />
             <Table responsive striped hover size="sm" className="shadow">
                 <thead>
@@ -185,16 +221,22 @@ const Administrador = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {productosActuales.map((producto) => (
-                        <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
-                    ))}
+                    {productosFiltrados.length === 0
+                        ? productosPaginados.map((producto) => <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />)
+                        : productosFiltradosPaginados.map((producto) => (
+                              <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                          ))}
                 </tbody>
             </Table>
-            <PaginationMenu
-                productosPorPagina={productosPorPagina}
-                totalProductos={productos.length}
-                paginacionTablaProductos={paginacionTablaProductos}
-            />
+            <div className="d-flex justify-content-end me-2">
+                <button className="paginacion" onClick={previusPageProductos}>
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+                <button className="paginacion" onClick={nextPageProductos}>
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
+
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>
@@ -203,7 +245,7 @@ const Administrador = () => {
                     <option value="0">Filtrar...</option>
                     <option value="true">Activo</option>
                     <option value="false">Suspendido</option>
-                    <option value="adminitrador">Administrador</option>
+                    <option value="Administrador">Administrador</option>
                     <option value="cliente">Cliente</option>
                 </select>
             </div>

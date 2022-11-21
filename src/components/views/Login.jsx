@@ -36,6 +36,7 @@ const Login = ({setUsuarioLogueado}) => {
     loguearUsuarioAPI(data).then((respuesta)=>{
       if(respuesta){
         localStorage.setItem("usuarioLogueado", JSON.stringify(respuesta));
+        console.log(respuesta)
         setUsuarioLogueado(respuesta)
         reset();
         handleClose();
@@ -57,7 +58,7 @@ const Login = ({setUsuarioLogueado}) => {
           'nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu'
         }
       >
-        Login/out<i className="bi bi-box-arrow-in-right"></i>
+        Login<i className="bi bi-box-arrow-in-right"></i>
       </NavLink>
 
       <Modal show={show} onHide={handleClose}>
@@ -101,7 +102,7 @@ const Login = ({setUsuarioLogueado}) => {
               />
               <Form.Text className='text-danger'>{errors.password?.message}</Form.Text>
             </Form.Group>
-        <div className="d-flex justify-space-around">
+        <div className="d-flex justify-content-evenly">
           <Button type='submit' className="boton">
             Ingresar
           </Button>

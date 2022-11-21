@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { crearUsuarioAPI } from '../helpers/queries'
 import Swal from 'sweetalert2'
 
-const Registro = ({setUsuarioLogueado}) => {
+const Registro = () => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -30,8 +30,6 @@ const Registro = ({setUsuarioLogueado}) => {
           'Los datos ingresados fueron cargados correctamente',
           'success'
         )
-        //  localStorage.setItem('usuarioLogueado', JSON.stringify(data));
-         setUsuarioLogueado(respuesta);
          reset();
         handleClose();
       }else{
@@ -41,7 +39,6 @@ const Registro = ({setUsuarioLogueado}) => {
           'error'
         )
       }
-      console.log(respuesta);
     });
   }
 
@@ -113,7 +110,7 @@ const Registro = ({setUsuarioLogueado}) => {
               />
               <Form.Text className='text-danger'>{errors.password?.message}</Form.Text>
             </Form.Group>
-        <div className="d-flex justify-space-around">
+        <div className="d-flex justify-content-evenly">
         <Button className="boton" onClick={handleClose}>
             Cerrar
           </Button>

@@ -22,10 +22,7 @@ const HazTuPedido = () => {
           </Row>
         </Col>
         <Col md={4}>
-          <div>
-            <h1>Haz tu pedido</h1>
-          </div>
-          <Card>
+            <Card>
             <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
             <hr />
             <ListGroup variant="flush">

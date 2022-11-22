@@ -10,6 +10,9 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const PedidoConfirmado = () => {
+
+
+
   //botones + y -
   const [numeroProductoconf, setnumeroProductoconf] = useState(1);
 
@@ -22,6 +25,8 @@ const PedidoConfirmado = () => {
   const onSubmit = (data) => {
     console.log(data);
     console.log("desde mi funcion submit");
+
+    
   };
 
   return (

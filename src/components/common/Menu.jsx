@@ -8,13 +8,13 @@ import Registro from "../views/Registro";
 const Menu = () => {
     const usuario = JSON.parse(localStorage.getItem("usuarioLogueado")) || {};
     const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
-    
-    const cerrarSesion=()=>{
-        localStorage.removeItem('usuarioLogueado');
-        setUsuarioLogueado({})
-        console.log(usuarioLogueado)
-    }
-    
+
+    const cerrarSesion = () => {
+        localStorage.removeItem("usuarioLogueado");
+        setUsuarioLogueado({});
+        console.log(usuarioLogueado);
+    };
+
     return (
         <header>
             <Navbar className="backgroundGeneral" expand="lg">
@@ -37,26 +37,25 @@ const Menu = () => {
                             >
                                 Haz tu Pedido
                             </NavLink>
-                            {!usuarioLogueado.email?
-                            (
-                            <>
-                            <Registro />
-                            <Login setUsuarioLogueado = {setUsuarioLogueado}/>
-                            </>)
-                            :(<>
-                            <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
-                                Administrador
-                            </NavLink>
-                                <NavLink to={'/'}
-                                onClick={cerrarSesion}
-                                className={
-                                    'nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu'
-                                }
-                                >
-                                    Logout<i className="bi bi-box-arrow-in-right"></i>
-                                </NavLink>
+                            {!usuarioLogueado.email ? (
+                                <>
+                                    <Registro />
+                                    <Login setUsuarioLogueado={setUsuarioLogueado} />
                                 </>
-                                )}
+                            ) : (
+                                <>
+                                    <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
+                                        Administrador
+                                    </NavLink>
+                                    <NavLink
+                                        to={"/"}
+                                        onClick={cerrarSesion}
+                                        className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
+                                    >
+                                        Logout<i className="bi bi-box-arrow-in-right"></i>
+                                    </NavLink>
+                                </>
+                            )}
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>
                             </NavLink>

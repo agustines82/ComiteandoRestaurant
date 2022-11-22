@@ -1,6 +1,6 @@
 #root {
     font-family: "IBM Plex Mono", monospace;
-    background-color: #e9e6df ;
+    background-color: #e9e6df;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -34,6 +34,108 @@
 }
 .hoverLinksMenu:hover {
     color: #f04523;
+}
+
+/*PAGINA PRINCIPAL */
+
+.banner1 {
+    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2FDWzX3MKty67Rd5cYu-cheff.png);
+    height: 300px;
+    text-align: center;
+}
+
+p.textoconocenos {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 46px;
+    padding-top: 56px;
+    color: white;
+    margin-bottom: 0px !important;
+}
+a.bnn {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+p.par {
+    color: white;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    font-size: 18px;
+}
+
+.banner2 {
+    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2F2Nhru7fEq5SYbCx8e-mochi.png);
+    height: 310px;
+    text-align: center;
+    background-size: cover;
+}
+
+p.textoevento {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial;
+    font-weight: 900;
+    text-align: center;
+    font-size: 46px;
+    padding-top: 56px;
+    color: white;
+    margin-bottom: 0px;
+}
+a.bnn {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.instagram {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 80px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+}
+
+.facebook {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background: #000;
+    color: #fff;
+    bottom: 150px;
+    right: 10px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+}
+.whatsApp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background: #000;
+    color: #fff;
+    bottom: 223px;
+    right: 10px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+    padding-top: 8px;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 /* PAGINA ACERCA DE NOSOTROS*/
@@ -205,103 +307,3 @@
     width: 80vh;
     height: 80vh;
 }
-
-/*pagina principal */
-
-.banner1 {
-    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2FDWzX3MKty67Rd5cYu-cheff.png);
-    height: 300px;
-    text-align: center;
-}
-
-p.textoconocenos {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    font-weight: 900;
-    text-align: center;
-    font-size: 46px;
-    padding-top: 56px;
-    color: white;
-    margin-bottom: 0px !important;
-}
-a.bnn {
-    background-color: #f04622;
-    padding: 15px;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-p.par {
-    color: white;
-    padding-top: 0px;
-    padding-bottom: 30px;
-    font-size: 18px;
-}
-
-.banner2 {
-    background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2F2Nhru7fEq5SYbCx8e-mochi.png);
-    height: 300px;
-    text-align: center;
-    background-size: cover;
-}
-
-p.textoevento {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial;
-    font-weight: 900;
-    text-align: center;
-    font-size: 46px;
-    padding-top: 56px;
-    color: white;
-    margin-bottom: 0px;
-}
-a.bnn {
-    background-color: #f04622;
-    padding: 15px;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-.instagram {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 80px;
-    right: 10px;
-    background: #000;
-    color: #fff;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    z-index: 100;
-  }
-  
-  .facebook {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    background: #000;
-    color: #fff;
-    bottom: 150px;
-    right: 10px;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    z-index: 100;
-  }
-  .whatsApp {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    background: #000;
-    color: #fff;
-    bottom: 223px;
-    right: 10px;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    z-index: 100;
-    padding-top: 8px;
-  }
-
-  

@@ -41,7 +41,7 @@ const Administrador = () => {
 
     //LOGICA PAGINACION Y FILTRADO LISTA PEDIDOS PENDIENTES
     //paginado
-    const pedidosPorPagina = 2;
+    const pedidosPorPagina = 4;
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
     const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
     const pedidosPaginados = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
@@ -120,7 +120,7 @@ const Administrador = () => {
     };
 
     //LOGICA PAGINACION Y FILTRADO LISTA USUARIOS
-    const usuariosPorPagina = 4;
+    const usuariosPorPagina = 5;
     const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
     const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
     const usuariosPaginados = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
@@ -185,9 +185,7 @@ const Administrador = () => {
                         <th></th>
                     </tr>
                 </thead>
-                {/* pedidosActuales */}
                 <tbody>
-                    {/* si filtrarPedido==="" poner pedidosPaginados si esta filtrado poner pedidos filtrados */}
                     {pedidosFiltrados.length === 0
                         ? pedidosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)
                         : pedidosFiltradosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)}
@@ -201,14 +199,13 @@ const Administrador = () => {
                     <i className="bi bi-arrow-right"></i>
                 </button>
             </div>
-
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
                 <Link className="ms-3 p-2 backgroundBotones rounded linksMenu" to="/administrar/crear">
                     Agregar
                 </Link>
             </article>
-            <div className="d-flex justify-content-between mt-0 mb-2">
+            <div className="d-flex justify-content-between align-items-end mt-0 mb-2">
                 <InputGroup className="mb-0 w-25 me-3">
                     <Form.Control
                         placeholder="Nombre del producto"
@@ -259,7 +256,6 @@ const Administrador = () => {
                     <i className="bi bi-arrow-right"></i>
                 </button>
             </div>
-
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>

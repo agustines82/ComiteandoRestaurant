@@ -97,8 +97,8 @@ export const loguearUsuarioAPI = async(usuario)=>{
         const datos = await respuesta.json();
         return {
             status: respuesta.status,
+            usuario : datos.usuario,
             mensaje: datos.mensaje,
-            email: datos.email,
         }
     } catch (error) {
         return false;

@@ -37,9 +37,16 @@ const Login = ({setUsuarioLogueado}) => {
       if(respuesta){
         localStorage.setItem("usuarioLogueado", JSON.stringify(respuesta));
         console.log(respuesta)
-        setUsuarioLogueado(respuesta)
+        setUsuarioLogueado(respuesta.usuario)
         reset();
         handleClose();
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title:`Bienvenido ${respuesta.usuario.nombre}`,
+          showConfirmButton: false,
+          timer: 1500
+        })
       } else {
         Swal.fire(
           "El usuario no existe",

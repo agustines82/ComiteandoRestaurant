@@ -5,6 +5,7 @@ import ItemMenu from "./menu/ItemMenu";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
+import { InputGroup, Form, Button } from "react-bootstrap";
 
 const Administrador = () => {
     //Variables de estado para Lista Pedido, su paginación y filtrado
@@ -18,6 +19,7 @@ const Administrador = () => {
     const [paginaActualProductos, setPaginaActualProductos] = useState(1);
     //filtrado
     const [productosFiltrados, setProductosFiltrados] = useState([]);
+    const [inputBuscar, setInputBuscar] = useState("");
 
     //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
@@ -39,7 +41,7 @@ const Administrador = () => {
 
     //LOGICA PAGINACION Y FILTRADO LISTA PEDIDOS PENDIENTES
     //paginado
-    const pedidosPorPagina = 2;
+    const pedidosPorPagina = 4;
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
     const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
     const pedidosPaginados = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
@@ -74,13 +76,35 @@ const Administrador = () => {
         }
     };
 
-    //LOGICA PAGINACION LISTA PRODUCTOS
+    //LOGICA PAGINACION Y FILTRADO LISTA PRODUCTOS
     const productosPorPagina = 5;
     const indexUltimoProducto = paginaActualProductos * productosPorPagina;
     const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
     const productosPaginados = productos.slice(indexPrimerProducto, indexUltimoProducto);
-    //filtrado
+    //filtrado de productos
     const productosFiltradosPaginados = productosFiltrados.slice(indexPrimerProducto, indexUltimoProducto);
+
+    const handleChangeProductoFiltrado = (e) => {
+        const valor = e.target.value;
+        setPaginaActualProductos(1);
+        const filtroProductosDisponibles = productos.filter((producto) => producto.estado === true);
+        const filtroProductosND = productos.filter((producto) => producto.estado === false);
+        if (valor === "true") {
+            setProductosFiltrados(filtroProductosDisponibles);
+        } else if (valor === "false") {
+            setProductosFiltrados(filtroProductosND);
+        } else if (valor === "0") {
+            setProductosFiltrados([]);
+        }
+    };
+    const buscarProducto = () => {
+        const productoBuscadoInput = productos.filter((producto) => producto.nombre.includes(inputBuscar));
+        if (productoBuscadoInput.length > 0) {
+            setProductosFiltrados(productoBuscadoInput);
+        } else if (productoBuscadoInput.length === 0) {
+            setProductosFiltrados([]);
+        }
+    };
     //cambiar la pagina
     const nextPageProductos = () => {
         if (productosFiltrados.length === 0 || paginaActualProductos < productosFiltrados.length / productosPorPagina) {
@@ -94,24 +118,9 @@ const Administrador = () => {
             setPaginaActualProductos(paginaActualProductos - 1);
         }
     };
-    //filtrar pedidos
-    const handleChangeProductoFiltrado = (e) => {
-        const valor = e.target.value;
-        setPaginaActualProductos(1);
-        const filtroProductosDisponibles = productos.filter((producto) => producto.estado === true);
-        const filtroProductosND = productos.filter((producto) => producto.estado === false);
-
-        if (valor === "true") {
-            setProductosFiltrados(filtroProductosDisponibles);
-        } else if (valor === "false") {
-            setProductosFiltrados(filtroProductosND);
-        } else if (valor === "0") {
-            setProductosFiltrados([]);
-        }
-    };
 
     //LOGICA PAGINACION Y FILTRADO LISTA USUARIOS
-    const usuariosPorPagina = 4;
+    const usuariosPorPagina = 5;
     const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
     const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
     const usuariosPaginados = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
@@ -176,9 +185,7 @@ const Administrador = () => {
                         <th></th>
                     </tr>
                 </thead>
-                {/* pedidosActuales */}
                 <tbody>
-                    {/* si filtrarPedido==="" poner pedidosPaginados si esta filtrado poner pedidos filtrados */}
                     {pedidosFiltrados.length === 0
                         ? pedidosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)
                         : pedidosFiltradosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)}
@@ -192,15 +199,28 @@ const Administrador = () => {
                     <i className="bi bi-arrow-right"></i>
                 </button>
             </div>
-
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Productos del Menu</h1>
                 <Link className="ms-3 p-2 backgroundBotones rounded linksMenu" to="/administrar/crear">
                     Agregar
                 </Link>
             </article>
-            <div className="d-flex justify-content-end mt-0 mb-2">
-                <select className="filtradoSelect" onChange={handleChangeProductoFiltrado}>
+            <div className="d-flex justify-content-between align-items-end mt-0 mb-2">
+                <InputGroup className="mb-0 w-25 me-3">
+                    <Form.Control
+                        placeholder="Nombre del producto"
+                        aria-label="Nombre del Producto"
+                        aria-describedby="basic-addon2"
+                        onChange={(e) => {
+                            setInputBuscar(e.target.value);
+                        }}
+                        value={inputBuscar}
+                    />
+                    <Button variant="outline" id="button-addon2" onClick={buscarProducto}>
+                        <i className="bi bi-search"></i>
+                    </Button>
+                </InputGroup>
+                <select className="filtradoSelect h-50" onChange={handleChangeProductoFiltrado}>
                     <option value="0">Filtrar...</option>
                     <option value="true">Disponible</option>
                     <option value="false">No Disponible</option>
@@ -236,7 +256,6 @@ const Administrador = () => {
                     <i className="bi bi-arrow-right"></i>
                 </button>
             </div>
-
             <article className="d-flex justify-content-start align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Usuarios</h1>
             </article>

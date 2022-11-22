@@ -30,9 +30,7 @@ const Menu = () => {
                             <NavLink
                                 end
                                 to="/haz"
-                                className={
-                                    "nav-item linksMenu backgroundBotones rounded fw-bolder fontTitulos fs-3 hazTuPedidoMenu hoverHazTuPedidoMenu"
-                                }
+                                className="nav-item linksMenu backgroundBotones rounded fw-bolder fontTitulos fs-3 hazTuPedidoMenu hoverHazTuPedidoMenu"
                             >
                                 Haz tu Pedido
                             </NavLink>
@@ -41,31 +39,34 @@ const Menu = () => {
                                     <Registro />
                                     <Login setUsuarioLogueado={setUsuarioLogueado} />
                                 </>
-                            ) : (<>
-                                    {(usuarioLogueado.perfil === 'Administrador')?(
+                            ) : (
+                                <>
+                                    {usuarioLogueado.perfil === "Administrador" ? (
                                         <>
-                                        <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
-                                        Administrador
-                                        </NavLink>
-                                    <NavLink
-                                    to={"/"}
-                                    onClick={cerrarSesion}
-                                    className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
-                                    >
-                                        Logout<i className="bi bi-box-arrow-in-right"></i>
-                                    </NavLink>
-                                    </>)
-                                    :(
+                                            <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
+                                                Administrador
+                                            </NavLink>
+                                            <NavLink
+                                                to={"/"}
+                                                onClick={cerrarSesion}
+                                                className={
+                                                    "nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"
+                                                }
+                                            >
+                                                Logout<i className="bi bi-box-arrow-in-right"></i>
+                                            </NavLink>
+                                        </>
+                                    ) : (
                                         <NavLink
-                                        to={"/"}
-                                    onClick={cerrarSesion}
-                                    className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
-                                    >
-                                        Logout<i className="bi bi-box-arrow-in-right"></i>
-                                    </NavLink>
-                                    )}                
-                                    </>
+                                            to={"/"}
+                                            onClick={cerrarSesion}
+                                            className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-5 rounded h-25 hoverLoginOutMenu"}
+                                        >
+                                            Logout<i className="bi bi-box-arrow-in-right"></i>
+                                        </NavLink>
                                     )}
+                                </>
+                            )}
                             <NavLink end to="/carrito" className={"nav-item linksMenu fs-4 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>
                             </NavLink>

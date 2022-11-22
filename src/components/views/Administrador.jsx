@@ -275,7 +275,6 @@ const Administrador = () => {
                         <th className="codTable">Cod</th>
                         <th>Nombre</th>
                         <th>Email</th>
-                        <th>Password</th>
                         <th>Perfil</th>
                         <th>Estado</th>
                     </tr>

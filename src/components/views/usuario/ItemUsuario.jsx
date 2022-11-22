@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { editarUsuarioAPI } from "../../helpers/queries";
 
 const ItemUsuario = ({ usuario }) => {
-    const { _id, nombre, email, password, perfil, estado } = { ...usuario };
+    const { _id, nombre, email, perfil, estado } = { ...usuario };
     const [usuarioEditado, setUsuarioEditado] = useState(usuario);
 
     useEffect(() => {
@@ -33,7 +33,6 @@ const ItemUsuario = ({ usuario }) => {
                 <th className="text-truncate thLargo">{_id}</th>
                 <th>{nombre}</th>
                 <th>{email}</th>
-                <th>{password}</th>
                 <th>{perfil}</th>
                 <th className="width-1">
                     {usuario.estado ? (

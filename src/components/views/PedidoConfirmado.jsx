@@ -7,8 +7,12 @@ import {
   Container,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const PedidoConfirmado = () => {
+  //botones + y -
+  const [numeroProductoconf, setnumeroProductoconf] = useState(1);
+
   //objetos para usar hookform
   const {
     register,
@@ -19,6 +23,7 @@ const PedidoConfirmado = () => {
     console.log(data);
     console.log("desde mi funcion submit");
   };
+
   return (
     <Container>
       <aside className="my-3">
@@ -62,16 +67,16 @@ const PedidoConfirmado = () => {
             <Form.Control
               required
               placeholder="Escribe tu indicacion aqui"
-              {...register('indicacionesPedido', {
-                minLength:{
-                  value:5,
-                  message: 'La cantidad minima de caracteres es de 5.'
+              {...register("indicacionesPedido", {
+                minLength: {
+                  value: 5,
+                  message: "La cantidad minima de caracteres es de 5.",
                 },
-                maxLength:{
-                  value:50,
-                  message: 'La cantidad maxima de caracteres es de 100.'
-                }
-              } )}
+                maxLength: {
+                  value: 50,
+                  message: "La cantidad maxima de caracteres es de 100.",
+                },
+              })}
             />
             <Form.Text className="text-danger">
               {errors.indicacionesPedido?.message}
@@ -83,18 +88,17 @@ const PedidoConfirmado = () => {
               required
               type="number"
               placeholder="Escribe tu numero aqui"
-             
-              {...register('numeroContacto', {
-                required: 'El numero de contacto es un campo obligatorio',
-              minLength:{
-                value:6,
-                message: 'La cantidad minima de caracteres, es de 6.'
-              },
-              maxLength:{
-                value:14,
-                message: 'La cantidad maxima de caracteres, es de 14.'
-              }
-              } )}
+              {...register("numeroContacto", {
+                required: "El numero de contacto es un campo obligatorio",
+                minLength: {
+                  value: 6,
+                  message: "La cantidad minima de caracteres, es de 6.",
+                },
+                maxLength: {
+                  value: 14,
+                  message: "La cantidad maxima de caracteres, es de 14.",
+                },
+              })}
             />
             <Form.Text className="text-danger">
               {errors.numeroContacto?.message}
@@ -136,13 +140,24 @@ const PedidoConfirmado = () => {
                     <td>Sushi</td>
                     <td>$1000</td>
                     <td>
-                      <span className="botonpedido">
-                        <i class="bi bi-plus-circle-fill"></i>
-                      </span>{" "}
-                      <span className="botonpedido2">
-                        {" "}
-                        <i class="bi bi-trash3-fill "></i>
-                      </span>
+                    {" "}
+                <span className="botonpedido">
+                  <i
+                    class="bi bi-dash-circle-fill mx-1"
+                    onClick={() => {
+                      setnumeroProductoconf(numeroProductoconf - 1);
+                    }}
+                  ></i>{numeroProductoconf}<i
+                    class="bi bi-plus-circle-fill mx-1 "
+                    onClick={() => {
+                      setnumeroProductoconf(numeroProductoconf + 1);
+                    }}
+                  ></i>
+                </span>{" "}
+                <span className="botonpedido2">
+                  {" "}
+                  <i class="bi bi-trash3-fill "></i>
+                </span>
                     </td>
                   </tr>
                 </tbody>
@@ -157,14 +172,7 @@ const PedidoConfirmado = () => {
           <hr />
           <ListGroup variant="flush">
             <ListGroup.Item className="d-flex my-2 justify-content-between">
-              {" "}
-              <span className="botonpedido">
-                <i class="bi bi-plus-circle-fill"></i>
-              </span>{" "}
-              <span className="botonpedido2">
-                {" "}
-                <i class="bi bi-trash3-fill "></i>
-              </span>
+             p
             </ListGroup.Item>
           </ListGroup>
           <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>

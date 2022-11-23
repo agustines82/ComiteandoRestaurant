@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const PedidoConfirmado = () => {
+
 // cargar usuario desde localStorage
 const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
@@ -215,6 +216,7 @@ const [direccion, setDireccion] = useState();
       </section>
     </Container>
   );
+
 };
 
 export default PedidoConfirmado;

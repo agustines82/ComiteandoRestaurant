@@ -1,7 +1,7 @@
 const urlPedidos = process.env.REACT_APP_API_COMITIANDOPEDIDO;
 const urlProductos = process.env.REACT_APP_API_COMITIANDOPRODUCTOS;
-const urlUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
-
+const URLUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
+const URLLogin = process.env.REACT_APP_API_COMITIANDOLOGIN;
 //PETICIONES GET:
 //get para listar pedidos solicitados
 export const consultarApiPedidos = async () => {
@@ -14,6 +14,7 @@ export const consultarApiPedidos = async () => {
         return false;
     }
 };
+
 //get para listar productos del menu
 export const consultarApiProductos = async () => {
     try {
@@ -28,7 +29,7 @@ export const consultarApiProductos = async () => {
 //get para listar los usuarios
 export const consultarApiUsuarios = async () => {
     try {
-        const respuesta = await fetch(urlUsuarios);
+        const respuesta = await fetch(URLUsuarios);
         const listaUsuarios = await respuesta.json();
         return listaUsuarios;
     } catch (error) {
@@ -36,7 +37,20 @@ export const consultarApiUsuarios = async () => {
         return false;
     }
 };
-
+//get para obtener un producto por su id (a los efectos de cargar sus valores en el form de ediciòn)
+export const obtenerProductoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(urlProductos + "/" + id);
+        const producto = {
+            dato: await respuesta.json(),
+            status: respuesta.status,
+        };
+        return producto;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 //PETICIONES POST:
 //post para crear el producto del menú
 export const crearProductoMenuAPI = async (producto) => {
@@ -54,8 +68,92 @@ export const crearProductoMenuAPI = async (producto) => {
         return false;
     }
 };
-
+//post para crear el usuario
+export const crearUsuarioAPI = async (usuario) => {
+    try {
+        const respuesta = await fetch(URLUsuarios, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuario),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+//post loguear un usuario
+export const loguearUsuarioAPI = async (usuario) => {
+    try {
+        const respuesta = await fetch(URLLogin, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuario),
+        });
+        const datos = await respuesta.json();
+        return {
+            status: respuesta.status,
+            usuario: datos.usuario,
+            mensaje: datos.mensaje,
+        };
+    } catch (error) {
+        return false;
+    }
+};
 //PETICIONES PUT:
+//put para editar pedidos (pendiente/realizado)
+export const editarPedidoAPI = async (id, pedidoEditado) => {
+    try {
+        const respuesta = await fetch(urlPedidos + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(pedidoEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+//put para editar usuarios (activo/suspendido)
+export const editarUsuarioAPI = async (id, usuarioEditado) => {
+    try {
+        const respuesta = await fetch(URLUsuarios + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(usuarioEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
+
+//put para editar productos
+export const editarProductoAPI = async (id, productoEditado) => {
+    try {
+        const respuesta = await fetch(urlProductos + "/" + id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(productoEditado),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 
 //PETICIONES DELETE:
 //delete para eliminar producto del menu

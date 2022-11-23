@@ -1,6 +1,4 @@
 import { Card, CardImg } from "react-bootstrap";
-
-
 const Nosotros = () => {
   return (
     <main className="container">
@@ -65,8 +63,6 @@ const Nosotros = () => {
           </Card.Body>
         </Card>
 
-        
-        
         </section>
         
       

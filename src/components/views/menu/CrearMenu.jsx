@@ -64,7 +64,7 @@ const CrearMenu = () => {
                                     },
                                 })}
                             />
-                            <Form.Text className="text-danger ms-3">{errors.nombreProducto?.message}</Form.Text>
+                            <Form.Text className="text-danger ms-3">{errors.nombre?.message}</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formEstado">
                             <Form.Label className="fontTitulos fs-5">Estado</Form.Label>
@@ -109,7 +109,7 @@ const CrearMenu = () => {
                                     },
                                 })}
                             />
-                            <Form.Text className="text-danger ms-3">{errors.detalleProducto?.message}</Form.Text>
+                            <Form.Text className="text-danger ms-3">{errors.detalle?.message}</Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formCategoria">
                             <Form.Label className="fontTitulos fs-5">Categoria*</Form.Label>

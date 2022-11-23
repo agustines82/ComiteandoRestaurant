@@ -36,7 +36,7 @@ function App() {
                             <RutasAdmin></RutasAdmin>
                         </RutasProtegidas>
                     }
-                ></Route>
+                />
                 <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

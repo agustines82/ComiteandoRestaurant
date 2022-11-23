@@ -1,9 +1,32 @@
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { borrarPedidoAPI, consultarApiPedidos } from "../../helpers/queries";
+import { borrarPedidoAPI, consultarApiPedidos, editarPedidoAPI } from "../../helpers/queries";
 
 const ItemPedido = ({ pedido, setPedidos }) => {
-    const { _id, usuario, fecha, productos } = { ...pedido };
+    const { _id, usuario, fecha, productos, estado } = { ...pedido };
+    const [pedidoEditado, setPedidoEditado] = useState(pedido);
+
+    useEffect(() => {
+        if (!estado) {
+            setearValorPedidoRealizado();
+        }
+        if (estado) {
+            setearValorPedidoPendiente();
+        }
+    }, []);
+
+    const setearValorPedidoRealizado = () => {
+        setPedidoEditado({ ...pedidoEditado, estado: true });
+    };
+    const setearValorPedidoPendiente = () => {
+        setPedidoEditado({ ...pedidoEditado, estado: false });
+    };
+
+    const handleChangeEditarPedido = () => {
+        //enviamos la peticion PUT a la API
+        editarPedidoAPI(_id, pedidoEditado);
+    };
 
     const borrarPedido = () => {
         Swal.fire({
@@ -31,7 +54,6 @@ const ItemPedido = ({ pedido, setPedidos }) => {
             }
         });
     };
-
     return (
         <>
             <tr>
@@ -44,7 +66,11 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                     ))}
                 </th>
                 <th>
-                    <Form.Check className="ms-3" type="switch" id="custom-switch" />
+                    {pedido.estado ? (
+                        <Form.Check defaultChecked className="ms-3" type="switch" onChange={handleChangeEditarPedido} />
+                    ) : (
+                        <Form.Check className="ms-3" type="switch" onChange={handleChangeEditarPedido} />
+                    )}
                 </th>
                 <td className="text-center">
                     <Button variant="outline-light" onClick={borrarPedido}>

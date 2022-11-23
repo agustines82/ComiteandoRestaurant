@@ -1,18 +1,45 @@
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import { editarUsuarioAPI } from "../../helpers/queries";
 
-const ItemUsuario = ({ usuario, setUsuario }) => {
-    const { _id, nombre, email, password, perfil, estado } = { ...usuario };
+const ItemUsuario = ({ usuario }) => {
+    const { _id, nombre, email, perfil, estado } = { ...usuario };
+    const [usuarioEditado, setUsuarioEditado] = useState(usuario);
+
+    useEffect(() => {
+        if (!estado) {
+            setearValorUsuarioActivo();
+        }
+        if (estado) {
+            setearValorUsuarioSuspendido();
+        }
+    }, []);
+
+    const setearValorUsuarioActivo = () => {
+        setUsuarioEditado({ ...usuarioEditado, estado: true });
+    };
+    const setearValorUsuarioSuspendido = () => {
+        setUsuarioEditado({ ...usuarioEditado, estado: false });
+    };
+
+    const handleChangeEditarUsuario = () => {
+        //enviamos la peticion PUT a la API
+        editarUsuarioAPI(_id, usuarioEditado);
+    };
+
     return (
         <>
             <tr>
                 <th className="text-truncate thLargo">{_id}</th>
                 <th>{nombre}</th>
                 <th>{email}</th>
-                <th>{password}</th>
                 <th>{perfil}</th>
                 <th className="width-1">
-                    <Form.Check defaultChecked className="ms-3 mt-1" type="switch" id="custom-switch" />
-                    {/* con checked podes modificar el estado del switch entre on y off */}
+                    {usuario.estado ? (
+                        <Form.Check defaultChecked className="ms-3 mt-1" type="switch" onChange={handleChangeEditarUsuario} />
+                    ) : (
+                        <Form.Check className="ms-3 mt-1" type="switch" onChange={handleChangeEditarUsuario} />
+                    )}
                 </th>
             </tr>
         </>

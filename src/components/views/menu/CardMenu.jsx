@@ -1,30 +1,29 @@
-import { Card, Button, Col, Badge } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 
 const CardMenu = ({ producto }) => {
-    const { nombre, precio, detalle, categoria, imagen } = { ...producto };
+    const { nombre, precio, detalle, imagen } = { ...producto };
     return (
         <Col md={6} className={"my-3"}>
-            <Card className="d-flex flex-row">
+            <article className="d-flex flex-row">
                 <div>
-                    <Card.Img variant="top" src={imagen} />
+                    <Card.Img className="imagenHaz" variant="top" src={imagen} />
                 </div>
                 <div>
                     <Card.Title className="fw-bold ms-3 my-3">{nombre}</Card.Title>
-                    <Badge className="ms-3 w-25">{categoria}</Badge>
                     <Card.Body>
                         <Card.Text>{detalle}</Card.Text>
-                        <div className="d-flex flex-wrap justify-content-between align-items-center">
+                        <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <Card.Text className="fw-bold fs-2">${precio}</Card.Text>
                             <div>
                                 <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold">-</Button>
                                 <p className="d-inline mx-1 fw-bold">0</p>
                                 <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold">+</Button>
                             </div>
-                            <Button className="btn-sm boton mx-2 my-3">Agregar</Button>
+                            <Button className="btn-sm boton mx-2 my-3 mb-0">Agregar</Button>
                         </div>
                     </Card.Body>
                 </div>
-            </Card>
+            </article>
         </Col>
     );
 };

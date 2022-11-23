@@ -184,8 +184,8 @@ a.bnn {
     border: 1px #f04523;
     cursor: pointer;
     display: inline-block;
-}
-.botonconf:hover {
+  }
+  .botonconf:hover {
     color: #f04523;
     background: #e9e6df;
 }
@@ -210,9 +210,9 @@ a.bnn {
 .botonconf:hover:after {
     width: 100%;
     transition: 800ms ease all;
-}
-.botonpedido {
-    width: 50px;
+  }
+  .botonpedido {
+    width: 65px;
     padding: 2px;
     text-align: end;
     color: #e9e6df;

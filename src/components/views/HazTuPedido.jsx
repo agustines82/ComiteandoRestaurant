@@ -8,6 +8,7 @@ const HazTuPedido = () => {
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
+    
 
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {

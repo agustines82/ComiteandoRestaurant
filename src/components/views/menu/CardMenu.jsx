@@ -1,7 +1,29 @@
+import { useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
 
-const CardMenu = ({ producto }) => {
+const useContador = () => {
+    const [contador, setContador] = useState(0);
+    const sumar = () => setContador(contador + 1);
+    const restar = () => setContador(contador - 1);
+
+    return {
+        contador,
+        sumar,
+        restar,
+    };
+};
+
+const CardMenu = ({ producto, pedido, setPedido, cantidad, setCantidad }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
+    const { contador, sumar, restar } = useContador();
+
+    const agregarProducto = () => {
+        if (contador > 0) {
+            setPedido([...pedido, producto]);
+            setCantidad([...cantidad, contador]);
+        }
+    };
+
     return (
         <Col md={6} className={"my-3"}>
             <article className="d-flex flex-row">
@@ -15,11 +37,17 @@ const CardMenu = ({ producto }) => {
                         <div className="d-flex flex-wrap justify-content-between align-items-end">
                             <Card.Text className="fw-bold fs-2">${precio}</Card.Text>
                             <div>
-                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold">-</Button>
-                                <p className="d-inline mx-1 fw-bold">0</p>
-                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold">+</Button>
+                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={restar}>
+                                    -
+                                </Button>
+                                <p className="d-inline mx-1 fw-bold">{contador}</p>
+                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={sumar}>
+                                    +
+                                </Button>
                             </div>
-                            <Button className="btn-sm boton mx-2 my-3 mb-0">Agregar</Button>
+                            <Button className="btn-sm boton mx-2 my-3 mb-0" onClick={agregarProducto}>
+                                Agregar
+                            </Button>
                         </div>
                     </Card.Body>
                 </div>

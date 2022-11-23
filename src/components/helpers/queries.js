@@ -52,6 +52,22 @@ export const obtenerProductoAPI = async (id) => {
     }
 };
 //PETICIONES POST:
+//post para crear el pedido del menú
+export const crearPedidoAPI = async (pedido) => {
+    try {
+        const respuesta = await fetch(urlPedidos, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(pedido),
+        });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+};
 //post para crear el producto del menú
 export const crearProductoMenuAPI = async (producto) => {
     try {

@@ -8,7 +8,9 @@ const HazTuPedido = () => {
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
-
+    const [cantidad, setCantidad] = useState([]);
+    console.log(pedido);
+    console.log(cantidad);
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -60,7 +62,14 @@ const HazTuPedido = () => {
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BENTOS</h3>
                     <Row>
                         {bentos.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu
+                                key={producto._id}
+                                producto={producto}
+                                pedido={pedido}
+                                setPedido={setPedido}
+                                cantidad={cantidad}
+                                setCantidad={setCantidad}
+                            />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
@@ -147,17 +156,25 @@ const HazTuPedido = () => {
                         <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
                         <hr />
                         <ListGroup variant="flush">
-                            <div className="d-flex my-2 mx-3 justify-content-between">
-                                <span className="botonpedido">
-                                    <i className="bi bi-plus-circle-fill"></i>
-                                </span>
-                                <span className="botonpedido2">
-                                    <i className="bi bi-trash3-fill"></i>
-                                </span>
+                            <div>
+                                <ul>
+                                    <Row>
+                                        {cantidad.map((cantidad) => (
+                                            <li key={cantidad}>{cantidad}</li>
+                                        ))}
+                                        {pedido.map((pedido) => (
+                                            <div key={pedido._id}>
+                                                {pedido.nombre} ${pedido.precio}
+                                                <span className=" ms-3 botonpedido2">
+                                                    <i className="bi bi-trash3-fill"></i>
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </Row>
+                                </ul>
                             </div>
                         </ListGroup>
-                        <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>
-                        <Card.Text className="m-3">Total:</Card.Text>
+                        <Card.Text className="m-3 fw-bold">Total:</Card.Text>
                         <div className="d-flex justify-content-center">
                             <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">
                                 Confirmar pedido

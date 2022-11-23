@@ -21,7 +21,7 @@ const HazTuPedido = () => {
                 <Col md={8}>
                     <Row>
                         {productos.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                            <CardMenu key={producto._id} producto={producto} />
                         ))}
                     </Row>
                 </Col>

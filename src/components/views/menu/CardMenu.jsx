@@ -1,7 +1,7 @@
 import { Card, Button, Col, Badge } from "react-bootstrap";
 
-const CardMenu = ({ producto, setProductos }) => {
-    const { _id, nombre, estado, precio, detalle, categoria, imagen } = { ...producto };
+const CardMenu = ({ producto }) => {
+    const { nombre, precio, detalle, categoria, imagen } = { ...producto };
     return (
         <Col md={6} className={"my-3"}>
             <Card>

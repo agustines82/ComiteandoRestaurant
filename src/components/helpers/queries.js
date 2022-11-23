@@ -69,41 +69,41 @@ export const crearProductoMenuAPI = async (producto) => {
     }
 };
 //post para crear el usuario
-export const crearUsuarioAPI = async(usuario)=>{
+export const crearUsuarioAPI = async (usuario) => {
     try {
-        const respuesta = await fetch( URLUsuarios, {
+        const respuesta = await fetch(URLUsuarios, {
             method: "POST",
-            headers:{
-                "Content-Type": "application/json"
+            headers: {
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(usuario)
+            body: JSON.stringify(usuario),
         });
         return respuesta;
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return false;
     }
-}
+};
 //post loguear un usuario
-export const loguearUsuarioAPI = async(usuario)=>{
+export const loguearUsuarioAPI = async (usuario) => {
     try {
         const respuesta = await fetch(URLLogin, {
-            method: 'POST',
-            headers:{
-                "Content-Type": "application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify(usuario)
+            body: JSON.stringify(usuario),
         });
         const datos = await respuesta.json();
         return {
             status: respuesta.status,
-            usuario : datos.usuario,
+            usuario: datos.usuario,
             mensaje: datos.mensaje,
-        }
+        };
     } catch (error) {
         return false;
     }
-}
+};
 //PETICIONES PUT:
 //put para editar pedidos (pendiente/realizado)
 export const editarPedidoAPI = async (id, pedidoEditado) => {

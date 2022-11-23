@@ -1,21 +1,28 @@
 import { Row, Container, Card, Col, ListGroup } from "react-bootstrap";
 import CardMenu from "./menu/CardMenu";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { consultarApiProductos } from "../helpers/queries";
 
 const HazTuPedido = () => {
+    //Variable de estado para Listar Productos
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        consultarApiProductos().then((respuestaListaProductos) => {
+            setProductos(respuestaListaProductos);
+        });
+    }, []);
+
     return (
         <Container>
             <h1 className="text-center my-4">Haz tu pedido</h1>
             <Row>
                 <Col md={8}>
                     <Row>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
-                        <CardMenu></CardMenu>
+                        {productos.map((producto) => (
+                            <CardMenu key={producto._id} producto={producto} />
+                        ))}
                     </Row>
                 </Col>
                 <Col md={4}>

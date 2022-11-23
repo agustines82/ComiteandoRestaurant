@@ -114,6 +114,45 @@ const [direccion, setDireccion] = useState();
             </Form.Text>
           </Form.Group> */}
         </Form>
+        <Form id="FormMP">
+          <Form.Label className="my-3 fs-4"> Metodos de pago</Form.Label>
+          {["radio"].map((type) => (
+            <div key={`inline-${type}`} className="mb-3">
+              <Form.Check 
+                inline
+                label="Tarjeta de Credito"
+                name="group1"
+                type={type}
+                id={`inline-${type}-1`}
+              />
+              <Form.Check
+                inline
+                label="Tarjeta de Debito"
+                name="group1"
+                type={type}
+                id={`inline-${type}-2`}
+
+              />
+              <Form.Check
+                inline
+                label="Efectivo"
+                name="group1"
+                type={type}
+                id={`inline-${type}-2`}
+                
+              />
+              <Form.Check
+                inline
+                label="Transferencias"
+                name="group1"
+                type={type}
+                id={`inline-${type}-2`}
+                
+              />
+            </div>
+          ))}
+        </Form>
+
 
       <section className="my-3">
         <Accordion className="box2">

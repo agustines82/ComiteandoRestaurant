@@ -15,8 +15,7 @@ const HazTuPedido = () => {
     }, []);
 
     return (
-        <Container>
-            <h1 className="text-center my-4">Haz tu pedido</h1>
+        <Container fluid className="mainSection">
             <Row>
                 <Col md={8}>
                     <Row>
@@ -27,7 +26,7 @@ const HazTuPedido = () => {
                 </Col>
                 <Col md={4}>
                     <div>
-                        <h1>Haz tu pedido</h1>
+                        <h1 className="text-center">Haz tu pedido</h1>
                     </div>
                     <Card>
                         <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>

@@ -77,7 +77,7 @@ const Administrador = () => {
     };
 
     //LOGICA PAGINACION Y FILTRADO LISTA PRODUCTOS
-    const productosPorPagina = 5;
+    const productosPorPagina = 10;
     const indexUltimoProducto = paginaActualProductos * productosPorPagina;
     const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
     const productosPaginados = productos.slice(indexPrimerProducto, indexUltimoProducto);
@@ -162,7 +162,7 @@ const Administrador = () => {
     };
 
     return (
-        <Container className="mainSection">
+        <Container fluid className="mainSection">
             <article className="d-flex justify-content-between align-items-center mt-5 ">
                 <h1 className="display-3 mt-3 fontTitulos">Pedidos Solicitados</h1>
             </article>

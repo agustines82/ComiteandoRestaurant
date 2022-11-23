@@ -5,8 +5,8 @@ import React from "react";
 const Inicio = () => {
     return (
         <header>
-            <Container>
-                <section id="bannerComiteandoBar" className="carousel slide" data-bs-ride="true">
+            <Container fluid>
+                <section id="bannerComiteandoBar" className="carousel slide mt-3" data-bs-ride="true">
                     <div className="carousel-indicators">
                         <button
                             type="button"

@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import logoFooter from "../../assets/img/logoFooter.jpg";
 const Footer = () => {
     return (
-        <Container>
+        <Container fluid>
             <Row className="text-center my-5">
                 <Col>
                     <img src={logoFooter} alt="logo footer" />

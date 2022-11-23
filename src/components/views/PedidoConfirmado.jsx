@@ -11,7 +11,15 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const PedidoConfirmado = () => {
+// cargar usuario desde localStorage
+const usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
+//cargar pedido desde sessionStorage
+
+const pedidoCliente = JSON.parse(sessionStorage.getItem("pedidoCliente")) || [];
+
+//variables de estado
+const [direccion, setDireccion] = useState();
 
 
   //botones + y -

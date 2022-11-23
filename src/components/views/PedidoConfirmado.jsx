@@ -17,12 +17,13 @@ const PedidoConfirmado = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+   
     console.log("desde mi funcion submit");
   };
 
   const afterClickTarj = () => {
-    console.log('onclick');
+    
+   
 
 
 
@@ -89,7 +90,7 @@ const PedidoConfirmado = () => {
             {errors.indicacionesPedido?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Label>Numero de contacto:</Form.Label>
           <Form.Control
             required
@@ -110,10 +111,7 @@ const PedidoConfirmado = () => {
           <Form.Text className="text-danger">
             {errors.numeroContacto?.message}
           </Form.Text>
-        </Form.Group>
-        <button className="my-3 p-3 btn botonguardar " type="submit">
-          Guardar
-        </button>
+        </Form.Group> */}
       </Form>
 
       <section>
@@ -196,23 +194,8 @@ const PedidoConfirmado = () => {
       </section>
       <section className="my-3">
         <Card className="w-100">
-          <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
-          <hr />
-          <ListGroup variant="flush">
-            <ListGroup.Item className="d-flex my-2 justify-content-between">
-              {" "}
-              <span className="botonpedido">
-                <i class="bi bi-plus-circle-fill"></i>
-              </span>{" "}
-              <span className="botonpedido2">
-                {" "}
-                <i class="bi bi-trash3-fill "></i>
-              </span>
-            </ListGroup.Item>
-          </ListGroup>
           <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>
           <Card.Text className="m-3">Total:</Card.Text>
-
           <div className="d-flex justify-content-center">
             <button className="my-3 p-3 botonconf" type="submit">
               Comprar

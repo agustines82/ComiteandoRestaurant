@@ -36,7 +36,7 @@ const Registro = () => {
 
     return (
         <>
-            <NavLink end onClick={handleShow} className={"nav-item linksMenu fw-bold fontTitulos fs-3 hoverLinksMenu"}>
+            <NavLink end onClick={handleShow} className={"nav-item linksMenu fw-bold fontTitulos fs-1 hoverLinksMenu"}>
                 Registro
             </NavLink>
 

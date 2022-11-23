@@ -1,3 +1,4 @@
+import { createElement, React } from "react";
 import {
   Form,
   Card,
@@ -22,12 +23,10 @@ const PedidoConfirmado = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+    console.log(data);
     console.log("desde mi funcion submit");
-
-    
   };
-
   return (
     <Container>
       <aside className="my-3">
@@ -109,19 +108,9 @@ const PedidoConfirmado = () => {
             </Form.Text>
           </Form.Group> */}
         </Form>
-      </aside>
-      <aside className="my-3">
-        <span class="custom-dropdown">
-          <select>
-            <option>METODOS DE PAGO</option>
-            <option>Tarjeta de credito</option>
-            <option>Tarjeta de debito</option>
-            <option>Efectivo</option>
-            <option>Transferencia</option>
-          </select>
-        </span>
-      </aside>
-      <aside className="my-3">
+      </section>
+
+      <section className="my-3">
         <Accordion className="box2">
           <Accordion.Item eventKey="0">
             <Accordion.Header>Detalle del pedido</Accordion.Header>
@@ -166,8 +155,8 @@ const PedidoConfirmado = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-      </aside>
-      <aside className="my-3">
+      </section>
+      <section className="my-3">
         <Card className="w-100">
           
           <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>
@@ -179,7 +168,7 @@ const PedidoConfirmado = () => {
             </button>
           </div>
         </Card>
-      </aside>
+      </section>
     </Container>
   );
 };

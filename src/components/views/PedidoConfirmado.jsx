@@ -2,6 +2,9 @@ import { React } from "react";
 import { Form, Card, Accordion, Table, Container } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { crearPedidoAPI } from "../helpers/queries";
 
 const PedidoConfirmado = () => {
     // cargar usuario desde localStorage
@@ -11,22 +14,40 @@ const PedidoConfirmado = () => {
 
     //variables de estado
     const [direccion, setDireccion] = useState();
-
     //botones + y -
     const [numeroProducto, setnumeroProducto] = useState(1);
-
     //objetos para usar hookform
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = () => {
-        console.log("desde mi funcion submit");
+
+    const navegar = useNavigate();
+
+    // const dataPedido = {
+    // nombre: {usuario.usuario.nombre},
+    // fecha: date,
+    // productos: pedidoCliente,
+    // domicilio: direccion,
+    // estado:false
+    // }
+
+    const crearPedido = (dataPedido) => {
+        //una vez todo validado enviamos la peticion a la API
+        crearPedidoAPI(dataPedido).then((respuesta) => {
+            if (respuesta.status === 201) {
+                Swal.fire("Pedido creado", "El pedido se cargo correctamente", "success");
+            } else {
+                Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
+            }
+        });
+        //redirecciono al usuario a la pagina de inicio
+        navegar("/");
     };
     return (
         <Container>
-            <Form noValidate className="formulariopedido mt-5" onSubmit={handleSubmit(onSubmit)}>
+            <Form noValidate className="formulariopedido mt-5" onSubmit={handleSubmit(crearPedido)}>
                 <h3 className="text-center">Datos del envio</h3>
                 <Form.Group className="mb-3 my-3">
                     <Form.Label>{usuario.usuario.nombre} necesitamos nos brindes una dirección para la entrega.</Form.Label>
@@ -41,12 +62,12 @@ const PedidoConfirmado = () => {
                         {...register("direccionPedido", {
                             required: "La direccion es un campo obligatorio",
                             minLength: {
-                                value: 2,
-                                message: "La cantidad minima de caracteres, es de 2.",
+                                value: 5,
+                                message: "La cantidad minima de caracteres, es de 5.",
                             },
                             maxLength: {
-                                value: 20,
-                                message: "La cantidad maxima de caracteres, es de 20. ",
+                                value: 100,
+                                message: "La cantidad maxima de caracteres, es de 100. ",
                             },
                         })}
                     />
@@ -55,7 +76,6 @@ const PedidoConfirmado = () => {
                 <Form.Group>
                     <Form.Label>Indicaciones:</Form.Label>
                     <Form.Control
-                        required
                         placeholder="Escribe tu indicacion aqui"
                         {...register("indicacionesPedido", {
                             minLength: {
@@ -63,35 +83,13 @@ const PedidoConfirmado = () => {
                                 message: "La cantidad minima de caracteres es de 5.",
                             },
                             maxLength: {
-                                value: 50,
+                                value: 100,
                                 message: "La cantidad maxima de caracteres es de 100.",
                             },
                         })}
                     />
                     <Form.Text className="text-danger">{errors.indicacionesPedido?.message}</Form.Text>
                 </Form.Group>
-                {/* <Form.Group>
-            <Form.Label>Numero de contacto:</Form.Label>
-            <Form.Control
-              required
-              type="number"
-              placeholder="Escribe tu numero aqui"
-              {...register("numeroContacto", {
-                required: "El numero de contacto es un campo obligatorio",
-                minLength: {
-                  value: 6,
-                  message: "La cantidad minima de caracteres, es de 6.",
-                },
-                maxLength: {
-                  value: 14,
-                  message: "La cantidad maxima de caracteres, es de 14.",
-                },
-              })}
-            />
-            <Form.Text className="text-danger">
-              {errors.numeroContacto?.message}
-            </Form.Text>
-          </Form.Group> */}
             </Form>
             <Form id="FormMP">
                 <Form.Label className="my-3 fs-4"> Metodos de pago</Form.Label>

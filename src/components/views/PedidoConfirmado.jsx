@@ -14,7 +14,7 @@ const PedidoConfirmado = () => {
 
 
   //botones + y -
-  const [numeroProductoconf, setnumeroProductoconf] = useState(1);
+  const [numeroProducto, setnumeroProducto] = useState(1);
 
   //objetos para usar hookform
   const {
@@ -22,8 +22,7 @@ const PedidoConfirmado = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     console.log("desde mi funcion submit");
 
     
@@ -87,7 +86,7 @@ const PedidoConfirmado = () => {
               {errors.indicacionesPedido?.message}
             </Form.Text>
           </Form.Group>
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Numero de contacto:</Form.Label>
             <Form.Control
               required
@@ -108,10 +107,7 @@ const PedidoConfirmado = () => {
             <Form.Text className="text-danger">
               {errors.numeroContacto?.message}
             </Form.Text>
-          </Form.Group>
-          <button className="my-3 p-3 btn botonguardar " type="submit">
-            Guardar
-          </button>
+          </Form.Group> */}
         </Form>
       </aside>
       <aside className="my-3">
@@ -150,12 +146,12 @@ const PedidoConfirmado = () => {
                   <i
                     class="bi bi-dash-circle-fill mx-1"
                     onClick={() => {
-                      setnumeroProductoconf(numeroProductoconf - 1);
+                      setnumeroProducto(numeroProducto - 1);
                     }}
-                  ></i>{numeroProductoconf}<i
+                  ></i>{numeroProducto}<i
                     class="bi bi-plus-circle-fill mx-1 "
                     onClick={() => {
-                      setnumeroProductoconf(numeroProductoconf + 1);
+                      setnumeroProducto(numeroProducto + 1);
                     }}
                   ></i>
                 </span>{" "}
@@ -173,13 +169,7 @@ const PedidoConfirmado = () => {
       </aside>
       <aside className="my-3">
         <Card className="w-100">
-          <Card.Title className="text-center fs-4 mt-3">Mi pedido</Card.Title>
-          <hr />
-          <ListGroup variant="flush">
-            <ListGroup.Item className="d-flex my-2 justify-content-between">
-             p
-            </ListGroup.Item>
-          </ListGroup>
+          
           <Card.Text className="mt-4 m-3">Subtotal:</Card.Text>
           <Card.Text className="m-3">Total:</Card.Text>
 

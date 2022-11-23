@@ -23,14 +23,12 @@ const PedidoConfirmado = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     console.log("desde mi funcion submit");
   };
   return (
     <Container>
-      <aside className="my-3">
-        <Form
+      <Form
           noValidate
           className="formulariopedido"
           onSubmit={handleSubmit(onSubmit)}
@@ -108,7 +106,6 @@ const PedidoConfirmado = () => {
             </Form.Text>
           </Form.Group> */}
         </Form>
-      </section>
 
       <section className="my-3">
         <Accordion className="box2">

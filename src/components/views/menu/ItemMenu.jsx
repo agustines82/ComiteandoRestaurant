@@ -39,7 +39,7 @@ const ItemMenu = ({ producto, setProductos }) => {
                 <th>{nombre}</th>
                 <th>{estado ? "D" : "ND"}</th>
                 <th>${precio}</th>
-                <th className="text-truncate thLargo">{detalle}</th>
+                <th className="text-truncate thLargo2">{detalle}</th>
                 <th>{categoria}</th>
                 <th className="text-truncate thLargo">{imagen}</th>
                 <td className="text-center">

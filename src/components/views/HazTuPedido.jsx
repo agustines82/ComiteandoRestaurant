@@ -9,7 +9,7 @@ const HazTuPedido = () => {
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
     console.log(pedido);
-    console.log(pedido.subTotal)
+    console.log(pedido.subTotal);
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -85,183 +85,85 @@ const HazTuPedido = () => {
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BENTOS</h3>
                         <Row>
                             {bentos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
                         <Row>
                             {takatacos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BROCHETAS Y KUSHIAGES</h3>
                         <Row>
                             {brochetas.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">KAITEN SUSHI</h3>
                         <Row>
                             {kaiten.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MAKI SUSHI BAR</h3>
                         <Row>
                             {maki.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAZONES DONBURI</h3>
                         <Row>
                             {tazones.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">RAMEN</h3>
                         <Row>
                             {ramen.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TEPPANYAKI</h3>
                         <Row>
                             {teppanyaki.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">ARROZ</h3>
                         <Row>
                             {arroz.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">NIGIRI BAR</h3>
                         <Row>
                             {nigiri.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">SASHIMI</h3>
                         <Row>
                             {sashimi.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MOCKTAILS</h3>
                         <Row>
                             {mocktails.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">CERVEZA Y SAKE</h3>
                         <Row>
                             {cerveza.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">REFRESCOS</h3>
                         <Row>
                             {refrescos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    cantidad={cantidad}
-                                    setCantidad={setCantidad}
-                                />
+                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
                             ))}
                         </Row>
                     </Col>
@@ -274,9 +176,9 @@ const HazTuPedido = () => {
                                     <ul>
                                         <Row className="d-flex flex-nowrap fs-4">
                                             <Col sm={3}>
-                                                {cantidad.map((cantidad) => (
+                                                {/* {cantidad.map((cantidad) => (
                                                     <li key={cantidad}>{cantidad} un.</li>
-                                                ))}
+                                                ))} */}
                                             </Col>
                                             <Col>
                                                 {pedido.map((pedido) => (

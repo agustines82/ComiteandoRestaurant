@@ -8,11 +8,21 @@ import { crearPedidoAPI } from "../helpers/queries";
 
 const PedidoConfirmado = () => {
     // cargar usuario desde localStorage
-    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    const usuarioX = JSON.parse(localStorage.getItem("usuarioLogueado"));
     //cargar pedido desde sessionStorage
-    const pedidoCliente = JSON.parse(sessionStorage.getItem("pedidoCliente")) || [];
+    const pedidoCliente = JSON.parse(sessionStorage.getItem("keyPedido")) || [];
+    console.log(pedidoCliente);
 
     //variables de estado
+    const [pedidoCompleto, setpedidoCompleto] = useState({
+        usuario: "",
+        fecha: "",
+        productos: [],
+        domicilio: "",
+        indicaciones: "",
+        estado: false,
+    });
+
     const [direccion, setDireccion] = useState();
     //botones + y -
     const [numeroProducto, setnumeroProducto] = useState(1);
@@ -50,7 +60,7 @@ const PedidoConfirmado = () => {
             <Form noValidate className="formulariopedido mt-5" onSubmit={handleSubmit(crearPedido)}>
                 <h3 className="text-center">Datos del envio</h3>
                 <Form.Group className="mb-3 my-3">
-                    <Form.Label>{usuario.usuario.nombre} necesitamos nos brindes una dirección para la entrega.</Form.Label>
+                    <Form.Label>{usuarioX.usuario.nombre} necesitamos nos brindes una dirección para la entrega.</Form.Label>
                     <br />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formGridAddress1">

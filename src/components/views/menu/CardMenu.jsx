@@ -13,7 +13,7 @@ const useContador = () => {
     };
 };
 
-const CardMenu = ({ producto, pedido, setPedido }) => {
+const CardMenu = ({ producto, pedido, setPedido, total, setTotal }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar } = useContador();
     let subTotal = contador * precio;
@@ -27,6 +27,7 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                     subTotal: subTotal,
                 },
             ]);
+            setTotal([...total, subTotal]);
         }
     };
 
@@ -51,7 +52,7 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                                 +
                             </Button>
 
-                            <Button className="btn-sm boton mx-2 my-3 mb-0" onClick={agregarProducto}>
+                            <Button className="btn-sm boton mx-1 my-3 mb-0" onClick={agregarProducto}>
                                 Agregar
                             </Button>
                         </div>

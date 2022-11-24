@@ -158,18 +158,22 @@ const HazTuPedido = () => {
                         <ListGroup variant="flush">
                             <div>
                                 <ul>
-                                    <Row>
-                                        {cantidad.map((cantidad) => (
-                                            <li key={cantidad}>{cantidad}</li>
-                                        ))}
-                                        {pedido.map((pedido) => (
-                                            <div key={pedido._id}>
-                                                {pedido.nombre} ${pedido.precio}
-                                                <span className=" ms-3 botonpedido2">
-                                                    <i className="bi bi-trash3-fill"></i>
-                                                </span>
-                                            </div>
-                                        ))}
+                                    <Row className="d-flex flex-nowrap fs-4">
+                                        <Col sm={3}>
+                                            {cantidad.map((cantidad) => (
+                                                <li key={cantidad}>{cantidad} un.</li>
+                                            ))}
+                                        </Col>
+                                        <Col>
+                                            {pedido.map((pedido) => (
+                                                <div className="d-flex justify-content-between mt-1" key={pedido._id}>
+                                                    {pedido.nombre} ${pedido.precio}
+                                                    <span className=" ms-3 botonpedido2">
+                                                        <i className="bi bi-trash3-fill"></i>
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </Col>
                                     </Row>
                                 </ul>
                             </div>

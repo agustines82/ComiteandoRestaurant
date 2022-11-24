@@ -268,24 +268,15 @@ p.textoevento {
 }
 
 /*   PAGINA PEDIDO CONFIRMADO   */
-.formulariopedido {
+.formocultar{
+    display: none;
+}
+.bglabel{
+    background: rgb(240, 69, 35, 0.7);
     width: 100%;
-    border: 2px black;
-    background: white;
-    padding: 20px 30px;
+    padding: 10px;
+    border: 1px solid;
     border-radius: 10px;
-}
-.box2 {
-    width: 100%;
-    border: 2px black;
-    background: white;
-    border-radius: 10px;
-}
-.acordionpedido {
-    background-color: #f04523;
-}
-.custom-dropdown {
-    margin: 10px;
 }
 
 /*TABLE DE USUARIOS*/

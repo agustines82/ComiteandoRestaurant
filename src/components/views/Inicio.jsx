@@ -11,29 +11,29 @@ const Inicio = () => {
                         <img
                             className="d-block w-100"
                             src="https://tofuu.getjusto.com/orioneat-prod-resized/HdmKYR7kgvDnWJAFD-x-1800.webp"
-                            alt="First slide"
+                            alt="comida 1"
                         />
                     </Carousel.Item>
                     <Carousel.Item interval={750}>
                         <img
                             className="d-block w-100"
                             src="https://tofuu.getjusto.com/orioneat-prod-resized/wjnWRkQBMbEfL5xLd-x-1800.webp"
-                            alt="Second slide"
+                            alt="comida 2"
                         />
                     </Carousel.Item>
                     <Carousel.Item interval={750}>
                         <img
                             className="d-block w-100"
                             src="https://tofuu.getjusto.com/orioneat-local/resized2/3XuSKa9qL7Y4QpKhQ-x-1800.webp"
-                            alt="Third slide"
+                            alt="comida 3"
                         />
                     </Carousel.Item>
                 </Carousel>
                 <Row className="justify-content-center mt-3 mb-0 ">
                     <Col md={8}>
                         <div className="backgroundBotones rounded-5 my-0 text-justify p-3 ">
-                            <p className="text-center fs-1 fw-bold fontTitulos">SOMOS COMITEANDO!!!</p>
-                            <p className="mx-3 py-3 fs-3 text-justify">
+                            <p className="text-center fs-big fw-bold fontTitulos">SOMOS COMITEANDO!!!</p>
+                            <p className="mx-3 py-3 fs-3 text-somos">
                                 Somos una experiencia de hospitalidad y gastronomía Japonesa en constante movimiento. Empezamos en 2003, creando el
                                 primer Kaiten Sushi* local. Desde entonces, nos dedicamos a cocinar tus platillos favoritos, recibiéndote siempre, en
                                 un ambiente casual y divertido. Cada día, seleccionamos los mejores ingredientes de proveedores locales y extranjeros.

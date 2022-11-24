@@ -36,6 +36,30 @@
     color: #f04523;
 }
 
+/** REGISTRO */
+.letra {
+    font-family: "IBM Plex Mono", monospace;
+}
+/* Botones */
+.boton {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+}
+.boton:hover {
+    text-decoration: none;
+    background: f04622;
+}
+.errorLottie {
+    background: transparent;
+    speed: "1";
+    width: 80vh;
+    height: 80vh;
+}
+
 /*PAGINA PRINCIPAL */
 .banner1 {
     background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2FDWzX3MKty67Rd5cYu-cheff.png);
@@ -140,7 +164,7 @@ p.textoevento {
     z-index: 100;
     padding-top: 8px;
 }
-.text-justify {
+.text-somos {
     text-align: justify;
 }
 
@@ -179,7 +203,11 @@ p.textoevento {
     border-color: #9e9d9b;
 }
 
-/*PAGINA MI PEDIDO*/
+/*PAGINA HAZ TU PEDIDO*/
+.cardMenu {
+    display: flex;
+    flex-direction: row;
+}
 .linksCategoria {
     background-color: #e9e6df;
     border-style: dashed;
@@ -269,9 +297,12 @@ p.textoevento {
 .width-1 {
     width: 160px;
 }
-/*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
+/*EXTRAS*/
 .fs-small {
     font-size: small;
+}
+.fs-big {
+    font-size: 150px;
 }
 
 /* MEDIA QUERIES */
@@ -281,9 +312,22 @@ p.textoevento {
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
+    /*Inicio*/
+    .fs-big {
+        font-size: 50px;
+    }
+    .text-somos {
+        text-align: center;
+    }
     /*pagina administrador (itemPedido)*/
     .thLargo2 {
         max-width: 250px;
+    }
+    /*haz tu pedido*/
+    .cardMenu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }
 
@@ -293,28 +337,17 @@ p.textoevento {
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
-}
-/** Registrarse */
-.letra {
-    font-family: "IBM Plex Mono", monospace;
-}
-/** Botones */
-
-.boton {
-    background-color: #f04622;
-    padding: 15px;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-    border: none;
-}
-.boton:hover {
-    text-decoration: none;
-    background: f04622;
-}
-.errorLottie {
-    background: transparent;
-    speed: "1";
-    width: 80vh;
-    height: 80vh;
+    /*Inicio*/
+    .text-somos {
+        text-align: center;
+    }
+    .fs-big {
+        font-size: 80px;
+    }
+    /*haz tu pedido*/
+    .cardMenu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 }

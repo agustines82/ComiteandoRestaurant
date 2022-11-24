@@ -26,7 +26,7 @@ const CardMenu = ({ producto, pedido, setPedido, cantidad, setCantidad }) => {
 
     return (
         <Col md={6} className={"my-3"}>
-            <article className="d-flex flex-row">
+            <article className="cardMenu">
                 <div>
                     <Card.Img className="imagenHaz" variant="top" src={imagen} />
                 </div>

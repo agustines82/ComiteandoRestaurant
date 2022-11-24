@@ -37,6 +37,15 @@ const HazTuPedido = () => {
         return (acumulador = acumulador + parseFloat(precio));
     }, 0);
 
+    const borrarProducto = () => {
+        // necesito hacer un nuevo arreglo sin el ojbeto x
+        const pedidoX = pedido.filter((pedido) => pedido.productos._id);
+        console.log(pedidoX);
+    };
+
+    //cargar pedido en el session storage:
+    sessionStorage.setItem("keyPedido", JSON.stringify(pedido));
+
     return (
         <>
             <Carousel className="mt-3">
@@ -281,7 +290,7 @@ const HazTuPedido = () => {
                                                 {pedido.map((pedido) => (
                                                     <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
                                                         {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
-                                                        <span className="botonpedido2">
+                                                        <span className="botonpedido2" onClick={borrarProducto}>
                                                             <i className="bi bi-trash3-fill"></i>
                                                         </span>
                                                     </div>

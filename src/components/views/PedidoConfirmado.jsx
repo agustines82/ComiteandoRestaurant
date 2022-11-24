@@ -10,7 +10,8 @@ const PedidoConfirmado = () => {
     // cargar usuario desde localStorage
     const usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
     //cargar pedido desde sessionStorage
-    const pedidoCliente = JSON.parse(sessionStorage.getItem("pedidoCliente")) || [];
+    const pedidoCliente = JSON.parse(sessionStorage.getItem("keyPedido")) || [];
+    console.log(pedidoCliente);
 
     //variables de estado
     const [direccion, setDireccion] = useState();

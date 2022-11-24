@@ -8,9 +8,8 @@ const HazTuPedido = () => {
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
-    const [cantidad, setCantidad] = useState([]);
     console.log(pedido);
-    console.log(cantidad);
+    console.log(pedido.subTotal)
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -67,87 +66,98 @@ const HazTuPedido = () => {
                                 producto={producto}
                                 pedido={pedido}
                                 setPedido={setPedido}
-                                cantidad={cantidad}
-                                setCantidad={setCantidad}
                             />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
                     <Row>
                         {takatacos.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BROCHETAS Y KUSHIAGES</h3>
                     <Row>
                         {brochetas.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">KAITEN SUSHI</h3>
                     <Row>
                         {kaiten.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MAKI SUSHI BAR</h3>
                     <Row>
                         {maki.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto}  pedido={pedido}
+                            setPedido={setPedido}/>
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAZONES DONBURI</h3>
                     <Row>
                         {tazones.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto}  pedido={pedido}
+                            setPedido={setPedido}/>
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">RAMEN</h3>
                     <Row>
                         {ramen.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TEPPANYAKI</h3>
                     <Row>
                         {teppanyaki.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">ARROZ</h3>
                     <Row>
                         {arroz.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">NIGIRI BAR</h3>
                     <Row>
                         {nigiri.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">SASHIMI</h3>
                     <Row>
                         {sashimi.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MOCKTAILS</h3>
                     <Row>
                         {mocktails.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">CERVEZA Y SAKE</h3>
                     <Row>
                         {cerveza.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                     <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">REFRESCOS</h3>
                     <Row>
                         {refrescos.map((producto) => (
-                            <CardMenu key={producto._id} producto={producto} />
+                            <CardMenu key={producto._id} producto={producto} pedido={pedido}
+                            setPedido={setPedido} />
                         ))}
                     </Row>
                 </Col>
@@ -158,23 +168,18 @@ const HazTuPedido = () => {
                         <ListGroup variant="flush">
                             <div>
                                 <ul>
-                                    <Row>
-                                        {cantidad.map((cantidad) => (
-                                            <li key={cantidad}>{cantidad}</li>
-                                        ))}
                                         {pedido.map((pedido) => (
-                                            <div key={pedido._id}>
-                                                {pedido.nombre} ${pedido.precio}
+                                            <li key={pedido.productos._id}>{pedido.cantidad} 
+                                                {pedido.productos.nombre} ${pedido.productos.precio}
                                                 <span className=" ms-3 botonpedido2">
                                                     <i className="bi bi-trash3-fill"></i>
                                                 </span>
-                                            </div>
+                                            </li> 
                                         ))}
-                                    </Row>
                                 </ul>
                             </div>
                         </ListGroup>
-                        <Card.Text className="m-3 fw-bold">Total:</Card.Text>
+                        <Card.Text className="m-3 fw-bold">Total:$</Card.Text>
                         <div className="d-flex justify-content-center">
                             <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">
                                 Confirmar pedido

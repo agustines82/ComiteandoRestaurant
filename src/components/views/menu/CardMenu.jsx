@@ -13,14 +13,17 @@ const useContador = () => {
     };
 };
 
-const CardMenu = ({ producto, pedido, setPedido, cantidad, setCantidad }) => {
+const CardMenu = ({ producto, pedido, setPedido }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar } = useContador();
-
+    let subTotal= contador*precio;
     const agregarProducto = () => {
         if (contador > 0) {
-            setPedido([...pedido, producto]);
-            setCantidad([...cantidad, contador]);
+            setPedido([...pedido,{
+                productos: producto,
+                cantidad: contador,
+                subTotal: subTotal
+        }]);
         }
     };
 

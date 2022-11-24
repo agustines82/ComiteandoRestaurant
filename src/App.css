@@ -248,11 +248,7 @@ p.textoevento {
     left: 0;
     bottom: 0;
 }
-.botonconf:hover:before,
-.botonconf:hover:after {
-    width: 100%;
-    transition: 800ms ease all;
-}
+
 .botonpedido {
     width: 65px;
     padding: 2px;
@@ -264,7 +260,6 @@ p.textoevento {
 }
 .botonpedido2 {
     width: 25px;
-    padding: 2px;
     text-align: center;
     color: #e9e6df;
     background-color: #f04523;
@@ -349,5 +344,8 @@ p.textoevento {
         display: flex;
         flex-direction: column;
         text-align: center;
+    }
+    .altoDetallecito {
+        height: 83px;
     }
 }

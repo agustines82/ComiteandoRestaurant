@@ -51,7 +51,7 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                                 +
                             </Button>
 
-                            <Button className="btn-sm boton mx-2 my-3 mb-0" onClick={agregarProducto}>
+                            <Button className="btn-sm boton mx-1 my-3 mb-0" onClick={agregarProducto}>
                                 Agregar
                             </Button>
                         </div>

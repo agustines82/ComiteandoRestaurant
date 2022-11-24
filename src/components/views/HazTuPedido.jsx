@@ -175,15 +175,10 @@ const HazTuPedido = () => {
                                 <div>
                                     <ul>
                                         <Row className="d-flex flex-nowrap fs-4">
-                                            <Col sm={3}>
-                                                {/* {cantidad.map((cantidad) => (
-                                                    <li key={cantidad}>{cantidad} un.</li>
-                                                ))} */}
-                                            </Col>
                                             <Col>
                                                 {pedido.map((pedido) => (
-                                                    <div className="d-flex justify-content-between mt-1" key={pedido._id}>
-                                                        {pedido.nombre} ${pedido.precio}
+                                                    <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
+                                                        {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
                                                         <span className="botonpedido2">
                                                             <i className="bi bi-trash3-fill"></i>
                                                         </span>

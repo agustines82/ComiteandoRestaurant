@@ -16,14 +16,17 @@ const useContador = () => {
 const CardMenu = ({ producto, pedido, setPedido }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar } = useContador();
-    let subTotal= contador*precio;
+    let subTotal = contador * precio;
     const agregarProducto = () => {
         if (contador > 0) {
-            setPedido([...pedido,{
-                productos: producto,
-                cantidad: contador,
-                subTotal: subTotal
-        }]);
+            setPedido([
+                ...pedido,
+                {
+                    productos: producto,
+                    cantidad: contador,
+                    subTotal: subTotal,
+                },
+            ]);
         }
     };
 
@@ -39,15 +42,15 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                         <Card.Text className="altoDetallecito">{detalle}</Card.Text>
                         <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
                             <aside className="fw-bold fs-2">${precio}</aside>
-                            <aside>
-                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={restar}>
-                                    -
-                                </Button>
-                                <p className="d-inline mx-1 fw-bold">{contador}</p>
-                                <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={sumar}>
-                                    +
-                                </Button>
-                            </aside>
+
+                            <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold mb-2" onClick={restar}>
+                                -
+                            </Button>
+                            <p className="d-inline mx-1 fw-bold">{contador}</p>
+                            <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold mb-2" onClick={sumar}>
+                                +
+                            </Button>
+
                             <Button className="btn-sm boton mx-2 my-3 mb-0" onClick={agregarProducto}>
                                 Agregar
                             </Button>

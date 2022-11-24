@@ -36,18 +36,44 @@
     color: #f04523;
 }
 
+/** REGISTRO */
+.letra {
+    font-family: "IBM Plex Mono", monospace;
+}
+/* Botones */
+.boton {
+    background-color: #f04622;
+    padding: 15px;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+}
+.boton:hover {
+    text-decoration: none;
+    background: f04622;
+}
+.errorLottie {
+    background: transparent;
+    speed: "1";
+    width: 80vh;
+    height: 80vh;
+}
+
 /*PAGINA PRINCIPAL */
 .banner1 {
     background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2FDWzX3MKty67Rd5cYu-cheff.png);
-    height: 300px;
+    height: 450px;
     text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 p.textoconocenos {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-family: "Bebas Neue", cursive;
     font-weight: 900;
     text-align: center;
-    font-size: 46px;
-    padding-top: 56px;
+    font-size: 60px;
+    padding-top: 85px;
     color: white;
     margin-bottom: 0px !important;
 }
@@ -66,26 +92,36 @@ p.par {
 }
 .banner2 {
     background-image: url(https://s3.amazonaws.com/orion-eat-app-files/orioneat-prod%2F2Nhru7fEq5SYbCx8e-mochi.png);
-    height: 310px;
+    height: 450px;
     text-align: center;
     background-size: cover;
 }
 p.textoevento {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial;
+    font-family: "Bebas Neue", cursive;
     font-weight: 900;
     text-align: center;
-    font-size: 46px;
-    padding-top: 56px;
+    font-size: 60px;
+    padding-top: 120px;
     color: white;
     margin-bottom: 0px;
 }
-a.bnn {
+.bnn {
     background-color: #f04622;
-    padding: 15px;
+    padding: 25px;
     color: white;
     font-weight: 700;
     border-radius: 5px;
+    text-decoration: none;
+    font-size: larger;
 }
+.bnn:hover {
+    background-color: #f04622;
+    padding: 25px;
+    color: white;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
 .instagram {
     position: fixed;
     width: 60px;
@@ -98,6 +134,7 @@ a.bnn {
     text-align: center;
     font-size: 30px;
     z-index: 100;
+    padding-top: 8px;
 }
 .facebook {
     position: fixed;
@@ -111,6 +148,7 @@ a.bnn {
     text-align: center;
     font-size: 30px;
     z-index: 100;
+    padding-top: 8px;
 }
 .whatsApp {
     position: fixed;
@@ -126,7 +164,7 @@ a.bnn {
     z-index: 100;
     padding-top: 8px;
 }
-.text-justify {
+.text-somos {
     text-align: justify;
 }
 
@@ -165,7 +203,11 @@ a.bnn {
     border-color: #9e9d9b;
 }
 
-/*PAGINA MI PEDIDO*/
+/*PAGINA HAZ TU PEDIDO*/
+.cardMenu {
+    display: flex;
+    flex-direction: row;
+}
 .linksCategoria {
     background-color: #e9e6df;
     border-style: dashed;
@@ -184,8 +226,8 @@ a.bnn {
     border: 1px #f04523;
     cursor: pointer;
     display: inline-block;
-  }
-  .botonconf:hover {
+}
+.botonconf:hover {
     color: #f04523;
     background: #e9e6df;
 }
@@ -206,12 +248,8 @@ a.bnn {
     left: 0;
     bottom: 0;
 }
-.botonconf:hover:before,
-.botonconf:hover:after {
-    width: 100%;
-    transition: 800ms ease all;
-  }
-  .botonpedido {
+
+.botonpedido {
     width: 65px;
     padding: 2px;
     text-align: end;
@@ -222,7 +260,6 @@ a.bnn {
 }
 .botonpedido2 {
     width: 25px;
-    padding: 2px;
     text-align: center;
     color: #e9e6df;
     background-color: #f04523;
@@ -255,9 +292,12 @@ a.bnn {
 .width-1 {
     width: 160px;
 }
-/*PAGINAS DE EDITAR Y AGREGAR PRODUCTOS, USUARIOS, PEDIDOS*/
+/*EXTRAS*/
 .fs-small {
     font-size: small;
+}
+.fs-big {
+    font-size: 150px;
 }
 
 /* MEDIA QUERIES */
@@ -267,9 +307,22 @@ a.bnn {
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
+    /*Inicio*/
+    .fs-big {
+        font-size: 50px;
+    }
+    .text-somos {
+        text-align: center;
+    }
     /*pagina administrador (itemPedido)*/
     .thLargo2 {
         max-width: 250px;
+    }
+    /*haz tu pedido*/
+    .cardMenu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }
 
@@ -279,28 +332,20 @@ a.bnn {
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
-}
-/** Registrarse */
-.letra {
-    font-family: "IBM Plex Mono", monospace;
-}
-/** Botones */
-
-.boton {
-    background-color: #f04622;
-    padding: 15px;
-    color: white;
-    font-weight: 700;
-    border-radius: 5px;
-    border: none;
-}
-.boton:hover {
-    text-decoration: none;
-    background: f04622;
-}
-.errorLottie {
-    background: transparent;
-    speed: "1";
-    width: 80vh;
-    height: 80vh;
+    /*Inicio*/
+    .text-somos {
+        text-align: center;
+    }
+    .fs-big {
+        font-size: 80px;
+    }
+    /*haz tu pedido*/
+    .cardMenu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .altoDetallecito {
+        height: 83px;
+    }
 }

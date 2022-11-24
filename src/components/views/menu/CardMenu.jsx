@@ -29,17 +29,17 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
 
     return (
         <Col md={6} className={"my-3"}>
-            <article className="d-flex flex-row">
+            <article className="cardMenu">
                 <div>
                     <Card.Img className="imagenHaz" variant="top" src={imagen} />
                 </div>
                 <div>
                     <Card.Title className="fw-bold ms-3 my-3">{nombre}</Card.Title>
                     <Card.Body>
-                        <Card.Text>{detalle}</Card.Text>
-                        <div className="d-flex flex-wrap justify-content-between align-items-end">
-                            <Card.Text className="fw-bold fs-2">${precio}</Card.Text>
-                            <div>
+                        <Card.Text className="altoDetallecito">{detalle}</Card.Text>
+                        <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
+                            <aside className="fw-bold fs-2">${precio}</aside>
+                            <aside>
                                 <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={restar}>
                                     -
                                 </Button>
@@ -47,7 +47,7 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                                 <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold" onClick={sumar}>
                                     +
                                 </Button>
-                            </div>
+                            </aside>
                             <Button className="btn-sm boton mx-2 my-3 mb-0" onClick={agregarProducto}>
                                 Agregar
                             </Button>

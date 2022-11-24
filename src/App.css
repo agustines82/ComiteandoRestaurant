@@ -349,3 +349,26 @@ p.textoevento {
         height: 83px;
     }
 }
+/** Notebooks */
+@media all and (min-width: 992px) and (max-width: 1280px) {
+    /*menu navbar*/
+    .hazTuPedidoMenu {
+        transform: rotate(0deg);
+    }
+    /*Inicio*/
+    .text-somos {
+        text-align: center;
+    }
+    .fs-big {
+        font-size: 80px;
+    }
+    /*haz tu pedido*/
+    .cardMenu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .altoDetallecito {
+        height: 83px;
+    }
+}

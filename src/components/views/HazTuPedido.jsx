@@ -5,17 +5,29 @@ import { useEffect, useState } from "react";
 import { consultarApiProductos } from "../helpers/queries";
 
 const HazTuPedido = () => {
+    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado")) || {};
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
-    console.log(pedido);
-    console.log(pedido.subTotal);
+    const [total, setTotal] = useState(0);
+    const borrarProducto = (id)=>{
+        const pedidoFinal = pedido.filter((articulo)=> articulo.productos._id !== id)
+        setPedido(pedidoFinal)
+    }
+    const enviarPedido= ()=>{
+        setPedido(...pedido,{
+            usuario: usuario.usuario.nombre
+        })
+        console.log(pedido)
+    }
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
         });
-    }, []);
-
+        const totalAPagar = pedido.reduce((total, articulo)=> total + (articulo.cantidad*articulo.productos.precio),0)
+        setTotal(totalAPagar)
+    }, [pedido]);
+    
     //filtarado para exposicion de productos por categoria (solo se exponen los productos disponibles)
     const productosDisponibles = productos.filter((producto) => producto.estado === true);
     const bentos = productosDisponibles.filter((producto) => producto.categoria === "BENTOS");
@@ -179,7 +191,7 @@ const HazTuPedido = () => {
                                                 {pedido.map((pedido) => (
                                                     <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
                                                         {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
-                                                        <span className="botonpedido2">
+                                                        <span className="botonpedido2" onClick={()=>borrarProducto(pedido.productos._id)}>
                                                             <i className="bi bi-trash3-fill"></i>
                                                         </span>
                                                     </div>
@@ -189,10 +201,18 @@ const HazTuPedido = () => {
                                     </ul>
                                 </div>
                             </ListGroup>
-                            <Card.Text className="m-3 fw-bold">Total:</Card.Text>
+                            {total>0?(
+                                <Card.Text className="m-3 fw-bold">Total:{total}</Card.Text>
+                            ):(
+                                <p>No hay productos en el carrito</p>
+                            )
+                            }
+                            
                             <hr />
                             <div className="d-flex justify-content-center">
-                                <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">
+                                <Link className="my-3 p-3 botonconf"
+                                onClick={enviarPedido}
+                                >
                                     Confirmar pedido
                                 </Link>
                             </div>

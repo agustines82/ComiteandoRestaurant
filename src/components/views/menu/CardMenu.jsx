@@ -16,7 +16,6 @@ const useContador = () => {
 const CardMenu = ({ producto, pedido, setPedido }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar } = useContador();
-    let subTotal = contador * precio;
     const agregarProducto = () => {
         if (contador > 0) {
             setPedido([
@@ -24,11 +23,11 @@ const CardMenu = ({ producto, pedido, setPedido }) => {
                 {
                     productos: producto,
                     cantidad: contador,
-                    subTotal: subTotal,
                 },
             ]);
         }
     };
+    
 
     return (
         <Col md={6} className={"my-3"}>

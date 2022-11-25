@@ -22,12 +22,8 @@ function App() {
                 {/* dominio + path */}
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/haz" element={<HazTuPedido />} />
-                <Route exact path="pedidoconf" element={<PedidoConfirmado />} />
-                <Route
-                    exact
-                    path="/administrar/detalle/:id"
-                    element={<DetalleMenu />}
-                />
+                <Route exact path="/pedidoconf" element={<PedidoConfirmado />} />
+                <Route exact path="/administrar/detalle/:id" element={<DetalleMenu />} />
                 <Route exact path="/acercadenos" element={<Nosotros />} />
                 <Route
                     path="/administrar/*"

@@ -46,12 +46,13 @@ const HazTuPedido = () => {
         const pedidoFinal = pedido.filter((articulo) => articulo.productos._id !== id);
         setPedido(pedidoFinal);
     };
-    const enviarPedido = () => {
-        setPedido(...pedido, {
-            usuario: usuario.usuario.nombre,
-        });
-        console.log(pedido);
-    };
+    // const enviarPedido = (e) => {
+    //     e.preventDefault();
+    //     setPedido(...pedido, {
+    //         usuario: usuario.usuario.nombre,
+    //     });
+    //     console.log(pedido);
+    // };
 
     //cargar pedido en el session storage:
     sessionStorage.setItem("keyPedido", JSON.stringify(pedido));
@@ -413,7 +414,7 @@ const HazTuPedido = () => {
                             {total > 0 ? <Card.Text className="m-3 fs-3 fw-bold">Total: ${total}</Card.Text> : <p>No hay productos en el carrito</p>}
                             <hr />
                             <div className="d-flex justify-content-center">
-                                <Link className="my-3 p-3 botonconf" onClick={enviarPedido}>
+                                <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">
                                     Confirmar pedido
                                 </Link>
                             </div>

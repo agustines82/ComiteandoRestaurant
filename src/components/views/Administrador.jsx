@@ -10,6 +10,7 @@ import { InputGroup, Form, Button } from "react-bootstrap";
 const Administrador = () => {
     //Variables de estado para Lista Pedido, su paginación y filtrado
     const [pedidos, setPedidos] = useState([]);
+    console.log(pedidos);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
     //filtrado
     const [pedidosFiltrados, setPedidosFiltrados] = useState([]);

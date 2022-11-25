@@ -1,4 +1,4 @@
-import { Row, Container, Card, Col, ListGroup, Carousel } from "react-bootstrap";
+import { Row, Container, Card, Col, ListGroup, Carousel, Table } from "react-bootstrap";
 import CardMenu from "./menu/CardMenu";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -116,7 +116,7 @@ const HazTuPedido = () => {
 
                             <hr />
                             <div className="d-flex justify-content-center">
-                                <Link className="my-3 p-3 botonconf" onClick={enviarPedido}>
+                                <Link to={"/pedidoconf"} className="my-3 p-3 botonconf">
                                     Confirmar pedido
                                 </Link>
                             </div>

@@ -9,27 +9,17 @@ const HazTuPedido = () => {
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
-
     const [total, setTotal] = useState(0);
-    const borrarProducto = (id)=>{
-        const pedidoFinal = pedido.filter((articulo)=> articulo.productos._id !== id)
-        setPedido(pedidoFinal)
-    }
-    const enviarPedido= ()=>{
-        setPedido(...pedido,{
-            usuario: usuario.usuario.nombre
-        })
-        console.log(pedido)
-    }
+    const [filtros, setFiltros] = useState("");
 
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
         });
-        const totalAPagar = pedido.reduce((total, articulo)=> total + (articulo.cantidad*articulo.productos.precio),0)
-        setTotal(totalAPagar)
+        const totalAPagar = pedido.reduce((total, articulo) => total + articulo.cantidad * articulo.productos.precio, 0);
+        setTotal(totalAPagar);
     }, [pedido]);
-    
+
     //filtarado para exposicion de productos por categoria (solo se exponen los productos disponibles)
     const productosDisponibles = productos.filter((producto) => producto.estado === true);
     const bentos = productosDisponibles.filter((producto) => producto.categoria === "BENTOS");
@@ -47,14 +37,20 @@ const HazTuPedido = () => {
     const cerveza = productosDisponibles.filter((producto) => producto.categoria === "CERVEZA Y SAKE");
     const refrescos = productosDisponibles.filter((producto) => producto.categoria === "REFRESCOS");
 
-    const totales = total.reduce((acumulador, precio) => {
-        return (acumulador = acumulador + parseFloat(precio));
-    }, 0);
+    const handleChangeFiltros = (e) => {
+        setFiltros(e.target.value);
+        console.log(filtros);
+    };
 
-    const borrarProducto = () => {
-        // necesito hacer un nuevo arreglo sin el ojbeto x
-        const pedidoX = pedido.filter((pedido) => pedido.productos._id);
-        console.log(pedidoX);
+    const borrarProducto = (id) => {
+        const pedidoFinal = pedido.filter((articulo) => articulo.productos._id !== id);
+        setPedido(pedidoFinal);
+    };
+    const enviarPedido = () => {
+        setPedido(...pedido, {
+            usuario: usuario.usuario.nombre,
+        });
+        console.log(pedido);
     };
 
     //cargar pedido en el session storage:
@@ -89,7 +85,7 @@ const HazTuPedido = () => {
                 <Row className="mt-5">
                     <Col className="mt-4" md={12} lg={8}>
                         <section className="d-flex justify-content-end me-3">
-                            <select className="filtradoSelect h-50">
+                            <select className="filtradoSelect" onChange={handleChangeFiltros}>
                                 <option defaultChecked value="">
                                     Selecciona por categoria
                                 </option>
@@ -109,187 +105,283 @@ const HazTuPedido = () => {
                                 <option value="REFRESCOS">REFRESCOS</option>
                             </select>
                         </section>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BENTOS</h3>
+                        {filtros === "BENTOS" || filtros === "" ? <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BENTOS</h3> : <span></span>}
                         <Row>
-                            {bentos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "BENTOS" || filtros === "" ? (
+                                bentos.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
+                        {filtros === "TAKA TAKOS" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {takatacos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "TAKA TAKOS" || filtros === "" ? (
+                                takatacos.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BROCHETAS Y KUSHIAGES</h3>
+                        {filtros === "BROCHETAS Y KUSHIAGES" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BROCHETAS Y KUSHIAGES</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {brochetas.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "BROCHETAS Y KUSHIAGES" || filtros === "" ? (
+                                brochetas.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">KAITEN SUSHI</h3>
+                        {filtros === "KAITEN SUSHI" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">KAITEN SUSHI</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {kaiten.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "KAITEN SUSHI" || filtros === "" ? (
+                                kaiten.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MAKI SUSHI BAR</h3>
+                        {filtros === "MAKI SUSHI BAR" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MAKI SUSHI BAR</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {maki.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "MAKI SUSHI BAR" || filtros === "" ? (
+                                maki.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAZONES DONBURI</h3>
+                        {filtros === "TAZONES DONBURI" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAZONES DONBURI</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {tazones.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "TAZONES DONBURI" || filtros === "" ? (
+                                tazones.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">RAMEN</h3>
+                        {filtros === "RAMEN" || filtros === "" ? <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">RAMEN</h3> : <span></span>}
                         <Row>
-                            {ramen.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "RAMEN" || filtros === "" ? (
+                                ramen.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TEPPANYAKI</h3>
+                        {filtros === "TEPPANYAKI" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TEPPANYAKI</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {teppanyaki.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "TEPPANYAKI" || filtros === "" ? (
+                                teppanyaki.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">ARROZ</h3>
+                        {filtros === "ARROZ" || filtros === "" ? <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">ARROZ</h3> : <span></span>}
                         <Row>
-                            {arroz.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "ARROZ" || filtros === "" ? (
+                                arroz.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">NIGIRI BAR</h3>
+                        {filtros === "NIGIRI BAR" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">NIGIRI BAR</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {nigiri.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "NIGIRI BAR" || filtros === "" ? (
+                                nigiri.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">SASHIMI</h3>
+                        {filtros === "SASHIMI" || filtros === "" ? <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">SASHIMI</h3> : <span></span>}
                         <Row>
-                            {sashimi.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "SASHIMI" || filtros === "" ? (
+                                sashimi.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MOCKTAILS</h3>
+                        {filtros === "MOCKTAILS" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MOCKTAILS</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {mocktails.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "MOCKTAILS" || filtros === "" ? (
+                                mocktails.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">CERVEZA Y SAKE</h3>
+                        {filtros === "CERVEZA Y SAKE" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">CERVEZA Y SAKE</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {cerveza.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "CERVEZA Y SAKE" || filtros === "" ? (
+                                cerveza.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
-                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">REFRESCOS</h3>
+                        {filtros === "REFRESCOS" || filtros === "" ? (
+                            <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">REFRESCOS</h3>
+                        ) : (
+                            <span></span>
+                        )}
                         <Row>
-                            {refrescos.map((producto) => (
-                                <CardMenu
-                                    key={producto._id}
-                                    producto={producto}
-                                    pedido={pedido}
-                                    setPedido={setPedido}
-                                    total={total}
-                                    setTotal={setTotal}
-                                />
-                            ))}
+                            {filtros === "REFRESCOS" || filtros === "" ? (
+                                refrescos.map((producto) => (
+                                    <CardMenu
+                                        key={producto._id}
+                                        producto={producto}
+                                        pedido={pedido}
+                                        setPedido={setPedido}
+                                        total={total}
+                                        setTotal={setTotal}
+                                    />
+                                ))
+                            ) : (
+                                <span></span>
+                            )}
                         </Row>
                     </Col>
                     <Col md={12} lg={4}>
@@ -304,9 +396,7 @@ const HazTuPedido = () => {
                                                 {pedido.map((pedido) => (
                                                     <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
                                                         {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
-
-                                                        <span className="botonpedido2" onClick={()=>borrarProducto(pedido.productos._id)}>
-
+                                                        <span className="botonpedido2" onClick={() => borrarProducto(pedido.productos._id)}>
                                                             <i className="bi bi-trash3-fill"></i>
                                                         </span>
                                                     </div>
@@ -317,19 +407,11 @@ const HazTuPedido = () => {
                                 </div>
                             </ListGroup>
 
-                            {total>0?(
-                                <Card.Text className="m-3 fw-bold">Total:{total}</Card.Text>
-                            ):(
-                                <p>No hay productos en el carrito</p>
-                            )
-                            }
-                            
+                            {total > 0 ? <Card.Text className="m-3 fs-3 fw-bold">Total: ${total}</Card.Text> : <p>No hay productos en el carrito</p>}
 
                             <hr />
                             <div className="d-flex justify-content-center">
-                                <Link className="my-3 p-3 botonconf"
-                                onClick={enviarPedido}
-                                >
+                                <Link className="my-3 p-3 botonconf" onClick={enviarPedido}>
                                     Confirmar pedido
                                 </Link>
                             </div>

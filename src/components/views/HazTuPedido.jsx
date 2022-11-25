@@ -9,6 +9,7 @@ const HazTuPedido = () => {
     //Variables de estado
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
+
     const [total, setTotal] = useState(0);
     const borrarProducto = (id)=>{
         const pedidoFinal = pedido.filter((articulo)=> articulo.productos._id !== id)
@@ -20,6 +21,7 @@ const HazTuPedido = () => {
         })
         console.log(pedido)
     }
+
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -44,6 +46,19 @@ const HazTuPedido = () => {
     const mocktails = productosDisponibles.filter((producto) => producto.categoria === "MOCKTAILS");
     const cerveza = productosDisponibles.filter((producto) => producto.categoria === "CERVEZA Y SAKE");
     const refrescos = productosDisponibles.filter((producto) => producto.categoria === "REFRESCOS");
+
+    const totales = total.reduce((acumulador, precio) => {
+        return (acumulador = acumulador + parseFloat(precio));
+    }, 0);
+
+    const borrarProducto = () => {
+        // necesito hacer un nuevo arreglo sin el ojbeto x
+        const pedidoX = pedido.filter((pedido) => pedido.productos._id);
+        console.log(pedidoX);
+    };
+
+    //cargar pedido en el session storage:
+    sessionStorage.setItem("keyPedido", JSON.stringify(pedido));
 
     return (
         <>
@@ -97,85 +112,183 @@ const HazTuPedido = () => {
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BENTOS</h3>
                         <Row>
                             {bentos.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAKA TAKOS</h3>
                         <Row>
                             {takatacos.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">BROCHETAS Y KUSHIAGES</h3>
                         <Row>
                             {brochetas.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">KAITEN SUSHI</h3>
                         <Row>
                             {kaiten.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MAKI SUSHI BAR</h3>
                         <Row>
                             {maki.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TAZONES DONBURI</h3>
                         <Row>
                             {tazones.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">RAMEN</h3>
                         <Row>
                             {ramen.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">TEPPANYAKI</h3>
                         <Row>
                             {teppanyaki.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">ARROZ</h3>
                         <Row>
                             {arroz.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">NIGIRI BAR</h3>
                         <Row>
                             {nigiri.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">SASHIMI</h3>
                         <Row>
                             {sashimi.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">MOCKTAILS</h3>
                         <Row>
                             {mocktails.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">CERVEZA Y SAKE</h3>
                         <Row>
                             {cerveza.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                         <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">REFRESCOS</h3>
                         <Row>
                             {refrescos.map((producto) => (
-                                <CardMenu key={producto._id} producto={producto} pedido={pedido} setPedido={setPedido} />
+                                <CardMenu
+                                    key={producto._id}
+                                    producto={producto}
+                                    pedido={pedido}
+                                    setPedido={setPedido}
+                                    total={total}
+                                    setTotal={setTotal}
+                                />
                             ))}
                         </Row>
                     </Col>
@@ -191,7 +304,9 @@ const HazTuPedido = () => {
                                                 {pedido.map((pedido) => (
                                                     <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
                                                         {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
+
                                                         <span className="botonpedido2" onClick={()=>borrarProducto(pedido.productos._id)}>
+
                                                             <i className="bi bi-trash3-fill"></i>
                                                         </span>
                                                     </div>
@@ -201,6 +316,7 @@ const HazTuPedido = () => {
                                     </ul>
                                 </div>
                             </ListGroup>
+
                             {total>0?(
                                 <Card.Text className="m-3 fw-bold">Total:{total}</Card.Text>
                             ):(
@@ -208,6 +324,7 @@ const HazTuPedido = () => {
                             )
                             }
                             
+
                             <hr />
                             <div className="d-flex justify-content-center">
                                 <Link className="my-3 p-3 botonconf"

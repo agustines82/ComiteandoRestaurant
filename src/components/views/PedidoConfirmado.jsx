@@ -52,7 +52,7 @@ const PedidoConfirmado = () => {
         //una vez todo validado enviamos la peticion a la API
         crearPedidoAPI(pedidoCompleto).then((respuesta) => {
             if (respuesta.status === 201) {
-                Swal.fire("Pedido creado", "El pedido se cargo correctamente", "success");
+                Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
             } else {
                 Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
             }

@@ -1,4 +1,4 @@
-import { Row, Container, Card, Col, ListGroup, Carousel } from "react-bootstrap";
+import { Row, Container, Card, Col, ListGroup, Carousel, Table } from "react-bootstrap";
 import CardMenu from "./menu/CardMenu";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -394,21 +394,23 @@ const HazTuPedido = () => {
                                         <Row className="d-flex flex-nowrap fs-4">
                                             <Col>
                                                 {pedido.map((pedido) => (
-                                                    <div className="d-flex justify-content-between mt-1" key={pedido.productos._id}>
-                                                        {pedido.cantidad} {pedido.productos.nombre} ${pedido.productos.precio}
-                                                        <span className="botonpedido2" onClick={() => borrarProducto(pedido.productos._id)}>
-                                                            <i className="bi bi-trash3-fill"></i>
-                                                        </span>
-                                                    </div>
+                                                    <Table responsive striped hover size="sm" key={pedido.productos._id}>
+                                                        <tr>
+                                                            <th> {pedido.cantidad} un.</th>
+                                                            <th>{pedido.productos.nombre}</th>
+                                                            <th>$ {pedido.productos.precio}</th>
+                                                            <th className="botonpedido2" onClick={() => borrarProducto(pedido.productos._id)}>
+                                                                <i className="bi bi-trash3-fill"></i>
+                                                            </th>
+                                                        </tr>
+                                                    </Table>
                                                 ))}
                                             </Col>
                                         </Row>
                                     </ul>
                                 </div>
                             </ListGroup>
-
                             {total > 0 ? <Card.Text className="m-3 fs-3 fw-bold">Total: ${total}</Card.Text> : <p>No hay productos en el carrito</p>}
-
                             <hr />
                             <div className="d-flex justify-content-center">
                                 <Link className="my-3 p-3 botonconf" onClick={enviarPedido}>

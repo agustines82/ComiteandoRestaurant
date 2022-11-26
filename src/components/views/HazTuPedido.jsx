@@ -49,7 +49,7 @@ const HazTuPedido = () => {
     const handleChangeFiltros = (e) => {
         let categoriaFiltro = e.target.value;
         let productosFiltrados;
-        if(categoriaFiltro !== "todas"){
+        if(categoriaFiltro !== "todas" & categoriaFiltro !== ""){
             productosFiltrados = productos.filter((producto)=>producto.categoria === categoriaFiltro);
             setProductos(productosFiltrados);
         } else {
@@ -102,9 +102,9 @@ const HazTuPedido = () => {
             <Container fluid className="mainSection">
                 <Row>
                     <Col md={8}>
-                        <div className="d-flex justify-content-around">
+                        <div className="d-flex justify-content-around my-5">
                             <select
-                                className="filtradoSelect my-3"
+                                className="filtradoSelect"
                                 onChange={handleChangeFiltros}
                             >
                                 <option defaultChecked value="">

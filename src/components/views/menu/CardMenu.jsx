@@ -4,7 +4,11 @@ import { Card, Button, Col } from "react-bootstrap";
 const useContador = () => {
     const [contador, setContador] = useState(0);
     const sumar = () => setContador(contador + 1);
-    const restar = () => setContador(contador - 1);
+    const restar = () => {
+        if(contador > 0){
+            setContador(contador - 1)
+        }
+    };
 
     return {
         contador,
@@ -13,24 +17,9 @@ const useContador = () => {
     };
 };
 
-const CardMenu = ({ producto, pedido, setPedido, total, setTotal }) => {
+const CardMenu = ({ producto, agregarProducto }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar } = useContador();
-    let subTotal = contador * precio;
-    const agregarProducto = () => {
-        if (contador > 0) {
-            setPedido([
-                ...pedido,
-                {
-                    productos: producto,
-                    cantidad: contador,
-                    subTotal: subTotal,
-                },
-            ]);
-            setTotal([...total, subTotal]);
-        }
-    };
-
     return (
         <Col md={6} className={"my-3"}>
             <article className="cardMenu">
@@ -42,8 +31,7 @@ const CardMenu = ({ producto, pedido, setPedido, total, setTotal }) => {
                     <Card.Body>
                         <Card.Text className="altoDetallecito">{detalle}</Card.Text>
                         <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
-                            <aside className="fw-bold fs-2">${precio}</aside>
-
+                            <p className="fw-bold fs-2 my-0">${precio}</p>
                             <Button className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold mb-2" onClick={restar}>
                                 -
                             </Button>
@@ -52,7 +40,7 @@ const CardMenu = ({ producto, pedido, setPedido, total, setTotal }) => {
                                 +
                             </Button>
 
-                            <Button className="btn-sm boton mx-1 my-3 mb-0" onClick={agregarProducto}>
+                            <Button variant="none" className="btn-sm boton mx-1 my-3 mb-0" onClick={()=>{agregarProducto(contador, producto)}}>
                                 Agregar
                             </Button>
                         </div>

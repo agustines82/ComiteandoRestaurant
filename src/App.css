@@ -50,8 +50,7 @@
     border: none;
 }
 .boton:hover {
-    text-decoration: none;
-    background: f04622;
+    background: #f04622;
 }
 .errorLottie {
     background: transparent;
@@ -203,70 +202,6 @@ p.textoevento {
     border-color: #9e9d9b;
 }
 
-/*PAGINA HAZ TU PEDIDO*/
-.cardMenu {
-    display: flex;
-    flex-direction: row;
-}
-.linksCategoria {
-    background-color: #e9e6df;
-    border-style: dashed;
-    margin-right: 1px;
-}
-.imagenHaz {
-    width: 260px;
-    height: 290px;
-}
-.botonconf {
-    width: 250px;
-    text-align: center;
-    color: #e9e6df;
-    background-color: #f04523;
-    border-radius: 8px;
-    border: 1px #f04523;
-    cursor: pointer;
-    display: inline-block;
-}
-.botonconf:hover {
-    color: #f04523;
-    background: #e9e6df;
-}
-.botonconf:before,
-.botonconf:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 2px;
-    width: 0;
-    background: #f04523;
-    transition: 400ms ease all;
-}
-.botonconf:after {
-    right: inherit;
-    top: inherit;
-    left: 0;
-    bottom: 0;
-}
-
-.botonpedido {
-    width: 65px;
-    padding: 2px;
-    text-align: end;
-    color: #e9e6df;
-    background-color: #f04523;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.botonpedido2 {
-    width: 25px;
-    text-align: center;
-    color: #e9e6df;
-    background-color: #f04523;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 /*   PAGINA PEDIDO CONFIRMADO   */
 .formocultar{
     display: none;
@@ -309,12 +244,6 @@ p.textoevento {
     .thLargo2 {
         max-width: 250px;
     }
-    /*haz tu pedido*/
-    .cardMenu {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
 }
 
 /** MD */
@@ -330,15 +259,6 @@ p.textoevento {
     .fs-big {
         font-size: 80px;
     }
-    /*haz tu pedido*/
-    .cardMenu {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
-    .altoDetallecito {
-        height: 83px;
-    }
 }
 /** Notebooks */
 @media all and (min-width: 992px) and (max-width: 1280px) {
@@ -352,14 +272,5 @@ p.textoevento {
     }
     .fs-big {
         font-size: 80px;
-    }
-    /*haz tu pedido*/
-    .cardMenu {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
-    .altoDetallecito {
-        height: 83px;
     }
 }

@@ -37,13 +37,16 @@ const HazTuPedido = () => {
     ];
 
     const agregarProducto = (cantidad, productoAgregado)=>{
-        productoAgregado.cantidad = cantidad;
-        setPedido([...pedido, productoAgregado]);
-        setImporte(importe + cantidad * productoAgregado.precio);
+        if(cantidad !== 0){
+            productoAgregado.cantidad = cantidad;
+            setPedido([...pedido, productoAgregado]);
+            setImporte(importe + cantidad * productoAgregado.precio);
+        }
     }
 
     const borrarProducto = (productoBorrado) => {
         setPedido([...pedido.filter((producto)=>producto._id !== productoBorrado._id)]);
+        setImporte(importe - productoBorrado.cantidad * productoBorrado.precio);
     }
 
     const handleChangeFiltros = (e) => {

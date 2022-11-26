@@ -9,17 +9,23 @@ const useContador = () => {
             setContador(contador - 1)
         }
     };
+    const resetear = () => setContador(0); 
 
     return {
         contador,
         sumar,
         restar,
+        resetear
     };
 };
 
 const CardMenu = ({ producto, agregarProducto }) => {
     const { nombre, precio, detalle, imagen } = { ...producto };
-    const { contador, sumar, restar } = useContador();
+    const { contador, sumar, restar, resetear } = useContador();
+    const agregar = ()=>{
+        agregarProducto(contador, producto);
+        resetear();
+    }
     return (
         <Col md={6} className={"my-3"}>
             <article className="cardMenu">
@@ -40,7 +46,9 @@ const CardMenu = ({ producto, agregarProducto }) => {
                                 +
                             </Button>
 
-                            <Button variant="none" className="btn-sm boton mx-1 my-3 mb-0" onClick={()=>{agregarProducto(contador, producto)}}>
+                            <Button variant="none" 
+                            className="btn-sm boton mx-1 my-3 mb-0" 
+                            onClick={agregar}>
                                 Agregar
                             </Button>
                         </div>

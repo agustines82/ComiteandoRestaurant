@@ -17,6 +17,7 @@ const HazTuPedido = () => {
     const usuario = JSON.parse(localStorage.getItem("usuarioLogueado")) || {};
     const [productos, setProductos] = useState([]);
     const [pedido, setPedido] = useState([]);
+    const [importe, setImporte] = useState(0);
 
     const categorias = [
         "BENTOS",
@@ -38,6 +39,11 @@ const HazTuPedido = () => {
     const agregarProducto = (cantidad, productoAgregado)=>{
         productoAgregado.cantidad = cantidad;
         setPedido([...pedido, productoAgregado]);
+        setImporte(importe + cantidad * productoAgregado.precio);
+    }
+
+    const borrarProducto = (productoBorrado) => {
+        setPedido([...pedido.filter((producto)=>producto._id !== productoBorrado._id)]);
     }
 
     const handleChangeFiltros = (e) => {
@@ -148,26 +154,26 @@ const HazTuPedido = () => {
                         })}
                     </Col>
                     <Col md={4}>
-                        <div className="sticky-top">
+                        <div className="sticky-top my-5">
                         <h2 className="text-center">Mi Pedido</h2>
                         <Table>
                             <tbody>
                                 {
                                     pedido.map((producto)=>{
                                         return(
-                                        <tr>
+                                        <tr key={producto._id}>
                                             <td className="align-middle">{producto.cantidad}</td>
-                                            <td>{producto.nombre}</td>
-                                            <td>${producto.precio * producto.cantidad}</td>
-                                            <td className="align-middle"><Button variant="none"><i className="bi bi-trash3-fill"></i></Button></td>
+                                            <td className="align-middle">{producto.nombre}</td>
+                                            <td className="align-middle">${producto.precio * producto.cantidad}</td>
+                                            <td className="align-middle"><Button variant="none" onClick={()=>{borrarProducto(producto)}}><i className="bi bi-trash3-fill"></i></Button></td>
                                         </tr>
                                         )
                                     })
                                 }
                             </tbody>
                         </Table>
-                        <p>Total</p>
-                        <p>$importe</p>
+                        <hr />  
+                        <p className="fw-bold fs-4">Total ${importe}</p>
                         <Button variant="none" className="boton w-100">Confirmar Pedido</Button>
                         </div>
                     </Col>

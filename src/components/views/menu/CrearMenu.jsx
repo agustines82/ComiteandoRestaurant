@@ -15,7 +15,8 @@ const CrearMenu = () => {
 
     const crearProductoMenu = (dataProducto) => {
         //una vez todo validado enviamos la peticion a la API
-        crearProductoMenuAPI(dataProducto).then((respuesta) => {
+        let token = JSON.parse(localStorage.getItem("usuarioLogueado")).token;
+        crearProductoMenuAPI(dataProducto, token).then((respuesta) => {
             if (respuesta.status === 201) {
                 Swal.fire("Producto creado", "El producto se cargo correctamente", "success");
             } else {

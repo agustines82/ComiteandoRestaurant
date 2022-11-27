@@ -18,7 +18,6 @@ const DetalleMenu = () => {
     useEffect(() => {
         obtenerProductoAPI(id).then((respuesta) => {
             let productoBuscado = respuesta.dato;
-            console.log(productoBuscado);
             setProducto(productoBuscado);
         });
     }, []);

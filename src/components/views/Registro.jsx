@@ -19,10 +19,8 @@ const Registro = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
         const perfilEstado = { perfil: "cliente", estado: true };
         const dataNuevo = Object.assign(data, perfilEstado);
-        console.log(dataNuevo);
         crearUsuarioAPI(dataNuevo).then((respuesta) => {
             if (respuesta.status === 201) {
                 Swal.fire("El usuario fue creado con exito", "Los datos ingresados fueron cargados correctamente", "success");

@@ -69,12 +69,13 @@ export const crearPedidoAPI = async (pedido) => {
     }
 };
 //post para crear el producto del menú
-export const crearProductoMenuAPI = async (producto) => {
+export const crearProductoMenuAPI = async (producto, token) => {
     try {
         const respuesta = await fetch(urlProductos, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "x-token": token
             },
             body: JSON.stringify(producto),
         });
@@ -114,6 +115,7 @@ export const loguearUsuarioAPI = async (usuario) => {
         return {
             status: respuesta.status,
             usuario: datos.usuario,
+            token: datos.token,
             mensaje: datos.mensaje,
         };
     } catch (error) {
@@ -155,12 +157,13 @@ export const editarUsuarioAPI = async (id, usuarioEditado) => {
 };
 
 //put para editar productos
-export const editarProductoAPI = async (id, productoEditado) => {
+export const editarProductoAPI = async (id, productoEditado, token) => {
     try {
         const respuesta = await fetch(urlProductos + "/" + id, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                "x-token": token
             },
             body: JSON.stringify(productoEditado),
         });

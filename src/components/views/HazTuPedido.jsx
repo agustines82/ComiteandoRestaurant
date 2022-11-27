@@ -25,9 +25,17 @@ const HazTuPedido = () => {
     const redirect = useNavigate();
 
     const confirmarPedido = ()=>{
-       let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"))
+       let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
         if(usuario){
-            redirect("/pedidoconf");
+            if(pedido.length > 0){
+                redirect("/pedidoconf");
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Debe agregar al menos un producto!'
+                })
+            }
         } else {
             Swal.fire({
                 icon: 'warning',

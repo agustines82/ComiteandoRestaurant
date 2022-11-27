@@ -14,6 +14,7 @@ import { consultarApiProductos } from "../helpers/queries";
 
 const HazTuPedido = () => {
     const [productos, setProductos] = useState([]);
+    const [todos, setTodos] = useState([]);
     const pedidoSession = JSON.parse(sessionStorage.getItem("pedido")) || [];
     const [pedido, setPedido] = useState(pedidoSession);
     let importeSession = 0;
@@ -35,8 +36,6 @@ const HazTuPedido = () => {
             })
         }
     }
-
-
     const categorias = [
         "BENTOS",
         "TAKA TAKOS",
@@ -62,7 +61,7 @@ const HazTuPedido = () => {
                 productoExistente.cantidad = cantidadProducto;
                 setPedido([...pedido.filter((producto)=>producto !== productoExistente._id)]);
                 setImporte(importe + cantidad * productoAgregado.precio);
-
+                
             } else {
                 productoAgregado.cantidad = cantidad;
                 setPedido([...pedido, productoAgregado]);
@@ -71,7 +70,7 @@ const HazTuPedido = () => {
         }
         guardarPedidoSession()
     }
-
+    
     const guardarPedidoSession = ()=>{
         sessionStorage.setItem("pedido", JSON.stringify(pedido));
     }
@@ -81,31 +80,23 @@ const HazTuPedido = () => {
         setPedido([...pedido.filter((producto)=>producto._id !== productoBorrado._id)]);
         setImporte(importe - productoBorrado.cantidad * productoBorrado.precio);
     }
-
+    
     const handleChangeFiltros = (e) => {
-        let categoriaFiltro = e.target.value;
-        let productosFiltrados;
-        if(categoriaFiltro !== "todas" & categoriaFiltro !== ""){
-            productosFiltrados = productos.filter((producto)=>producto.categoria === categoriaFiltro);
-            setProductos(productosFiltrados);
+        if(e.target.value === ""){
+            setProductos(todos);
         } else {
-            consultarApiProductos().then((respuestaListaProductos) => {
-                let listaProductosDisponibles = respuestaListaProductos.filter(
-                    (producto) => producto.estado === true
-                );
-                setProductos(listaProductosDisponibles);
-            });
-        }        
-    };
-    const enviarPedido = () => {
-        console.log("Enviando el pedido");
-    };
-
+            let categoriaFiltro = e.target.value;
+            let productosFiltrados = todos.filter((producto)=>producto.categoria === categoriaFiltro);
+            setProductos(productosFiltrados);
+        }
+    }
+    
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
             let listaProductosDisponibles = respuestaListaProductos.filter(
                 (producto) => producto.estado === true
             );
+            setTodos(listaProductosDisponibles);
             setProductos(listaProductosDisponibles);
         });
     }, []);
@@ -145,9 +136,6 @@ const HazTuPedido = () => {
                             >
                                 <option defaultChecked value="">
                                     Selecciona por categoria
-                                </option>
-                                <option value="todas">
-                                    TODAS
                                 </option>
                                 {categorias.map((categoria, position) => {
                                     return (

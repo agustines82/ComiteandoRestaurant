@@ -287,11 +287,17 @@ p.textoevento {
 #containerflexible2 {
   display: flex;
   justify-content: space-around;
+  text-align: center;
+  align-items: center;
 }
 #containerflexible3 {
+  position: relative;
+  box-shadow: 0 0 35px rgb(50 50 93 / 10%), 0 -4px 15px rgb(0 0 0 / 7%);
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
 }
+
 /*TABLE DE USUARIOS*/
 .width-1 {
   width: 160px;

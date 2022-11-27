@@ -2,11 +2,11 @@
 En este proyecto implementamos todo lo aprendido en clases para crear una web de comidas por encargo que a medida que el cliente va eligiendo sus productos se van sumando en un carrito de compras. Así tambien para los usuarios registrados les permite tanto agregar, quitar y editar productos a dicha pagina.
 
 ## Autores
-Sampayo, Agustín
-Montiel, Facundo
-Espindola, Eliseo
-González, Lucía
-Luna, Tomás
+Sampayo Agustín,
+Montiel Facundo,
+Espindola Eliseo,
+González Lucía,
+Luna Tomás
 
 ## Estado del proyecto
 Concretado.

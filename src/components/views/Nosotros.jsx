@@ -15,7 +15,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Agustin Sampayo</Card.Title>
             <a className="display-6" href="https://github.com/agustines82" target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>
@@ -24,7 +24,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center">Eliseo Espindola</Card.Title>
             <a className="display-6" href="https://github.com/eliseoe95" target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>
@@ -34,7 +34,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Facundo Montiel</Card.Title>
             <a className="display-6" href="https://github.com/f-montiel " target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>
@@ -43,7 +43,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Lucia Gonzalez</Card.Title>
             <a className="display-6" href="https://github.com/luciabgv" target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>
@@ -52,7 +52,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Tomas Luna</Card.Title>
             <a className="display-6" href="https://github.com/tomasluna99" target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>
@@ -61,7 +61,7 @@ const Nosotros = () => {
           <Card.Body className="text-center">
             <Card.Title className="text-center">Gregorio Llobeta</Card.Title>
             <a className="display-6" href="https://github.com/gLlobeta" target="_blank">
-              <i class="bi bi-github github"></i>
+              <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
         </Card>

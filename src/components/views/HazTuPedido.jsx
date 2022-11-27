@@ -38,9 +38,18 @@ const HazTuPedido = () => {
 
     const agregarProducto = (cantidad, productoAgregado)=>{
         if(cantidad !== 0){
-            productoAgregado.cantidad = cantidad;
-            setPedido([...pedido, productoAgregado]);
-            setImporte(importe + cantidad * productoAgregado.precio);
+            let productoExistente = pedido.find((producto)=>producto._id === productoAgregado._id);
+            if(productoExistente){
+                let cantidadProducto = productoExistente.cantidad + cantidad;
+                productoExistente.cantidad = cantidadProducto;
+                setPedido([...pedido.filter((producto)=>producto !== productoExistente._id)]);
+                setImporte(importe + cantidad * productoAgregado.precio);
+
+            } else {
+                productoAgregado.cantidad = cantidad;
+                setPedido([...pedido, productoAgregado]);
+                setImporte(importe + cantidad * productoAgregado.precio);
+            }
         }
     }
 

@@ -146,6 +146,12 @@ a.bnn {
 .cards{
     border-radius: 150px;
 }
+.github{
+  color: #000;
+  background-color: white;
+  border-radius: 10px;
+  
+}
 /*PAGINA ADMINISTRADOR*/
 .thLargo {
   max-width: 50px;

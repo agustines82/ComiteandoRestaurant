@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const useContador = () => {
     const [contador, setContador] = useState(0);
@@ -20,7 +21,7 @@ const useContador = () => {
 };
 
 const CardMenu = ({ producto, agregarProducto }) => {
-    const { nombre, precio, detalle, imagen } = { ...producto };
+    const { _id, nombre, precio, detalle, imagen } = { ...producto };
     const { contador, sumar, restar, resetear } = useContador();
     const agregar = ()=>{
         agregarProducto(contador, producto);
@@ -29,11 +30,15 @@ const CardMenu = ({ producto, agregarProducto }) => {
     return (
         <Col md={6} className={"my-3"}>
             <article className="cardMenu">
+                <Link to={"/administrar/detalle/"+_id} className="text-decoration-none text-dark">
                 <div>
                     <Card.Img className="imagenHaz" variant="top" src={imagen} />
                 </div>
-                <div>
-                    <Card.Title className="fw-bold ms-3 my-3">{nombre}</Card.Title>
+
+                    <Card.Title className="fw-bold ms-3 my-3">
+                            {nombre}
+                        </Card.Title>
+                </Link>
                     <Card.Body>
                         <Card.Text className="altoDetallecito">{detalle}</Card.Text>
                         <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
@@ -53,7 +58,6 @@ const CardMenu = ({ producto, agregarProducto }) => {
                             </Button>
                         </div>
                     </Card.Body>
-                </div>
             </article>
         </Col>
     );

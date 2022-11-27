@@ -5,6 +5,9 @@
   flex-direction: column;
   min-height: 100vh;
 }
+.colorFondo{
+  background-color: #e9e6df;
+}
 .mainSection {
   flex-grow: 1;
 }
@@ -54,7 +57,6 @@
 }
 .errorLottie {
   background: transparent;
-  speed: "1";
   width: 80vh;
   height: 80vh;
 }
@@ -212,25 +214,6 @@ p.textoevento {
   padding: 10px;
   border: 1px solid;
   border-radius: 10px;
-}
-
-/* PAGINA DETALLE */
-#containerflexible {
-  display: flex;
-  justify-content: space-between;
-}
-#containerflexible2 {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-}
-#containerflexible3 {
-  position: relative;
-  box-shadow: 0 0 35px rgb(50 50 93 / 10%), 0 -4px 15px rgb(0 0 0 / 7%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 /*TABLE DE USUARIOS*/

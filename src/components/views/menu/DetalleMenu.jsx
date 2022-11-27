@@ -1,163 +1,90 @@
-import { Card, Col, Container, Row, Button, Badge } from "react-bootstrap";
-import { useState } from "react";
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { obtenerProductoAPI } from "../../helpers/queries";
+import { useParams } from "react-router-dom";
 const DetalleMenu = () => {
-  let [boton, botonSumar] = useState(0);
-  let [boton1, botonSumar1] = useState(0);
-  let [boton2, botonSumar2] = useState(0);
-  let [boton3, botonSumar3] = useState(1);
+    const [producto, setProducto] = useState({});
+    const [contador, setContador] = useState(0);
+    let { id } = useParams();
 
-  const sumar = () => {
-    botonSumar(boton + 1);
-  };
-  const sumar1 = () => {
-    botonSumar1(boton1 + 1);
-  };
-  const sumar2 = () => {
-    botonSumar2(boton2 + 1);
-  };
-  const sumar3 = () => {
-    botonSumar3(boton3 + 1);
-  };
+    const sumar = ()=>{
+      setContador(contador + 1);
+    }
+    const restar = ()=>{
+      if(contador>0){
+        setContador(contador - 1)
+      }
+    }
+    useEffect(() => {
+        obtenerProductoAPI(id).then((respuesta) => {
+            let productoBuscado = respuesta.dato;
+            console.log(productoBuscado);
+            setProducto(productoBuscado);
+        });
+    }, []);
 
-  const restar = () => {
-    botonSumar(boton - 1);
-  };
-  const restar1 = () => {
-    botonSumar1(boton1 - 1);
-  };
-  const restar2 = () => {
-    botonSumar2(boton2 - 1);
-  };
-  const restar3 = () => {
-    botonSumar3(boton3 - 1);
-  };
-  return (
-    <Container className="my-3" id="containerflexible2">
-      <Card>
-        <Row>
-          <Col md={8}>
-            <Card.Img
-              variant="top"
-              src="https://tofuu.getjusto.com/orioneat-local/resized2/3pKrZM7zWnFSsEdg4-1200-1200.webp"
-            />
-          </Col>
-          <Col md={4}>
+    return (
+      <Container className="mainSection">
+      <Row className="justify-content-md-center my-5">
+        <Col md={8}>   
+        <Card>
+          <Row>
+            <Col md={6} className="colorFondo">
+              <Card.Img variant="top" src={producto.imagen}/>
+            </Col>
+            <Col md={6}>
+            <Card.Title className="fw-bold ms-3 my-3">{producto.nombre}</Card.Title>
             <Card.Body>
-              <Card.Title className="fw-bold ">Crunchy Salmon</Card.Title>
-              <Badge className="backgroundBotones" text="dark">
-                Sushi
-              </Badge>
-              <Card.Text className="my-4">
-                Pasta tempura, Tampico y salsa de anguila | Salmón spicy (40g).
-              </Card.Text>
-              <hr></hr>
-              <container id="containerflexible">
-                <div>
-                  <Card.Text className="d-inline mx-1 fw-bold">
-                    Elije tus agregados
-                  </Card.Text>
-                </div>
-                <div>
-                  <Card.Text className="d-inline mx-1">Opcionales</Card.Text>
-                </div>
-              </container>
-              <br></br>
-              <br></br>
-              <container id="containerflexible2">
-                <Button
-                  onClick={restar}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  -
-                </Button>
-                <p className="d-inline mx-1 fw-bold">{boton}</p>
-                <Button
-                  onClick={sumar}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  +
-                </Button>
-                <Card.Text className="d-inline fw-bold">
-                  Aderezo chipotle
+                <Card.Text className="altoDetallecito">{producto.detalle}</Card.Text>
+                  {
+                    producto.categoria !== "REFRESCOS" 
+                    && producto.categoria !== "CERVEZA Y SAKE" 
+                    && producto.categoria !== "MOCKTAILS" ? 
+                    <>
+                <Card.Text>
+                      <Card.Title>Todos los productos inluyen salsas a eleccion</Card.Title>
+                      <ul>
+                        <li>Salsa de anguila</li>
+                        <li>Aderezo chipotle Moshi</li> 
+                        <li>Salsa de ajonjoli</li>
+                        <li>Tampico</li>
+                        <li>Wasabi</li>
+                        <li>Jengibre encurtido</li>
+                      </ul>
                 </Card.Text>
-                <div>
-                  <Card.Text>$200</Card.Text>
+                    </>:<></>
+                  }
+                <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
+                    <p className="fw-bold fs-2 my-0">${producto.precio}</p>
+                    <Button
+                        className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold mb-2"
+                     onClick={restar}
+                    >
+                        -
+                    </Button>
+                    <p className="d-inline mx-1 fw-bold">{contador}</p>
+                    <Button
+                        className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold mb-2"
+                      onClick={sumar}
+                    >
+                        +
+                    </Button>
+
+                    <Button
+                        variant="none"
+                        className="btn-sm boton mx-1 my-3 mb-0"
+                       
+                    >
+                        Agregar
+                    </Button>
                 </div>
-              </container>
-              <container id="containerflexible2">
-                <Button
-                  onClick={restar1}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  -
-                </Button>
-                <p className="d-inline mx-1 fw-bold">{boton1}</p>
-                <Button
-                  onClick={sumar1}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  +
-                </Button>
-                <Card.Text className="d-inline fw-bold">
-                  Aderezo chipotle
-                </Card.Text>
-                <div>
-                  <Card.Text>$200</Card.Text>
-                </div>
-              </container>
-              <container id="containerflexible2">
-                <Button
-                  onClick={restar2}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  -
-                </Button>
-                <p className="d-inline mx-1 fw-bold">{boton2}</p>
-                <Button
-                  onClick={sumar2}
-                  className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                >
-                  +
-                </Button>
-                <Card.Text className="d-inline fw-bold">
-                  Aderezo chipotle
-                </Card.Text>
-                <div>
-                  <Card.Text>$200</Card.Text>
-                </div>
-              </container>
             </Card.Body>
-            <Card.Body>
-              <Container id="containerflexible3">
-                <div>
-                  <Button
-                    onClick={restar3}
-                    className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                  >
-                    -
-                  </Button>
-                  <p className="d-inline mx-1 fw-bold">{boton3}</p>
-                  <Button
-                    onClick={sumar3}
-                    className="btn-sm btn-light rounded-circle d-inline mx-1 fw-bold"
-                  >
-                    +
-                  </Button>
-                </div>
-                <div>
-                  <Card.Text className="d-inline fw-bold">
-                    {boton * 200 + boton1 * 200 + boton2 * 200 + boton3 * 2500}
-                  </Card.Text>
-                </div>
-                <div>
-                  <Button className="btn-sm boton mx-2 my-3">Agregar</Button>
-                </div>
-              </Container>
-            </Card.Body>
-          </Col>
-        </Row>
-      </Card>
-    </Container>
-  );
+            </Col>
+          </Row>
+        </Card>
+        </Col>
+      </Row>
+      </Container>
+    );
 };
 export default DetalleMenu;

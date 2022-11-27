@@ -6,6 +6,9 @@ import { borrarPedidoAPI, consultarApiPedidos, editarPedidoAPI } from "../../hel
 const ItemPedido = ({ pedido, setPedidos }) => {
     const { _id, usuario, fecha, productos, estado } = { ...pedido };
     const [pedidoEditado, setPedidoEditado] = useState(pedido);
+    let dia = fecha.slice(0,10);
+    let hora = fecha.slice(11,16);
+    let nuevaFecha = dia + " " + hora;
 
     useEffect(() => {
         if (!estado) {
@@ -59,7 +62,7 @@ const ItemPedido = ({ pedido, setPedidos }) => {
             <tr>
                 <th className="text-truncate thLargo">{_id}</th>
                 <th>{usuario}</th>
-                <th>{fecha}</th>
+                <th>{nuevaFecha}</th>
                 <th className="text-truncate thLargo2">
                     {productos.map((producto) => (
                         <ul key={producto.nombre}>

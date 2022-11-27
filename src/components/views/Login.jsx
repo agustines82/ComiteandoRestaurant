@@ -31,11 +31,9 @@ const Login = ({ setUsuarioLogueado }) => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
         loguearUsuarioAPI(data).then((respuesta) => {
             if (respuesta) {
                 localStorage.setItem("usuarioLogueado", JSON.stringify(respuesta));
-                console.log(respuesta);
                 setUsuarioLogueado(respuesta.usuario);
                 reset();
                 handleClose();

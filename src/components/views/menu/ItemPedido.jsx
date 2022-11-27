@@ -62,11 +62,11 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                 <th>{fecha}</th>
                 <th className="text-truncate thLargo2">
                     {productos.map((producto) => (
-                        <ul key={producto.productos.nombre}>
+                        <ul key={producto.nombre}>
                             <li>
                                 {producto.cantidad}
                                 <span> </span>
-                                {producto.productos.nombre}
+                                {producto.nombre}
                             </li>
                         </ul>
                     ))}

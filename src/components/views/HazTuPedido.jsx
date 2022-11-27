@@ -1,23 +1,41 @@
 import {
     Row,
     Container,
-    Card,
     Col,
-    ListGroup,
     Carousel,
     Table,
     Button
 } from "react-bootstrap";
+import Swal from "sweetalert2";
 import CardMenu from "./menu/CardMenu";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { consultarApiProductos } from "../helpers/queries";
 
 const HazTuPedido = () => {
-    const usuario = JSON.parse(localStorage.getItem("usuarioLogueado")) || {};
     const [productos, setProductos] = useState([]);
-    const [pedido, setPedido] = useState([]);
-    const [importe, setImporte] = useState(0);
+    const pedidoSession = JSON.parse(sessionStorage.getItem("pedido")) || [];
+    const [pedido, setPedido] = useState(pedidoSession);
+    let importeSession = 0;
+    pedidoSession.forEach(producto => {
+        importeSession += (producto.cantidad * producto.precio)
+    });
+    const [importe, setImporte] = useState(importeSession);
+    const redirect = useNavigate();
+
+    const confirmarPedido = ()=>{
+       let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"))
+        if(usuario){
+            redirect("/pedidoconf");
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Debe inicar sesión!'
+            })
+        }
+    }
+
 
     const categorias = [
         "BENTOS",
@@ -51,8 +69,14 @@ const HazTuPedido = () => {
                 setImporte(importe + cantidad * productoAgregado.precio);
             }
         }
+        guardarPedidoSession()
     }
 
+    const guardarPedidoSession = ()=>{
+        sessionStorage.setItem("pedido", JSON.stringify(pedido));
+    }
+    
+    sessionStorage.setItem("pedido", JSON.stringify(pedido));
     const borrarProducto = (productoBorrado) => {
         setPedido([...pedido.filter((producto)=>producto._id !== productoBorrado._id)]);
         setImporte(importe - productoBorrado.cantidad * productoBorrado.precio);
@@ -186,7 +210,7 @@ const HazTuPedido = () => {
                         </Table>
                         <hr />  
                         <p className="fw-bold fs-4">Total ${importe}</p>
-                        <Button variant="none" className="boton w-100">Confirmar Pedido</Button>
+                        <Button variant="none" onClick={confirmarPedido} className="boton w-100">Confirmar Pedido</Button>
                         </div>
                     </Col>
                 </Row>

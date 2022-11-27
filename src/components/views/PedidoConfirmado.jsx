@@ -9,20 +9,18 @@ import { crearPedidoAPI } from "../helpers/queries";
 const PedidoConfirmado = () => {
     //cargar usuario desde el local storage y el pedido desde sessionStorage
     const usuarioX = JSON.parse(localStorage.getItem("usuarioLogueado"));
-    const pedidoCliente = JSON.parse(sessionStorage.getItem("keyPedido")) || [];
+    const pedidoCliente = JSON.parse(sessionStorage.getItem("pedido")) || [];
 
     //variables de estado
     const [pedidoCompleto, setPedidoCompleto] = useState();
-
     const [total, setTotal] = useState(0);
     const [direccion, setDireccion] = useState("");
     const [indicaciones, setIndicaciones] = useState("");
 
     let user = usuarioX.usuario.nombre;
     let date = new Date().toISOString();
-    console.log(date);
     useEffect(() => {
-        const totalAPagar = pedidoCliente.reduce((total, articulo) => total + articulo.cantidad * articulo.productos.precio, 0);
+        const totalAPagar = pedidoCliente.reduce((total, articulo) => total + articulo.cantidad * articulo.precio, 0);
         setTotal(totalAPagar);
         setearPedido();
     }, [direccion, indicaciones]);
@@ -36,7 +34,6 @@ const PedidoConfirmado = () => {
     const navegar = useNavigate();
 
     const setearPedido = () => {
-        console.log("desde setaerPedido");
         setPedidoCompleto({
             usuario: user,
             fecha: date,
@@ -48,11 +45,11 @@ const PedidoConfirmado = () => {
     };
 
     const crearPedidoCliente = () => {
-        console.log(pedidoCompleto);
         //una vez todo validado enviamos la peticion a la API
         crearPedidoAPI(pedidoCompleto).then((respuesta) => {
             if (respuesta.status === 201) {
                 Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
+                sessionStorage.removeItem("pedido");
             } else {
                 Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
             }
@@ -133,11 +130,11 @@ const PedidoConfirmado = () => {
                             </thead>
                             <tbody responsive striped size="sm">
                                 {pedidoCliente.map((pedido) => (
-                                    <tr key={pedido.productos._id}>
+                                    <tr key={pedido._id}>
                                         <th> {pedido.cantidad} un.</th>
-                                        <th>{pedido.productos.nombre}</th>
-                                        <th>$ {pedido.productos.precio}</th>
-                                        <th>$ {pedido.subTotal}</th>
+                                        <th>{pedido.nombre}</th>
+                                        <th>$ {pedido.precio}</th>
+                                        <th>$ {pedido.cantidad * pedido.precio}</th>
                                     </tr>
                                 ))}
                             </tbody>

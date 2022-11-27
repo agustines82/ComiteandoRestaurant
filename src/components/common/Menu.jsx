@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import comitiandoLogo from "../../assets/img/comitiandoLogo.jpg";
@@ -7,13 +7,13 @@ import Registro from "../views/Registro";
 
 const Menu = () => {
     const usuario = JSON.parse(localStorage.getItem("usuarioLogueado")) || {};
-    const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
+    const [usuarioLogueado, setUsuarioLogueado] = useState(usuario.usuario);
     const cerrarSesion = () => {
         localStorage.removeItem("usuarioLogueado");
-        setUsuarioLogueado({});
-        console.log(usuarioLogueado);
+        sessionStorage.removeItem("pedido");
+        setUsuarioLogueado();
     };
-
+    
     return (
         <header>
             <Navbar className="backgroundGeneral" expand="lg">
@@ -34,7 +34,7 @@ const Menu = () => {
                             >
                                 Haz tu Pedido
                             </NavLink>
-                            {!usuarioLogueado.email ? (
+                            {!usuarioLogueado ? (
                                 <>
                                     <Registro />
                                     <Login setUsuarioLogueado={setUsuarioLogueado} />
@@ -60,7 +60,7 @@ const Menu = () => {
                                         <NavLink
                                             to={"/"}
                                             onClick={cerrarSesion}
-                                            className={"nav-item linksMenu fw-bold backgroundBotones text-white fs-3 rounded h-25 hoverLoginOutMenu"}
+                                            className={"nav-item linksMenu fw-bold backgroundBotones mx-3 text-white fs-3 rounded h-25 hoverLoginOutMenu"}
                                         >
                                             Logout<i className="bi bi-box-arrow-in-right"></i>
                                         </NavLink>

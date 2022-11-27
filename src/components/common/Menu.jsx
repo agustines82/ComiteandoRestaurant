@@ -18,17 +18,16 @@ const Menu = () => {
         <header>
             <Navbar className="backgroundGeneral" expand="lg">
                 <Container fluid className="mt-3">
-                    <Navbar.Brand as={Link} end to="/">
+                    <Navbar.Brand as={Link} to="/">
                         <img src={comitiandoLogo} alt="logo menu" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <NavLink end to="/" className={"nav-item linksMenu fw-bold fontTitulos fs-1 hoverLinksMenu"}>
+                            <NavLink to="/" className={"nav-item linksMenu fw-bold fontTitulos fs-1 hoverLinksMenu"}>
                                 Inicio
                             </NavLink>
                             <NavLink
-                                end
                                 to="/haz"
                                 className="nav-item linksMenu backgroundBotones rounded fw-bolder fontTitulos fs-1 hazTuPedidoMenu hoverHazTuPedidoMenu"
                             >
@@ -43,7 +42,7 @@ const Menu = () => {
                                 <>
                                     {usuarioLogueado.perfil === "Administrador" ? (
                                         <>
-                                            <NavLink end to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-1 hoverLinksMenu"}>
+                                            <NavLink to="/administrar" className={"nav-item linksMenu fw-bold fontTitulos fs-1 hoverLinksMenu"}>
                                                 Administrador
                                             </NavLink>
                                             <NavLink
@@ -67,7 +66,7 @@ const Menu = () => {
                                     )}
                                 </>
                             )}
-                            <NavLink end to="/carrito" className={"nav-item linksMenu fs-2 hoverLinksMenu"}>
+                            <NavLink to="/carrito" className={"nav-item linksMenu fs-2 hoverLinksMenu"}>
                                 <i className="bi bi-shop-window"></i>
                             </NavLink>
                         </Nav>

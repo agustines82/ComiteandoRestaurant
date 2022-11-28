@@ -32,7 +32,7 @@ const Inicio = () => {
                 <Row className="justify-content-center mt-3 mb-0 ">
                     <Col md={8}>
                         <div className="backgroundBotones rounded-5 my-0 text-justify p-3 ">
-                            <p className="text-center fs-big fw-bold fontTitulos">SOMOS COMITEANDO!!!</p>
+                            <p className="text-center fs-big fw-bold fontTitulos">SOMOS COMITIANDO!!!</p>
                             <p className="mx-3 py-3 fs-3 text-somos">
                                 Somos una experiencia de hospitalidad y gastronomía Japonesa en constante movimiento. Empezamos en 2003, creando el
                                 primer Kaiten Sushi* local. Desde entonces, nos dedicamos a cocinar tus platillos favoritos, recibiéndote siempre, en
@@ -64,13 +64,13 @@ const Inicio = () => {
             </section>
             <aside>
                 <div>
-                    <a href="https://www.instagram.com/moshimoshimx/?hl=es-la" className="instagram" target="_blank">
+                    <a href="https://www.instagram.com/moshimoshimx/?hl=es-la" className="instagram" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://www.facebook.com/moshimoshimx" className="facebook" target="_blank">
+                    <a href="https://www.facebook.com/moshimoshimx" className="facebook" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://web.whatsapp.com/%F0%9F%8C%90/es" className="whatsApp" target="_blank">
+                    <a href="https://web.whatsapp.com/%F0%9F%8C%90/es" className="whatsApp" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-whatsapp"></i>
                     </a>
                 </div>

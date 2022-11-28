@@ -13,7 +13,7 @@ const Menu = () => {
         sessionStorage.removeItem("pedido");
         setUsuarioLogueado();
     };
-    
+
     return (
         <header>
             <Navbar className="backgroundGeneral" expand="lg">
@@ -49,7 +49,7 @@ const Menu = () => {
                                                 to={"/"}
                                                 onClick={cerrarSesion}
                                                 className={
-                                                    "nav-item linksMenu fw-bold backgroundBotones text-white fs-3 rounded h-25 hoverLoginOutMenu"
+                                                    "nav-item linksMenu fw-bold backgroundBotones text-white fs-3 rounded h-5 hoverLoginOutMenu"
                                                 }
                                             >
                                                 Logout<i className="bi bi-box-arrow-in-right"></i>
@@ -59,7 +59,9 @@ const Menu = () => {
                                         <NavLink
                                             to={"/"}
                                             onClick={cerrarSesion}
-                                            className={"nav-item linksMenu fw-bold backgroundBotones mx-3 text-white fs-3 rounded h-25 hoverLoginOutMenu"}
+                                            className={
+                                                "nav-item linksMenu fw-bold backgroundBotones margenLogOut text-white fs-3 rounded h-25 hoverLoginOutMenu"
+                                            }
                                         >
                                             Logout<i className="bi bi-box-arrow-in-right"></i>
                                         </NavLink>

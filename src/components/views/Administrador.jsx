@@ -6,8 +6,12 @@ import ItemUsuario from "./usuario/ItemUsuario";
 import { useEffect, useState } from "react";
 import { consultarApiPedidos, consultarApiProductos, consultarApiUsuarios } from "../helpers/queries";
 import { InputGroup, Form, Button } from "react-bootstrap";
+import Spinner from "../Spinner";
 
 const Administrador = () => {
+    //Variables de estado para Spinner
+    const [mostrarSpinner, setMostrarSpinner] = useState(true);
+
     //Variables de estado para Lista Pedido, su paginación y filtrado
     const [pedidos, setPedidos] = useState([]);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
@@ -30,6 +34,9 @@ const Administrador = () => {
     useEffect(() => {
         consultarApiPedidos().then((respuestaListaPedidos) => {
             setPedidos(respuestaListaPedidos);
+            setTimeout(() => {
+                setMostrarSpinner(false);
+            }, 2000);
         });
         consultarApiProductos().then((respuestaListaProductos) => {
             setProductos(respuestaListaProductos);
@@ -174,23 +181,28 @@ const Administrador = () => {
                 </select>
             </div>
             <hr />
-            <Table responsive striped hover size="sm" className="shadow">
-                <thead>
-                    <tr>
-                        <th>Cod</th>
-                        <th>Usuario</th>
-                        <th>Fecha</th>
-                        <th>Productos</th>
-                        <th>Estado</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {pedidosFiltrados.length === 0
-                        ? pedidosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)
-                        : pedidosFiltradosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)}
-                </tbody>
-            </Table>
+            {mostrarSpinner ? (
+                <Spinner></Spinner>
+            ) : (
+                <Table responsive striped hover size="sm" className="shadow">
+                    <thead>
+                        <tr>
+                            <th>Cod</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Productos</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pedidosFiltrados.length === 0
+                            ? pedidosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)
+                            : pedidosFiltradosPaginados.map((pedido) => <ItemPedido key={pedido._id} pedido={pedido} setPedidos={setPedidos} />)}
+                    </tbody>
+                </Table>
+            )}
+
             <div className="d-flex justify-content-end me-2">
                 <button className="paginacion" onClick={previusPagePedidos}>
                     <i className="bi bi-arrow-left"></i>
@@ -227,27 +239,32 @@ const Administrador = () => {
                 </select>
             </div>
             <hr />
-            <Table responsive striped hover size="sm" className="shadow">
-                <thead>
-                    <tr>
-                        <th className="codTable">Cod</th>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Precio</th>
-                        <th>Detalle</th>
-                        <th>Categoria</th>
-                        <th>Imagen</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {productosFiltrados.length === 0
-                        ? productosPaginados.map((producto) => <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />)
-                        : productosFiltradosPaginados.map((producto) => (
-                              <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
-                          ))}
-                </tbody>
-            </Table>
+            {mostrarSpinner ? (
+                <Spinner></Spinner>
+            ) : (
+                <Table responsive striped hover size="sm" className="shadow">
+                    <thead>
+                        <tr>
+                            <th className="codTable">Cod</th>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Detalle</th>
+                            <th>Categoria</th>
+                            <th>Imagen</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productosFiltrados.length === 0
+                            ? productosPaginados.map((producto) => <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />)
+                            : productosFiltradosPaginados.map((producto) => (
+                                  <ItemMenu key={producto._id} producto={producto} setProductos={setProductos} />
+                              ))}
+                    </tbody>
+                </Table>
+            )}
+
             <div className="d-flex justify-content-end me-2">
                 <button className="paginacion" onClick={previusPageProductos}>
                     <i className="bi bi-arrow-left"></i>
@@ -269,22 +286,27 @@ const Administrador = () => {
                 </select>
             </div>
             <hr />
-            <Table responsive striped bordered hover size="sm" className="shadow">
-                <thead>
-                    <tr>
-                        <th className="codTable">Cod</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Perfil</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuariosFiltrados.length === 0
-                        ? usuariosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)
-                        : usuariosFiltradosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)}
-                </tbody>
-            </Table>
+            {mostrarSpinner ? (
+                <Spinner></Spinner>
+            ) : (
+                <Table responsive striped bordered hover size="sm" className="shadow">
+                    <thead>
+                        <tr>
+                            <th className="codTable">Cod</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Perfil</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {usuariosFiltrados.length === 0
+                            ? usuariosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)
+                            : usuariosFiltradosPaginados.map((usuario) => <ItemUsuario key={usuario._id} usuario={usuario} />)}
+                    </tbody>
+                </Table>
+            )}
+
             <div className="d-flex justify-content-end me-2">
                 <button className="paginacion" onClick={previusPageUsuarios}>
                     <i className="bi bi-arrow-left"></i>

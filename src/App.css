@@ -269,6 +269,9 @@ p.textoevento {
     .hazTuPedidoMenu {
         transform: rotate(0deg);
     }
+    .margenLogOut {
+        margin-top: 2px;
+    }
     /*Inicio*/
     .text-somos {
         text-align: center;
@@ -294,5 +297,13 @@ p.textoevento {
     }
     .fs-big {
         font-size: 80px;
+    }
+}
+
+/*LG*/
+@media all and (min-width: 992px) {
+    .margenLogOut {
+        margin-right: 1rem !important;
+        margin-left: 1rem !important;
     }
 }

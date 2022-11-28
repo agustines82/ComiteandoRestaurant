@@ -103,10 +103,10 @@ const Login = ({ setUsuarioLogueado }) => {
                             <Form.Text className="text-danger">{errors.password?.message}</Form.Text>
                         </Form.Group>
                         <div className="d-flex justify-content-evenly">
-                            <Button type="submit" className="boton">
+                            <Button variant="none" type="submit" className="boton">
                                 Ingresar
                             </Button>
-                            <Button className="boton" onClick={handleClose}>
+                            <Button variant="none" className="boton" onClick={handleClose}>
                                 Cerrar
                             </Button>
                         </div>

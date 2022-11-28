@@ -64,13 +64,13 @@ const Inicio = () => {
             </section>
             <aside>
                 <div>
-                    <a href="https://www.instagram.com/moshimoshimx/?hl=es-la" className="instagram" target="_blank">
+                    <a href="https://www.instagram.com/moshimoshimx/?hl=es-la" className="instagram" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-instagram"></i>
                     </a>
-                    <a href="https://www.facebook.com/moshimoshimx" className="facebook" target="_blank">
+                    <a href="https://www.facebook.com/moshimoshimx" className="facebook" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-facebook"></i>
                     </a>
-                    <a href="https://web.whatsapp.com/%F0%9F%8C%90/es" className="whatsApp" target="_blank">
+                    <a href="https://web.whatsapp.com/%F0%9F%8C%90/es" className="whatsApp" target="_blank" rel="noopener noreferrer">
                         <i className="bi bi-whatsapp"></i>
                     </a>
                 </div>

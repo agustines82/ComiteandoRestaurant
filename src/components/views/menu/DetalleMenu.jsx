@@ -1,4 +1,4 @@
-import { Card, Button, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { obtenerProductoAPI } from "../../helpers/queries";
 import { useParams } from "react-router-dom";
@@ -47,7 +47,7 @@ const DetalleMenu = () => {
                                         <></>
                                     )}
                                     <div className="d-flex flex-nowrap justify-content-around align-items-end w-100">
-                                        <Link to="/haz" className="btn-sm boton mx-1 my-3 mb-0">
+                                        <Link to="/haz" className="btn-sm boton mx-1 my-3 mb-0 text-decoration-none text-dark">
                                             volver
                                         </Link>
                                     </div>

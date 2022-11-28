@@ -14,7 +14,7 @@ const Nosotros = () => {
           <CardImg className="cards" variant="top" src={Agustin} />
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Agustin Sampayo</Card.Title>
-            <a className="display-6" href="https://github.com/agustines82" target="_blank">
+            <a className="display-6" href="https://github.com/agustines82" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
@@ -23,7 +23,7 @@ const Nosotros = () => {
           <Card.Img className="cards" variant="top" src={Eliseo} />
           <Card.Body className="text-center">
             <Card.Title className="text-center">Eliseo Espindola</Card.Title>
-            <a className="display-6" href="https://github.com/eliseoe95" target="_blank">
+            <a className="display-6" href="https://github.com/eliseoe95" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
@@ -33,7 +33,7 @@ const Nosotros = () => {
           <Card.Img className="cards" variant="top" src={Facundo} />
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Facundo Montiel</Card.Title>
-            <a className="display-6" href="https://github.com/f-montiel " target="_blank">
+            <a className="display-6" href="https://github.com/f-montiel " target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
@@ -42,7 +42,7 @@ const Nosotros = () => {
           <Card.Img className="cards" variant="top" src={Lucia} />
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Lucia Gonzalez</Card.Title>
-            <a className="display-6" href="https://github.com/luciabgv" target="_blank">
+            <a className="display-6" href="https://github.com/luciabgv" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
@@ -51,7 +51,7 @@ const Nosotros = () => {
           <Card.Img className="cards" variant="top" src={Tomas} />
           <Card.Body className="text-center">
             <Card.Title className="text-center mb-4">Tomas Luna</Card.Title>
-            <a className="display-6" href="https://github.com/tomasluna99" target="_blank">
+            <a className="display-6" href="https://github.com/tomasluna99" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>
@@ -60,7 +60,7 @@ const Nosotros = () => {
           <Card.Img className="cards" variant="top" src={Gregorio} />
           <Card.Body className="text-center">
             <Card.Title className="text-center">Gregorio Llobeta</Card.Title>
-            <a className="display-6" href="https://github.com/gLlobeta" target="_blank">
+            <a className="display-6" href="https://github.com/gLlobeta" target="_blank" rel="noopener noreferrer">
               <i className="bi bi-github github"></i>
             </a>
           </Card.Body>

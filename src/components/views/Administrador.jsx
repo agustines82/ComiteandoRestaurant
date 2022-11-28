@@ -9,7 +9,7 @@ import { InputGroup, Form, Button } from "react-bootstrap";
 import Spinner from "../Spinner";
 
 const Administrador = () => {
-    ////Variables de estado para Spinner
+    //Variables de estado para Spinner
     const [mostrarSpinner, setMostrarSpinner] = useState(true);
 
     //Variables de estado para Lista Pedido, su paginación y filtrado

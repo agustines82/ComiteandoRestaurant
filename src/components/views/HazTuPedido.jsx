@@ -1,49 +1,43 @@
-import {
-    Row,
-    Container,
-    Col,
-    Carousel,
-    Table,
-    Button
-} from "react-bootstrap";
+import { Row, Container, Col, Carousel, Table, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import CardMenu from "./menu/CardMenu";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { consultarApiProductos } from "../helpers/queries";
-
+import Spinner from "../Spinner";
 const HazTuPedido = () => {
+    const [mostrarSpinner, setMostrarSpinner] = useState(true);
     const [productos, setProductos] = useState([]);
     const [todos, setTodos] = useState([]);
     const pedidoSession = JSON.parse(sessionStorage.getItem("pedido")) || [];
     const [pedido, setPedido] = useState(pedidoSession);
     let importeSession = 0;
-    pedidoSession.forEach(producto => {
-        importeSession += (producto.cantidad * producto.precio)
+    pedidoSession.forEach((producto) => {
+        importeSession += producto.cantidad * producto.precio;
     });
     const [importe, setImporte] = useState(importeSession);
     const redirect = useNavigate();
 
-    const confirmarPedido = ()=>{
-       let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
-        if(usuario){
-            if(pedido.length > 0){
+    const confirmarPedido = () => {
+        let usuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        if (usuario) {
+            if (pedido.length > 0) {
                 redirect("/pedidoconf");
             } else {
                 Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: 'Debe agregar al menos un producto!'
-                })
+                    icon: "warning",
+                    title: "Oops...",
+                    text: "Debe agregar al menos un producto!",
+                });
             }
         } else {
             Swal.fire({
-                icon: 'warning',
-                title: 'Oops...',
-                text: 'Debe inicar sesión!'
-            })
+                icon: "warning",
+                title: "Oops...",
+                text: "Debe inicar sesión!",
+            });
         }
-    }
+    };
     const categorias = [
         "BENTOS",
         "TAKA TAKOS",
@@ -61,51 +55,51 @@ const HazTuPedido = () => {
         "REFRESCOS",
     ];
 
-    const agregarProducto = (cantidad, productoAgregado)=>{
-        if(cantidad !== 0){
-            let productoExistente = pedido.find((producto)=>producto._id === productoAgregado._id);
-            if(productoExistente){
+    const agregarProducto = (cantidad, productoAgregado) => {
+        if (cantidad !== 0) {
+            let productoExistente = pedido.find((producto) => producto._id === productoAgregado._id);
+            if (productoExistente) {
                 let cantidadProducto = productoExistente.cantidad + cantidad;
                 productoExistente.cantidad = cantidadProducto;
-                setPedido([...pedido.filter((producto)=>producto !== productoExistente._id)]);
+                setPedido([...pedido.filter((producto) => producto !== productoExistente._id)]);
                 setImporte(importe + cantidad * productoAgregado.precio);
-                
             } else {
                 productoAgregado.cantidad = cantidad;
                 setPedido([...pedido, productoAgregado]);
                 setImporte(importe + cantidad * productoAgregado.precio);
             }
         }
-        guardarPedidoSession()
-    }
-    
-    const guardarPedidoSession = ()=>{
+        guardarPedidoSession();
+    };
+
+    const guardarPedidoSession = () => {
         sessionStorage.setItem("pedido", JSON.stringify(pedido));
-    }
-    
+    };
+
     sessionStorage.setItem("pedido", JSON.stringify(pedido));
     const borrarProducto = (productoBorrado) => {
-        setPedido([...pedido.filter((producto)=>producto._id !== productoBorrado._id)]);
+        setPedido([...pedido.filter((producto) => producto._id !== productoBorrado._id)]);
         setImporte(importe - productoBorrado.cantidad * productoBorrado.precio);
-    }
-    
+    };
+
     const handleChangeFiltros = (e) => {
-        if(e.target.value === ""){
+        if (e.target.value === "") {
             setProductos(todos);
         } else {
             let categoriaFiltro = e.target.value;
-            let productosFiltrados = todos.filter((producto)=>producto.categoria === categoriaFiltro);
+            let productosFiltrados = todos.filter((producto) => producto.categoria === categoriaFiltro);
             setProductos(productosFiltrados);
         }
-    }
-    
+    };
+
     useEffect(() => {
         consultarApiProductos().then((respuestaListaProductos) => {
-            let listaProductosDisponibles = respuestaListaProductos.filter(
-                (producto) => producto.estado === true
-            );
+            let listaProductosDisponibles = respuestaListaProductos.filter((producto) => producto.estado === true);
             setTodos(listaProductosDisponibles);
             setProductos(listaProductosDisponibles);
+            setTimeout(() => {
+                setMostrarSpinner(false);
+            }, 1000);
         });
     }, []);
 
@@ -138,75 +132,72 @@ const HazTuPedido = () => {
                 <Row>
                     <Col md={8}>
                         <div className="d-flex justify-content-around my-5">
-                            <select
-                                className="filtradoSelect"
-                                onChange={handleChangeFiltros}
-                            >
+                            <select className="filtradoSelect" onChange={handleChangeFiltros}>
                                 <option defaultChecked value="">
                                     Selecciona por categoria
                                 </option>
                                 {categorias.map((categoria, position) => {
                                     return (
-                                        <option
-                                            key={position}
-                                            value={categoria}
-                                        >
+                                        <option key={position} value={categoria}>
                                             {categoria}
                                         </option>
                                     );
                                 })}
                             </select>
                         </div>
-                        {categorias.map((categoria, position) => {
-                            let productosFiltrados = productos.filter(
-                                (producto) => producto.categoria === categoria
-                            );
-                            if (productosFiltrados.length > 0) {
-                                return (
-                                    <div key={position}>
-                                        <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">
-                                            {categoria}
-                                        </h3>
-                                        <Row>
-                                            {productosFiltrados.map(
-                                                (producto) => {
-                                                    return (
-                                                        <CardMenu
-                                                            key={producto._id}
-                                                            producto={producto}
-                                                            agregarProducto={agregarProducto}
-                                                        />
-                                                    );
-                                                }
-                                            )}
-                                        </Row>
-                                    </div>
-                                );
-                            }
-                        })}
+                        {mostrarSpinner ? (
+                            <Spinner></Spinner>
+                        ) : (
+                            <>
+                                {categorias.map((categoria, position) => {
+                                    let productosFiltrados = productos.filter((producto) => producto.categoria === categoria);
+                                    if (productosFiltrados.length > 0) {
+                                        return (
+                                            <div key={position}>
+                                                <h3 className="fontTitulos fs-1 fw-bold ms-5 mt-5">{categoria}</h3>
+                                                <Row>
+                                                    {productosFiltrados.map((producto) => {
+                                                        return <CardMenu key={producto._id} producto={producto} agregarProducto={agregarProducto} />;
+                                                    })}
+                                                </Row>
+                                            </div>
+                                        );
+                                    }
+                                })}
+                            </>
+                        )}
                     </Col>
                     <Col md={4}>
                         <div className="sticky-top my-5">
-                        <h2 className="text-center">Mi Pedido</h2>
-                        <Table>
-                            <tbody>
-                                {
-                                    pedido.map((producto)=>{
-                                        return(
-                                        <tr key={producto._id}>
-                                            <td className="align-middle">{producto.cantidad}</td>
-                                            <td className="align-middle">{producto.nombre}</td>
-                                            <td className="align-middle">${producto.precio * producto.cantidad}</td>
-                                            <td className="align-middle"><Button variant="none" onClick={()=>{borrarProducto(producto)}}><i className="bi bi-trash3-fill"></i></Button></td>
-                                        </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </Table>
-                        <hr />  
-                        <p className="fw-bold fs-4">Total ${importe}</p>
-                        <Button variant="none" onClick={confirmarPedido} className="boton w-100">Confirmar Pedido</Button>
+                            <h2 className="text-center">Mi Pedido</h2>
+                            <Table>
+                                <tbody>
+                                    {pedido.map((producto) => {
+                                        return (
+                                            <tr key={producto._id}>
+                                                <td className="align-middle">{producto.cantidad}</td>
+                                                <td className="align-middle">{producto.nombre}</td>
+                                                <td className="align-middle">${producto.precio * producto.cantidad}</td>
+                                                <td className="align-middle">
+                                                    <Button
+                                                        variant="none"
+                                                        onClick={() => {
+                                                            borrarProducto(producto);
+                                                        }}
+                                                    >
+                                                        <i className="bi bi-trash3-fill"></i>
+                                                    </Button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </Table>
+                            <hr />
+                            <p className="fw-bold fs-4">Total ${importe}</p>
+                            <Button variant="none" onClick={confirmarPedido} className="boton w-100">
+                                Confirmar Pedido
+                            </Button>
                         </div>
                     </Col>
                 </Row>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import comitiandoLogo from "../../assets/img/comitiandoLogo.jpg";

@@ -1,6 +1,5 @@
 import { React, useEffect } from "react";
 import { Form, Container, Accordion, Table, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -25,12 +24,6 @@ const PedidoConfirmado = () => {
         setearPedido();
     }, [direccion, indicaciones]);
 
-    //objetos para usar hookform
-    const {
-        register,
-        formState: { errors },
-    } = useForm();
-
     const navegar = useNavigate();
 
     const setearPedido = () => {
@@ -45,18 +38,22 @@ const PedidoConfirmado = () => {
     };
 
     const crearPedidoCliente = () => {
-        //una vez todo validado enviamos la peticion a la API
-        crearPedidoAPI(pedidoCompleto).then((respuesta) => {
-            if (respuesta.status === 201) {
-                Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
-                sessionStorage.removeItem("pedido");
-            } else {
-                Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
-            }
-        });
+        if (direccion.length > 0) {
+            //una vez todo validado enviamos la peticion a la API
+            crearPedidoAPI(pedidoCompleto).then((respuesta) => {
+                if (respuesta.status === 201) {
+                    Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
+                    sessionStorage.removeItem("pedido");
+                } else {
+                    Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
+                }
+            });
 
-        //redirecciono al usuario a la pagina de inicio
-        navegar("/");
+            //redirecciono al usuario a la pagina de inicio
+            navegar("/");
+        } else {
+            Swal.fire("cargar direccion", "Debes cargar una direccion", "warning");
+        }
     };
     return (
         <Container>
@@ -65,42 +62,11 @@ const PedidoConfirmado = () => {
             <Form className="container">
                 <Form.Group>
                     <Form.Label className="fs-5 mt-3">Dirección:</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Escribe tu dirección"
-                        {...register("direccion", {
-                            required: "La direccion es un campo obligatorio",
-                            minLength: {
-                                value: 5,
-                                message: "La cantidad minima de caracteres, es de 5.",
-                            },
-                            maxLength: {
-                                value: 100,
-                                message: "La cantidad maxima de caracteres, es de 100. ",
-                            },
-                        })}
-                        onChange={(e) => setDireccion(e.target.value)}
-                    />
-                    <Form.Text className="text-danger">{errors.direccion?.message}</Form.Text>
+                    <Form.Control required type="text" placeholder="Escribe tu dirección" onChange={(e) => setDireccion(e.target.value)} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className="fs-5 mt-3">Indicaciones:</Form.Label>
-                    <Form.Control
-                        placeholder="Escribe tu indicacion aqui"
-                        {...register("indicaciones", {
-                            minLength: {
-                                value: 5,
-                                message: "La cantidad minima de caracteres es de 5.",
-                            },
-                            maxLength: {
-                                value: 100,
-                                message: "La cantidad maxima de caracteres es de 100.",
-                            },
-                        })}
-                        onChange={(e) => setIndicaciones(e.target.value)}
-                    />
-                    <Form.Text className="text-danger">{errors.indicaciones?.message}</Form.Text>
+                    <Form.Control placeholder="Escribe tu indicacion aqui" onChange={(e) => setIndicaciones(e.target.value)} />
                 </Form.Group>
             </Form>
             <section className="my-5 ms-3">
@@ -128,7 +94,7 @@ const PedidoConfirmado = () => {
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody responsive striped size="sm">
+                            <tbody size="sm">
                                 {pedidoCliente.map((pedido) => (
                                     <tr key={pedido._id}>
                                         <th> {pedido.cantidad} un.</th>
@@ -147,7 +113,7 @@ const PedidoConfirmado = () => {
             </div>
 
             <div className="d-flex justify-content-center">
-                <Button className="my-3 p-3 botonconf" onClick={crearPedidoCliente}>
+                <Button variant="none" className="my-3 p-3 fs-3 fw-bold backgroundBotones" onClick={crearPedidoCliente}>
                     Comprar
                 </Button>
             </div>

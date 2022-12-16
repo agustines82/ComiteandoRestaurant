@@ -15,11 +15,9 @@ import PedidoConfirmado from "./components/views/PedidoConfirmado";
 
 function App() {
     return (
-        //administrar las rutas;
         <BrowserRouter>
             <Menu />
             <Routes>
-                {/* dominio + path */}
                 <Route exact path="/" element={<Inicio />} />
                 <Route exact path="/haz" element={<HazTuPedido />} />
                 <Route exact path="/pedidoconf" element={<PedidoConfirmado />} />

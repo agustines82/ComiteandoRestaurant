@@ -9,26 +9,16 @@ import { InputGroup, Form, Button } from "react-bootstrap";
 import Spinner from "../Spinner";
 
 const Administrador = () => {
-    //Variables de estado para Spinner
     const [mostrarSpinner, setMostrarSpinner] = useState(true);
-
-    //Variables de estado para Lista Pedido, su paginación y filtrado
     const [pedidos, setPedidos] = useState([]);
     const [paginaActualPedidos, setPaginaActualPedidos] = useState(1);
-    //filtrado
     const [pedidosFiltrados, setPedidosFiltrados] = useState([]);
-
-    //Variables de estado para Lista Productos y su paginacion
     const [productos, setProductos] = useState([]);
     const [paginaActualProductos, setPaginaActualProductos] = useState(1);
-    //filtrado
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [inputBuscar, setInputBuscar] = useState("");
-
-    //Variables de estado para Lista Usuarios y su paginacion
     const [usuarios, setUsuarios] = useState([]);
     const [paginaActualUsuarios, setPaginaActualUsuarios] = useState(1);
-    //filtrado
     const [usuariosFiltrados, setUsuariosFiltrados] = useState([]);
 
     useEffect(() => {
@@ -46,15 +36,11 @@ const Administrador = () => {
         });
     }, [paginaActualPedidos, paginaActualUsuarios]);
 
-    //LOGICA PAGINACION Y FILTRADO LISTA PEDIDOS PENDIENTES
-    //paginado
     const pedidosPorPagina = 4;
     const indexUltimoPedido = paginaActualPedidos * pedidosPorPagina;
     const indexPrimerPedido = indexUltimoPedido - pedidosPorPagina;
     const pedidosPaginados = pedidos.slice(indexPrimerPedido, indexUltimoPedido);
-    //filtrado
     const pedidosFiltradosPaginados = pedidosFiltrados.slice(indexPrimerPedido, indexUltimoPedido);
-    //cambiar la pagina
     const nextPagePedidos = () => {
         if (pedidosFiltrados.length === 0 || paginaActualPedidos < pedidosFiltrados.length / pedidosPorPagina) {
             if (paginaActualPedidos < pedidos.length / pedidosPorPagina) {
@@ -67,7 +53,6 @@ const Administrador = () => {
             setPaginaActualPedidos(paginaActualPedidos - 1);
         }
     };
-    //filtrar pedidos
     const handleChangePedidoFiltrado = (e) => {
         const valor = e.target.value;
         setPaginaActualPedidos(1);
@@ -83,12 +68,10 @@ const Administrador = () => {
         }
     };
 
-    //LOGICA PAGINACION Y FILTRADO LISTA PRODUCTOS
     const productosPorPagina = 10;
     const indexUltimoProducto = paginaActualProductos * productosPorPagina;
     const indexPrimerProducto = indexUltimoProducto - productosPorPagina;
     const productosPaginados = productos.slice(indexPrimerProducto, indexUltimoProducto);
-    //filtrado de productos
     const productosFiltradosPaginados = productosFiltrados.slice(indexPrimerProducto, indexUltimoProducto);
 
     const handleChangeProductoFiltrado = (e) => {
@@ -112,7 +95,6 @@ const Administrador = () => {
             setProductosFiltrados([]);
         }
     };
-    //cambiar la pagina
     const nextPageProductos = () => {
         if (productosFiltrados.length === 0 || paginaActualProductos < productosFiltrados.length / productosPorPagina) {
             if (paginaActualProductos < productos.length / productosPorPagina) {
@@ -126,14 +108,11 @@ const Administrador = () => {
         }
     };
 
-    //LOGICA PAGINACION Y FILTRADO LISTA USUARIOS
     const usuariosPorPagina = 5;
     const indexUltimoUsuario = paginaActualUsuarios * usuariosPorPagina;
     const indexPrimerUsuario = indexUltimoUsuario - usuariosPorPagina;
     const usuariosPaginados = usuarios.slice(indexPrimerUsuario, indexUltimoUsuario);
-    //filtrado
     const usuariosFiltradosPaginados = usuariosFiltrados.slice(indexPrimerUsuario, indexUltimoUsuario);
-    //cambiar la pagina
     const nextPageUsuarios = () => {
         if (usuariosFiltrados.length === 0 || paginaActualUsuarios < usuariosFiltrados.length / usuariosPorPagina) {
             if (paginaActualUsuarios < usuarios.length / usuariosPorPagina) {
@@ -146,7 +125,6 @@ const Administrador = () => {
             setPaginaActualUsuarios(paginaActualUsuarios - 1);
         }
     };
-    //filtrar usuarios
     const handleChangeUsuarioFiltrado = (e) => {
         const valor = e.target.value;
         setPaginaActualUsuarios(1);

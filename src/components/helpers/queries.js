@@ -2,8 +2,7 @@ const urlPedidos = process.env.REACT_APP_API_COMITIANDOPEDIDO;
 const urlProductos = process.env.REACT_APP_API_COMITIANDOPRODUCTOS;
 const URLUsuarios = process.env.REACT_APP_API_COMITIANDOUSUARIOS;
 const URLLogin = process.env.REACT_APP_API_COMITIANDOLOGIN;
-//PETICIONES GET:
-//get para listar pedidos solicitados
+
 export const consultarApiPedidos = async () => {
     try {
         const respuesta = await fetch(urlPedidos);
@@ -15,7 +14,7 @@ export const consultarApiPedidos = async () => {
     }
 };
 
-//get para listar productos del menu
+
 export const consultarApiProductos = async () => {
     try {
         const respuesta = await fetch(urlProductos);
@@ -26,7 +25,7 @@ export const consultarApiProductos = async () => {
         return false;
     }
 };
-//get para listar los usuarios
+
 export const consultarApiUsuarios = async () => {
     try {
         const respuesta = await fetch(URLUsuarios);
@@ -37,7 +36,7 @@ export const consultarApiUsuarios = async () => {
         return false;
     }
 };
-//get para obtener un producto por su id (a los efectos de cargar sus valores en el form de ediciòn)
+
 export const obtenerProductoAPI = async (id) => {
     try {
         const respuesta = await fetch(urlProductos + "/" + id);
@@ -51,8 +50,7 @@ export const obtenerProductoAPI = async (id) => {
         return false;
     }
 };
-//PETICIONES POST:
-//post para crear el pedido del menú
+
 export const crearPedidoAPI = async (pedido) => {
     try {
         const respuesta = await fetch(urlPedidos, {
@@ -68,7 +66,6 @@ export const crearPedidoAPI = async (pedido) => {
         return false;
     }
 };
-//post para crear el producto del menú
 export const crearProductoMenuAPI = async (producto, token) => {
     try {
         const respuesta = await fetch(urlProductos, {
@@ -85,7 +82,6 @@ export const crearProductoMenuAPI = async (producto, token) => {
         return false;
     }
 };
-//post para crear el usuario
 export const crearUsuarioAPI = async (usuario) => {
     try {
         const respuesta = await fetch(URLUsuarios, {
@@ -101,7 +97,6 @@ export const crearUsuarioAPI = async (usuario) => {
         return false;
     }
 };
-//post loguear un usuario
 export const loguearUsuarioAPI = async (usuario) => {
     try {
         const respuesta = await fetch(URLLogin, {
@@ -122,8 +117,6 @@ export const loguearUsuarioAPI = async (usuario) => {
         return false;
     }
 };
-//PETICIONES PUT:
-//put para editar pedidos (pendiente/realizado)
 export const editarPedidoAPI = async (id, pedidoEditado) => {
     try {
         const respuesta = await fetch(urlPedidos + "/" + id, {
@@ -139,7 +132,6 @@ export const editarPedidoAPI = async (id, pedidoEditado) => {
         return false;
     }
 };
-//put para editar usuarios (activo/suspendido)
 export const editarUsuarioAPI = async (id, usuarioEditado) => {
     try {
         const respuesta = await fetch(URLUsuarios + "/" + id, {
@@ -156,7 +148,6 @@ export const editarUsuarioAPI = async (id, usuarioEditado) => {
     }
 };
 
-//put para editar productos
 export const editarProductoAPI = async (id, productoEditado, token) => {
     try {
         const respuesta = await fetch(urlProductos + "/" + id, {
@@ -174,8 +165,6 @@ export const editarProductoAPI = async (id, productoEditado, token) => {
     }
 };
 
-//PETICIONES DELETE:
-//delete para eliminar producto del menu
 export const borrarProductoAPI = async (id) => {
     try {
         const respuesta = await fetch(urlProductos + "/" + id, {
@@ -187,7 +176,6 @@ export const borrarProductoAPI = async (id) => {
         return false;
     }
 };
-//delete para borrar el pedido
 export const borrarPedidoAPI = async (id) => {
     try {
         const respuesta = await fetch(urlPedidos + "/" + id, {

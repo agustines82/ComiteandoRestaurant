@@ -27,7 +27,6 @@ const ItemPedido = ({ pedido, setPedidos }) => {
     };
 
     const handleChangeEditarPedido = () => {
-        //enviamos la peticion PUT a la API
         editarPedidoAPI(_id, pedidoEditado);
     };
 
@@ -45,7 +44,6 @@ const ItemPedido = ({ pedido, setPedidos }) => {
                 borrarPedidoAPI(_id).then((respuesta) => {
                     if (respuesta.status === 200) {
                         Swal.fire("Pedido Eliminado", "El pedido se eliminó correctamente", "success");
-                        //busco todos los pedidos en ese instante de tiempo luego de borrado el pedido y actualizo el state pedidos de administrador
                         consultarApiPedidos().then((response) => {
                             setPedidos(response);
                         });

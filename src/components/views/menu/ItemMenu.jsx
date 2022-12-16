@@ -19,7 +19,6 @@ const ItemMenu = ({ producto, setProductos }) => {
                 borrarProductoAPI(_id).then((respuesta) => {
                     if (respuesta.status === 200) {
                         Swal.fire("Producto Eliminado", "El producto se eliminó correctamente", "success");
-                        //busco todos los productos en ese instante de tiempo luego de borrado el producto y actualizo el state productos de administrador
                         consultarApiProductos().then((response) => {
                             setProductos(response);
                         });

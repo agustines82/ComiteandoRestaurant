@@ -6,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { crearPedidoAPI } from "../helpers/queries";
 
 const PedidoConfirmado = () => {
-    //cargar usuario desde el local storage y el pedido desde sessionStorage
     const usuarioX = JSON.parse(localStorage.getItem("usuarioLogueado"));
     const pedidoCliente = JSON.parse(sessionStorage.getItem("pedido")) || [];
 
-    //variables de estado
     const [pedidoCompleto, setPedidoCompleto] = useState();
     const [total, setTotal] = useState(0);
     const [direccion, setDireccion] = useState("");
@@ -39,7 +37,6 @@ const PedidoConfirmado = () => {
 
     const crearPedidoCliente = () => {
         if (direccion.length > 0) {
-            //una vez todo validado enviamos la peticion a la API
             crearPedidoAPI(pedidoCompleto).then((respuesta) => {
                 if (respuesta.status === 201) {
                     Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
@@ -48,8 +45,6 @@ const PedidoConfirmado = () => {
                     Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
                 }
             });
-
-            //redirecciono al usuario a la pagina de inicio
             navegar("/");
         } else {
             Swal.fire("cargar direccion", "Debes cargar una direccion", "warning");

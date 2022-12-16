@@ -18,7 +18,6 @@ const EditarMenu = () => {
     useEffect(() => {
         obtenerProductoAPI(id).then((respuesta) => {
             if (respuesta.status === 200) {
-                //cargar datos en el formulario
                 setValue("nombre", respuesta.dato.nombre);
                 setValue("estado", respuesta.dato.estado);
                 setValue("precio", respuesta.dato.precio);
@@ -30,7 +29,6 @@ const EditarMenu = () => {
     }, []);
 
     const onSubmitEditar = (dataProductoEditado) => {
-        //enviamos la peticion PUT a la API
         let token = JSON.parse(localStorage.getItem("usuarioLogueado")).token;
         editarProductoAPI(id, dataProductoEditado, token).then((respuesta) => {
             if (respuesta.status === 200) {

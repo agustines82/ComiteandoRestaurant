@@ -14,7 +14,6 @@ const CrearMenu = () => {
     const navegar = useNavigate();
 
     const crearProductoMenu = (dataProducto) => {
-        //una vez todo validado enviamos la peticion a la API
         let token = JSON.parse(localStorage.getItem("usuarioLogueado")).token;
         crearProductoMenuAPI(dataProducto, token).then((respuesta) => {
             if (respuesta.status === 201) {
@@ -23,9 +22,7 @@ const CrearMenu = () => {
                 Swal.fire("Ocurrio un error", "Intente esta operación en unos minutos", "error");
             }
         });
-        //reseteo el formulario
         reset();
-        //redirecciono al usuario a la pagina de administracion
         navegar("/administrar");
     };
 

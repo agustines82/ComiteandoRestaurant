@@ -16,14 +16,9 @@ const PedidoConfirmado = () => {
 
     let user = usuarioX.usuario.nombre;
     let date = new Date().toISOString();
-    useEffect(() => {
-        const totalAPagar = pedidoCliente.reduce((total, articulo) => total + articulo.cantidad * articulo.precio, 0);
-        setTotal(totalAPagar);
-        setearPedido();
-    }, [direccion, indicaciones]);
-
+    
     const navegar = useNavigate();
-
+    
     const setearPedido = () => {
         setPedidoCompleto({
             usuario: user,
@@ -34,9 +29,9 @@ const PedidoConfirmado = () => {
             estado: false,
         });
     };
-
+    
     const crearPedidoCliente = () => {
-        if (direccion.length > 0) {
+        if (direccion.length > 4 && direccion.length < 101 && indicaciones.length > 4 && indicaciones.length < 101) {
             crearPedidoAPI(pedidoCompleto).then((respuesta) => {
                 if (respuesta.status === 201) {
                     Swal.fire("Genial!", "Tu pedido llegará a la brevedad", "success");
@@ -47,9 +42,17 @@ const PedidoConfirmado = () => {
             });
             navegar("/");
         } else {
-            Swal.fire("cargar direccion", "Debes cargar una direccion", "warning");
+            Swal.fire("Direccion e Indicaciones", 
+            `La dirección es un campo obligatorio y tiene que ser mayor a 4 y menor a 100 caracteres. <br/> 
+            La Indicacion es un campo obligarotio y tiene que ser mayor a 4 y menor a 100 caracteres`,
+            "warning");
         }
     };
+    useEffect(() => {
+        const totalAPagar = pedidoCliente.reduce((total, articulo) => total + articulo.cantidad * articulo.precio, 0);
+        setTotal(totalAPagar);
+        setearPedido();
+    }, [direccion, indicaciones]);
     return (
         <Container>
             <h2 className="text-center display-6 my-5">Datos del envio</h2>
